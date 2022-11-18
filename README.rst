@@ -27,6 +27,60 @@ Once you've cloned the repository to your local machine install dependencies:
 
 This will also install internal packages for future tests.
 
+Code health check
+-----------------
+
+There are few dependencies installed to check the code health:
+
+* pytest-cov
+* mypy
+* pylint
+
+They are acting as stand-alone commands, available from your terminal with
+poetry:
+
+.. code-block::
+
+    poetry run pytest
+    poetry run mypy
+    poetry run pylint src
+
+Running tox
+-----------
+
+`tox`_ aims to automate and standardize testing in Python. It is a generic
+virtualenv management and test command line tool you can use for:
+
+* checking that your package installs correctly with different Python versions
+  and interpreters
+* running your tests in each of the environments, configuring your test tool of
+  choice
+* acting as a frontend to Continuous Integration servers, greatly reducing
+  boilerplate and merging CI and shell-based testing.
+
+.. _tox: https://tox.wiki
+
+It's also include to the project's deps, run it with:
+
+.. code-block::
+
+    poetry run tox
+
+Building documentation
+----------------------
+
+It's good to have well documented functions and classes. This project has no
+purpose to generate documents, but since it is a part of a bigger one project
+it's good to get docstrings here. Sphinx documentation generator is included
+to dev-dependencies. You can use it to check the documentation builds:
+
+.. code-block::
+
+    poetry run sphinx-build -b html docs _build
+
+An **index.html** file will be generated inside of **_build** directory. Check
+it to review the documentation.
+
 Project structure
 =================
 
