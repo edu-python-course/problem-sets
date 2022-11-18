@@ -62,3 +62,36 @@ max-line-length = 79
 
 [tool.pylint."REFACTORING"]
 max-nested-blocks = 3
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+minversion = 3.9.0
+envlist = py39, py310, mypy, pylint
+isolated_build = true
+skip_missing_interpreters = true
+
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310, mypy, pylint
+
+[testenv]
+deps =
+    pytest
+    pytest-cov
+commands =
+    pytest
+
+[testenv:mypy]
+deps =
+    mypy
+commands =
+    mypy src
+
+[testenv:pylint]
+deps =
+    pylint
+commands =
+    pylint --fail-under=8 src
+"""
