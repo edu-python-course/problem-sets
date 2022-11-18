@@ -1,0 +1,39 @@
+# Following files and directories would not be added to the project repository
+
+# virtual environment
+/.venv/
+/.env/
+/venv/
+/env/
+
+# ide configs
+/.vscode/
+/.idea/
+
+# python byte-compiled
+__pycache__
+
+# temporary files storage
+/temp/
+/tmp/
+
+# various caches
+.pytest_cache/
+.mypy_cache/
+
+# coverage reports
+*.coverage.db
+*.coverage
+
+# local databases
+pgdata/
+pgsql/
+*.sqlite3
+*.db
+
+# tox directory
+.tox/
+
+# build and distribution directories
+_build/
+dist/
