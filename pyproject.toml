@@ -48,3 +48,14 @@ testpaths = ["tests"]
 
 [tool.mypy]
 files = "src,tests"
+
+[tool.pylint."MASTER"]
+fail-under = 8
+ignore = ["tests"]
+persistent = true
+
+[tool.pylint."MESSAGES CONTROL"]
+max-line-length = 79
+
+[tool.pylint."REFACTORING"]
+max-nested-blocks = 3
