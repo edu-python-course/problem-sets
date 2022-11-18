@@ -45,3 +45,6 @@ Sphinx = "^5.3.0"
 [tool.pytest.ini_options]
 addopts = "--cov=src --verbose"
 testpaths = ["tests"]
+
+[tool.mypy]
+files = "src,tests"
