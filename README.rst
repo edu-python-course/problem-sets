@@ -2,6 +2,8 @@
                      PYTHON TRAINING COURSE: PROBLEM SETS
 ###############################################################################
 
+.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/tests.yml/badge.svg
+
 This repository contains various problem sets (aka tasks or challenges) for
 the `Python training course`_. These challenges will help you to improve your
 skills in some basic Python topics. Many tasks are collected from authors'
