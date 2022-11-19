@@ -255,7 +255,7 @@ def counting_sort(origin: List[int]) -> List[int]:
     return result
 
 
-def radix_counting_sort(origin: List[int], places: int) -> List[int]:
+def radix_counting(origin: List[int], places: int) -> List[int]:
     """Return a list sorted by significant place digit
 
     :param origin: an original unsorted list
@@ -314,7 +314,7 @@ def radix_sort(origin: List[int]) -> List[int]:
 
     places = 1
     while max_value // places > 0:
-        result = radix_counting_sort(result, places)
+        result = radix_counting(result, places)
         places *= 10
 
     return result

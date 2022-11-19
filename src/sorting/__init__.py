@@ -64,7 +64,6 @@ __all__ = [
     "insertion_sort",
     "merge_sort",
     "quick_sort",
-    "radix_counting_sort",
     "radix_sort",
     "selection_sort",
     "shell_sort"
