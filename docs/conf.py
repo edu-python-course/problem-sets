@@ -23,6 +23,3 @@ needs_sphinx = "4.0"
 exclude_patterns = []
 suppress_warnings = []
 language = "en"
-html_theme_options = {
-    "nosidebar": True,
-}

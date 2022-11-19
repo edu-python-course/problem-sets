@@ -32,7 +32,8 @@ classifiers = [
     "Topic :: Education",
 ]
 packages = [
-    { include = "sequences", from = "src" }
+    { include = "sequences", from = "src" },
+    { include = "sorting", from = "src" }
 ]
 
 [tool.poetry.dependencies]

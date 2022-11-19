@@ -2,4 +2,8 @@
                               DOCUMENTATION CHECK
 ###############################################################################
 
-.. automodule:: sequences
+.. toctree::
+    :caption: Contents
+
+    sequences
+    sorting
