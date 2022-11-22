@@ -36,9 +36,9 @@ class Product:
         """Return equality comparison result"""
 
         if not isinstance(other, Product):
-            err_message = (f"unsupported operation for ==: "
-                           f"{self.__class__.__name__} and "
-                           f"{other.__class__.__name__}")
+            err_message = (f"unsupported operand types for ==: "
+                           f"'{self.__class__.__name__}' and "
+                           f"'{other.__class__.__name__}'")
             raise TypeError(err_message)
 
         return self.name == other.name and self.price == other.price
@@ -91,6 +91,42 @@ class ShoppingCart:
         """Return a shopping cart iterator object"""
 
         return zip(self.products, self.quantities)
+
+    def __add__(self, other):
+        """Return a combined shopping cart"""
+
+        if not isinstance(other, ShoppingCart):
+            err_message = (f"unsupported operand types for +: "
+                           f"{self.__class__.__name__} and "
+                           f"{other.__class__.__name__}")
+            raise TypeError(err_message)
+
+        products = self.products + other.products
+        quantities = self.quantities + other.quantities
+
+        return self.create_from_lists(products, quantities)
+
+    @classmethod
+    def create_from_lists(
+            cls, products: List[Product], quantities: List[Union[int, float]]
+    ):
+        """Return a shopping cart instance
+
+        :param products: products list
+        :type products: list[:class: `Product`]
+        :param quantities: corresponding quantities list
+        :type quantities: list[Union[int, float]]
+
+        :return: a shopping cart instance
+        :rtype: :class: `ShoppingCart`
+
+        """
+
+        instance = cls()
+        for product, quantity in zip(products, quantities):
+            instance.add_product(product, quantity)
+
+        return instance
 
     def add_product(
             self, product: Product, quantity: Union[int, float]
