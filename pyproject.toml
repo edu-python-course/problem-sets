@@ -107,5 +107,5 @@ commands =
 deps =
     pylint
 commands =
-    pylint --fail-under=8 src
+    pylint src
 """
