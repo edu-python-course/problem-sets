@@ -50,6 +50,19 @@ Sphinx = "^5.3.0"
 addopts = "--cov=src --verbose"
 testpaths = ["tests"]
 
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*__init__*",
+    "*__main__*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__"
+]
+
 [tool.mypy]
 files = "src,tests"
 
