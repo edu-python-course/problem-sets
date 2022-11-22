@@ -46,6 +46,9 @@ class Product:
     def get_total(self, quantity: Union[int, float]) -> float:
         """Return price for a specified amount of a product
 
+        .. note:: the floating numbers are not very precision, consider
+                  two decimal digits quite enough.
+
         :param quantity: amount to calculate price for
         :type quantity: int or float
 
@@ -131,7 +134,18 @@ class ShoppingCart:
     def add_product(
             self, product: Product, quantity: Union[int, float]
     ) -> None:
-        """Add product to a shopping cart"""
+        """Add product to a shopping cart
+
+        In case the product instance is already in the shopping cart,
+        this method just updates the quantity value without adjusting
+        products list itself.
+
+        :param product: a product instance to add
+        :type product: :class: `Product`
+        :param quantity: a quantity of a product instance to add
+        :type quantity: int or float
+
+        """
 
         try:
             idx = self.products.index(product)
@@ -141,7 +155,12 @@ class ShoppingCart:
             self.quantities.append(quantity)
 
     def get_total(self) -> float:
-        """Return a total price for an instance"""
+        """Return a total price for an instance
+
+        :return: calculated price for all the cart's content
+        :rtype: float
+
+        """
 
         total = 0.0
         for product, quantity in self:
