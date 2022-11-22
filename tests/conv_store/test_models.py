@@ -51,6 +51,26 @@ class TestShoppingCartModel(unittest.TestCase):
         test_value = "apple x 1.5\nbeer x 2\ncheese x 0.5"
         self.assertEqual(str(self.instance), test_value)
 
+    def test_add_cart(self):
+        another = models.ShoppingCart()
+        another.add_product(*TestShoppingCartModel.APPLE)
+        another.add_product(models.Product("banana", 55.0), 1.5)
+
+        self.instance += another
+        self.assertEqual(len(self.instance.products), 4)
+        self.assertEqual(len(self.instance.quantities), 4)
+        self.assertEqual(self.instance.quantities[0], 3)
+
+    def test_add_cart_raises(self):
+        self.assertRaises(TypeError, self.instance.__add__, "foobar")
+
+    def test_list_constructor(self):
+        products = [models.Product("product #1", 12.0)]
+        quantities = [2, 3]
+        instance = models.ShoppingCart.create_from_lists(products, quantities)
+        self.assertListEqual(instance.quantities, [2])
+        self.assertListEqual(instance.products, products)
+
     def test_add_product(self):
         product = models.Product("foobar", 42)
         quantity = 4.2
