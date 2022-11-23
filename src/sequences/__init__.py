@@ -14,6 +14,14 @@ boundaries.
 
 .. autofunction:: is_palindrome
 
+Get the Longest Palindromic Substring
+-------------------------------------
+
+It's similar to `is_palindrome` check, but for now it tries to find the
+longest palindromic substring inside another string.
+
+.. autofunction:: get_longest_palindrome
+
 Balanced Parentheses
 --------------------
 
@@ -26,4 +34,8 @@ respective right parenthesis to match its pair in a well-nested format.
 
 from .func import *
 
-__all__ = ["is_palindrome", "are_parentheses_balanced"]
+__all__ = [
+    "is_palindrome",
+    "get_longest_palindrome",
+    "are_parentheses_balanced",
+]
