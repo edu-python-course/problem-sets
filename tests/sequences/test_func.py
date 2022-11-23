@@ -29,6 +29,23 @@ def test_palindrome_phrase():
     assert sequences.is_palindrome("Dammit I'm Mad") is True
 
 
+def test_get_longest_palindrome_odd():
+    # noinspection SpellCheckingInspection
+    assert sequences.get_longest_palindrome("ABBABBC") == "BBABB"
+
+
+def test_get_longest_palindrome_even():
+    assert sequences.get_longest_palindrome("abba") == "abba"
+
+
+def test_get_longest_palindrome_one_char():
+    assert sequences.get_longest_palindrome("abcdefg") == "g"
+
+
+def test_get_longest_palindrome_empty():
+    assert sequences.get_longest_palindrome("") == ""
+
+
 def test_parentheses_validator():
     assert sequences.are_parentheses_balanced("<[{(()[{}<>{}]())}]>") is True
     assert sequences.are_parentheses_balanced("") is True
