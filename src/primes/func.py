@@ -40,7 +40,7 @@ def eratosthenes_sieve(limit: int) -> List[int]:
 
     sieve: List[bool] = [False, False] + [True] * limit
 
-    for idx in range(2, limit + 1):
+    for idx in range(2, int(math.sqrt(limit)) + 1):
         if sieve[idx]:
             for j in range(idx ** 2, limit + 1, idx):
                 sieve[j] = False
