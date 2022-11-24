@@ -32,7 +32,7 @@ def is_prime(number: int) -> bool:
 
 
 def get_primes(limit: int) -> List[int]:
-    """Return a list of prime numbers till specified limit
+    """Return a list of prime numbers within specified range
 
     :param limit: a range limit to look for prime numbers
     :type limit: int
