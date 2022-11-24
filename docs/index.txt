@@ -8,3 +8,4 @@
     conv_store
     sequences
     sorting
+    primes
