@@ -3,7 +3,7 @@ Convenience store models
 
 """
 
-from typing import Union
+from typing import List, Union
 
 
 class Product:
@@ -28,12 +28,13 @@ class Product:
 
         """
 
-        ...
+        self.name = name
+        self.price = price
 
     def get_total(self, quantity: Union[int, float]) -> float:
         """Return the total price for a specified amount of product"""
 
-        ...
+        return round(self.price * quantity, 2)
 
 
 class ShoppingCart:
@@ -50,6 +51,12 @@ class ShoppingCart:
 
     """
 
+    def __init__(self) -> None:
+        """Initialize instance"""
+
+        self.products: List[Product] = []
+        self.quantities: List[Union[int, float]] = []
+
     def add_product(
         self, product: Product, quantity: Union[int, float]
     ) -> None:
@@ -62,7 +69,8 @@ class ShoppingCart:
 
         """
 
-        ...
+        self.products.append(product)
+        self.quantities.append(quantity)
 
     def get_total(self) -> float:
         """Return the total price for all the product in the cart
@@ -72,4 +80,8 @@ class ShoppingCart:
 
         """
 
-        ...
+        total = 0.0
+        for product, quantity in zip(self.products, self.quantities):
+            total += product.get_total(quantity)
+
+        return round(total, 2)
