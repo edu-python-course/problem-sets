@@ -31,6 +31,16 @@ class Product:
         self.name = name
         self.price = price
 
+    def __repr__(self) -> str:
+        """Return a string representation of an instance"""
+
+        return f"Product('{self.name}, {self.price:.2f})'"
+
+    def __str__(self) -> str:
+        """Return a string version of an instance"""
+
+        return self.name
+
     def get_total(self, quantity: Union[int, float]) -> float:
         """Return the total price for a specified amount of product"""
 
@@ -57,6 +67,11 @@ class ShoppingCart:
         self.products: List[Product] = []
         self.quantities: List[Union[int, float]] = []
 
+    def __repr__(self) -> str:
+        """Return a string representation of an instance"""
+
+        return "<ShoppingCart>"
+
     def add_product(
         self, product: Product, quantity: Union[int, float]
     ) -> None:
@@ -69,8 +84,13 @@ class ShoppingCart:
 
         """
 
-        self.products.append(product)
-        self.quantities.append(quantity)
+        if product in self.products:
+            idx = self.products.index(product)
+            self.quantities[idx] += quantity
+
+        else:
+            self.products.append(product)
+            self.quantities.append(quantity)
 
     def get_total(self) -> float:
         """Return the total price for all the product in the cart
