@@ -2,6 +2,9 @@
 Convenience Store Challenge
 ===========================
 
+As a software developer you're asked to create a simple goods and purchase
+register for a small convenience store in your local area.
+
 Product
 -------
 
