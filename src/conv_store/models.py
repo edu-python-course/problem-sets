@@ -41,6 +41,16 @@ class Product:
 
         return self.name
 
+    def __eq__(self, other: object) -> bool:
+        """Return equality comparing result (self == other)"""
+
+        if not isinstance(other, Product):
+            raise TypeError(f"unsupported operand type(s) for ==: "
+                            f"'{self.__class__.__name__}' and "
+                            f"'{other.__class__.__name__}'")
+
+        return self.name == other.name and self.price == other.price
+
     def get_total(self, quantity: Union[int, float]) -> float:
         """Return the total price for a specified amount of product"""
 
