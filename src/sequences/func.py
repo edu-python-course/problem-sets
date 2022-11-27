@@ -130,3 +130,23 @@ def are_parentheses_balanced(origin: str) -> bool:
                 return False
 
     return not parentheses_stack
+
+
+def get_fibonacci_number(idx: int) -> int:
+    """Return a Fibonacci's sequence number at a specified index
+
+    :param idx: a Fibonacci sequence index starting from 0
+    :type idx: int
+
+    :return: a sequence's member
+    :rtype: int
+
+    """
+
+    if idx <= 0:
+        return 0
+
+    if 0 < idx < 3:  # the same as ``idx == 1 or idx == 2``
+        return 1
+
+    return get_fibonacci_number(idx - 1) + get_fibonacci_number(idx - 2)
