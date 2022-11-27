@@ -53,3 +53,12 @@ def test_parentheses_validator():
     assert sequences.are_parentheses_balanced("[]]") is False
     assert sequences.are_parentheses_balanced("(()") is False
     assert sequences.are_parentheses_balanced("(some <text>)") is True
+
+
+def test_fibonacci_number_getter():
+    assert sequences.get_fibonacci_number(-10) == 0  # special test case
+    assert sequences.get_fibonacci_number(0) == 0
+    assert sequences.get_fibonacci_number(1) == 1
+    assert sequences.get_fibonacci_number(2) == 1
+    assert sequences.get_fibonacci_number(3) == 2
+    assert sequences.get_fibonacci_number(9) == 34
