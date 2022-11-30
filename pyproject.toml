@@ -34,7 +34,8 @@ classifiers = [
 packages = [
     { include = "conv_store", from = "src" },
     { include = "sequences", from = "src" },
-    { include = "sorting", from = "src" }
+    { include = "sorting", from = "src" },
+    { include = "wrw_game", from = "src" }
 ]
 
 [tool.poetry.dependencies]
