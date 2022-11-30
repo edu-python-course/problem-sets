@@ -118,7 +118,7 @@ class ShoppingCart:
 
         return zip(self.products, self.quantities)
 
-    def remove_product(self, product: Product):
+    def remove_product(self, product: Product) -> None:
         """Remove product from a cart instance
 
 
@@ -127,7 +127,10 @@ class ShoppingCart:
 
         """
 
-        return NotImplemented
+        if product in self.products:
+            idx = self.products.index(product)
+            self.products.pop(idx)
+            self.quantities.pop(idx)
 
     def add_product(
             self, product: Product, quantity: Union[int, float] = None
@@ -151,6 +154,10 @@ class ShoppingCart:
             self.products.append(product)
             self.quantities.append(quantity)
 
+        idx = self.products.index(product)
+        if self.quantities[idx] <= 0:
+            self.remove_product(product)
+
     def sub_product(
             self, product: Product, quantity: Union[int, float]
     ):
@@ -167,7 +174,8 @@ class ShoppingCart:
 
         """
 
-        return NotImplemented
+        quantity = - abs(quantity)
+        self.add_product(product, quantity)
 
     def get_total(self) -> float:
         """Return the total price for all the product in the cart
