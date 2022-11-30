@@ -61,7 +61,6 @@ class TestShoppingCartModel(unittest.TestCase):
         self.assertListEqual(self.products, self.instance.products)
         self.assertListEqual(self.quantities, self.instance.quantities)
 
-    @unittest.skip(reason="Not implemented")
     def test_remove_product(self):
         candy = models.Product("candy", 10.59, 0.1)
         self.instance.remove_product(candy)
@@ -86,13 +85,11 @@ class TestShoppingCartModel(unittest.TestCase):
         self.assertListEqual(self.products, self.instance.products)
         self.assertListEqual(quantities, self.instance.quantities)
 
-    @unittest.skip(reason="Not implemented")
     def test_sub_product(self):
         juice = models.Product("juice", 36.55, 1)
         self.instance.sub_product(juice, 2)
-        self.assertEqual(self.instance.quantities[1], 3)
+        self.assertEqual(self.instance.quantities[1], 2)
 
-    @unittest.skip(reason="Not implemented")
     def test_sub_product_removes(self):
         juice = models.Product("juice", 36.55, 1)
         self.instance.sub_product(juice, 5)
