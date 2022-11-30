@@ -161,7 +161,7 @@ class ShoppingCart:
 
     def sub_product(
             self, product: Product, quantity: Union[int, float]
-    ):
+    ) -> None:
         """Subtract product from the shopping cart
 
         If quantity value is less or equal to 0 the product is to be
@@ -176,7 +176,7 @@ class ShoppingCart:
         """
 
         quantity = - abs(quantity)
-        self.add_product(product, quantity)
+        return self.add_product(product, quantity)
 
     def get_total(self) -> float:
         """Return the total price for all the product in the cart
