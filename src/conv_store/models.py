@@ -3,7 +3,7 @@ Convenience store models
 
 """
 
-from typing import Iterator, List, Tuple, Union
+from typing import Iterator, List, Optional, Tuple, Union
 
 
 class Product:
@@ -133,7 +133,8 @@ class ShoppingCart:
             self.quantities.pop(idx)
 
     def add_product(
-            self, product: Product, quantity: Union[int, float] = None
+            self, product: Product,
+            quantity: Optional[Union[int, float]] = None
     ) -> None:
         """Add product to the shopping cart
 
