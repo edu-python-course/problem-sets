@@ -4,6 +4,7 @@ from unittest import mock
 from wrw_game import enums
 from wrw_game import exceptions
 from wrw_game import models
+from wrw_game import settings
 
 
 class TestSuccessAttack(unittest.TestCase):
@@ -55,7 +56,6 @@ class TestSuccessAttack(unittest.TestCase):
         self.player.add_score_points.assert_called_once_with(5)
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
@@ -65,10 +65,10 @@ class TestSuccessAttack(unittest.TestCase):
         return_value=enums.FightChoice.ROBBER
     )
     def test_messages(self, *mocks):
-        message = "INFO:player:YOUR ATTACK IS SUCCESSFUL!"
-        with self.assertLogs("player", "INFO") as logger:
+        message = f"INFO:PlayerModel:{settings.MSG_SUCCESS_ATTACK}"
+        with self.assertLogs() as logger:
             self.player.attack(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)
 
 
 class TestFailureAttack(unittest.TestCase):
@@ -105,7 +105,6 @@ class TestFailureAttack(unittest.TestCase):
         self.player.add_score_points.assert_not_called()
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
@@ -115,10 +114,10 @@ class TestFailureAttack(unittest.TestCase):
         return_value=enums.FightChoice.WIZARD
     )
     def test_messages(self, *mocks):
-        message = "INFO:player:YOUR ATTACK IS FAILED!"
-        with self.assertLogs("player", "INFO") as logger:
+        message = f"INFO:PlayerModel:{settings.MSG_FAILURE_ATTACK}"
+        with self.assertLogs() as logger:
             self.player.attack(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)
 
 
 class TestSuccessDefence(unittest.TestCase):
@@ -155,7 +154,6 @@ class TestSuccessDefence(unittest.TestCase):
         self.player.add_score_points.assert_not_called()
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
         return_value=enums.FightChoice.ROBBER
@@ -165,10 +163,10 @@ class TestSuccessDefence(unittest.TestCase):
         return_value=enums.FightChoice.WARRIOR
     )
     def test_messages(self, mock_print, *mocks):
-        message = "INFO:player:YOUR DEFENCE IS SUCCESSFUL!"
-        with self.assertLogs("player", "INFO") as logger:
+        message = f"INFO:PlayerModel:{settings.MSG_SUCCESS_DEFENCE}"
+        with self.assertLogs() as logger:
             self.player.defence(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)
 
 
 class TestFailureDefence(unittest.TestCase):
@@ -191,7 +189,6 @@ class TestFailureDefence(unittest.TestCase):
         self.player.decrease_health.assert_called_once()
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
         return_value=enums.FightChoice.WIZARD
@@ -201,10 +198,10 @@ class TestFailureDefence(unittest.TestCase):
         return_value=enums.FightChoice.WARRIOR
     )
     def test_messages(self, *mocks):
-        message = "INFO:player:ENEMY ATTACK IS SUCCESSFUL!"
+        message = f"INFO:PlayerModel:{settings.MSG_FAILURE_DEFENCE}"
         with self.assertLogs() as logger:
             self.player.defence(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)
 
 
 class TestDrawFight(unittest.TestCase):
@@ -267,7 +264,6 @@ class TestDrawFight(unittest.TestCase):
         self.assertEqual(0, self.player.score)
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented yet")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
@@ -277,13 +273,12 @@ class TestDrawFight(unittest.TestCase):
         return_value=enums.FightChoice.WARRIOR
     )
     def test_attack_message(self, *mocks):
-        message = "INFO:player:IT'S A DRAW!"
-        with self.assertLogs("player", "INFO") as logger:
+        message = f"INFO:PlayerModel:{settings.MSG_DRAW}"
+        with self.assertLogs() as logger:
             self.player.attack(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)
 
     # noinspection PyUnusedLocal
-    @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
@@ -293,7 +288,7 @@ class TestDrawFight(unittest.TestCase):
         return_value=enums.FightChoice.WARRIOR
     )
     def test_defence_message(self, *mocks):
-        message = "INFO:player:IT'S A DRAW!"
-        with self.assertLogs("player", "INFO") as logger:
+        message = f"INFO:PlayerModel:{settings.MSG_DRAW}"
+        with self.assertLogs() as logger:
             self.player.defence(self.enemy)
-            self.assertEqual(logger.output, [message])
+            self.assertEqual([message], logger.output)

@@ -2,11 +2,14 @@
 Game models
 
 """
+
+import logging
 import random
 
 from wrw_game import settings
 from wrw_game.enums import FightChoice, FightResult
 from wrw_game.exceptions import EnemyDown, GameOver
+from wrw_game.loggers import stream_handler
 
 
 class Enemy:
@@ -68,8 +71,14 @@ class Player:
     :type health: int
     :ivar score: player's instance gained score points
     :type score: int
+    :cvar logger: class based message logger
+    :type logger: :class: `logging.Logger`
 
     """
+
+    logger = logging.getLogger("PlayerModel")
+    logger.setLevel(logging.INFO)
+    logger.addHandler(stream_handler)
 
     def __init__(self, name: str) -> None:
         """Initialize instance"""
@@ -139,7 +148,7 @@ class Player:
         fight_result = self.fight(attack, defence)
 
         if fight_result == FightResult.SUCCESS:
-            print(settings.MSG_SUCCESS_ATTACK)
+            self.logger.info(settings.MSG_SUCCESS_ATTACK)
             try:
                 enemy.decrease_health()
                 self.add_score_points(settings.SCORE_SUCCESS_ATTACK)
@@ -148,10 +157,10 @@ class Player:
                 raise
 
         elif fight_result == FightResult.FAILURE:
-            print(settings.MSG_FAILURE_ATTACK)
+            self.logger.info(settings.MSG_FAILURE_ATTACK)
 
         elif fight_result == FightResult.DRAW:
-            print(settings.MSG_DRAW)
+            self.logger.info(settings.MSG_DRAW)
 
     def defence(self, enemy: Enemy) -> None:
         """Defend from an enemy's attack"""
@@ -161,11 +170,10 @@ class Player:
         fight_result = self.fight(attack, defence)
 
         if fight_result == FightResult.SUCCESS:
-            print(settings.MSG_FAILURE_DEFENCE)
+            self.logger.info(settings.MSG_FAILURE_DEFENCE)
             self.decrease_health()
 
         elif fight_result == FightResult.FAILURE:
-            print(settings.MSG_SUCCESS_DEFENCE)
-
+            self.logger.info(settings.MSG_SUCCESS_DEFENCE)
         elif fight_result == FightResult.DRAW:
-            print(settings.MSG_DRAW)
+            self.logger.info(settings.MSG_DRAW)
