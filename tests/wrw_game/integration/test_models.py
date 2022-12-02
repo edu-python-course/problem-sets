@@ -3,6 +3,7 @@ from unittest import mock
 
 from wrw_game import exceptions
 from wrw_game import models
+from wrw_game import settings
 
 
 class TestSuccessAttack(unittest.TestCase):
@@ -13,11 +14,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=2
+        return_value=settings.ROBBER
     )
     def test_decrease_health(self, *mocks):
         self.enemy.decrease_health = mock.Mock()
@@ -27,11 +28,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=2
+        return_value=settings.ROBBER
     )
     def test_score_assignment(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -41,11 +42,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=2
+        return_value=settings.ROBBER
     )
     def test_score_assignment_enemy_down(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -57,11 +58,11 @@ class TestSuccessAttack(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=2
+        return_value=settings.ROBBER
     )
     def test_messages(self, *mocks):
         message = "INFO:player:YOUR ATTACK IS SUCCESSFUL!"
@@ -78,11 +79,11 @@ class TestFailureAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=3
+        return_value=settings.WIZARD
     )
     def test_decrease_health(self, *mocks):
         self.enemy.decrease_health = mock.MagicMock()
@@ -92,11 +93,11 @@ class TestFailureAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=3
+        return_value=settings.WIZARD
     )
     def test_score_assignment(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -107,11 +108,11 @@ class TestFailureAttack(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=3
+        return_value=settings.WIZARD
     )
     def test_messages(self, *mocks):
         message = "INFO:player:YOUR ATTACK IS FAILED!"
@@ -128,11 +129,11 @@ class TestSuccessDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=2
+        return_value=settings.ROBBER
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_decrease_health(self, *mocks):
         self.player.decrease_health = mock.MagicMock()
@@ -142,11 +143,11 @@ class TestSuccessDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=2
+        return_value=settings.ROBBER
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_score_assignment(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -157,11 +158,11 @@ class TestSuccessDefence(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=2
+        return_value=settings.ROBBER
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_messages(self, mock_print, *mocks):
         message = "INFO:player:YOUR DEFENCE IS SUCCESSFUL!"
@@ -178,11 +179,11 @@ class TestFailureDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=3
+        return_value=settings.WIZARD
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_decrease_health(self, *mocks):
         self.player.decrease_health = mock.MagicMock()
@@ -193,11 +194,11 @@ class TestFailureDefence(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=3
+        return_value=settings.WIZARD
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_messages(self, *mocks):
         message = "INFO:player:ENEMY ATTACK IS SUCCESSFUL!"
@@ -214,11 +215,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_player_decrease_health(self, *mocks):
         self.player.decrease_health = mock.Mock()
@@ -228,11 +229,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_enemy_decrease_health(self, *mocks):
         self.enemy.decrease_health = mock.Mock()
@@ -242,11 +243,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_score_assignment_attack(self, *mocks):
         self.player.attack(self.enemy)
@@ -255,11 +256,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_score_assignment_defence(self, *mocks):
         self.player.defence(self.enemy)
@@ -269,11 +270,11 @@ class TestDrawFight(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented yet")
     @mock.patch(
         "wrw_game.models.Player.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_attack_message(self, *mocks):
         message = "INFO:player:IT'S A DRAW!"
@@ -285,11 +286,11 @@ class TestDrawFight(unittest.TestCase):
     @unittest.skip(reason="Logger is not implemented")
     @mock.patch(
         "wrw_game.models.Player.select_defence",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     @mock.patch(
         "wrw_game.models.Enemy.select_attack",
-        return_value=1
+        return_value=settings.WARRIOR
     )
     def test_defence_message(self, *mocks):
         message = "INFO:player:IT'S A DRAW!"

@@ -3,6 +3,7 @@ from unittest import mock
 
 from wrw_game import exceptions
 from wrw_game import models
+from wrw_game import settings
 
 
 class TestEnemyModel(unittest.TestCase):
@@ -13,7 +14,8 @@ class TestEnemyModel(unittest.TestCase):
 
     @unittest.skip(reason="Defaults are not implemented yet")
     def test_defaults(self):
-        ...  # TODO:
+        instance = models.Enemy()
+        self.assertEqual(instance.level, settings.INITIAL_ENEMY_LEVEL)
 
     def test_initializer(self):
         self.assertEqual(self.instance.level, TestEnemyModel.ENEMY_LEVEL)
@@ -47,7 +49,7 @@ class TestPlayerModel(unittest.TestCase):
 
     @unittest.skip(reason="Defaults are not implemented yet")
     def test_defaults(self):
-        ...  # TODO:
+        self.assertEqual(self.instance.health, settings.INITIAL_PLAYER_HEALTH)
 
     def test_initializer(self):
         self.assertEqual(self.instance.name, TestPlayerModel.PLAYER_NAME)
@@ -75,46 +77,46 @@ class TestPlayerModel(unittest.TestCase):
         self.assertEqual(mock_input.call_count, 4)
 
     def test_warrior_selection(self):
-        choice = 1
+        choice = settings.WARRIOR
         with mock.patch("builtins.input", return_value=str(choice)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_robber_selection(self):
-        choice = 2
+        choice = settings.ROBBER
         with mock.patch("builtins.input", return_value=str(choice)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_wizard_selection(self):
-        choice = 3
+        choice = settings.WIZARD
         with mock.patch("builtins.input", return_value=str(choice)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_success_fights(self):
-        result = models.Player.fight(1, 2)
-        self.assertEqual(result, 1)
+        result = models.Player.fight(settings.WARRIOR, settings.ROBBER)
+        self.assertEqual(result, settings.SUCCESS)
 
-        result = models.Player.fight(2, 3)
-        self.assertEqual(result, 1)
+        result = models.Player.fight(settings.ROBBER, settings.WIZARD)
+        self.assertEqual(result, settings.SUCCESS)
 
-        result = models.Player.fight(3, 1)
-        self.assertEqual(result, 1)
+        result = models.Player.fight(settings.WIZARD, settings.WARRIOR)
+        self.assertEqual(result, settings.SUCCESS)
 
     def test_failure_fights(self):
-        result = models.Player.fight(1, 3)
-        self.assertEqual(result, -1)
+        result = models.Player.fight(settings.WARRIOR, settings.WIZARD)
+        self.assertEqual(result, settings.FAILURE)
 
-        result = models.Player.fight(2, 1)
-        self.assertEqual(result, -1)
+        result = models.Player.fight(settings.ROBBER, settings.WARRIOR)
+        self.assertEqual(result, settings.FAILURE)
 
-        result = models.Player.fight(3, 2)
-        self.assertEqual(result, -1)
+        result = models.Player.fight(3, settings.ROBBER)
+        self.assertEqual(result, settings.FAILURE)
 
     def test_draw_fights(self):
-        result = models.Player.fight(1, 1)
-        self.assertEqual(result, 0)
+        result = models.Player.fight(settings.WARRIOR, settings.WARRIOR)
+        self.assertEqual(result, settings.DRAW)
 
-        result = models.Player.fight(2, 2)
-        self.assertEqual(result, 0)
+        result = models.Player.fight(settings.ROBBER, settings.ROBBER)
+        self.assertEqual(result, settings.DRAW)
 
-        result = models.Player.fight(3, 3)
-        self.assertEqual(result, 0)
+        result = models.Player.fight(settings.WIZARD, settings.WIZARD)
+        self.assertEqual(result, settings.DRAW)

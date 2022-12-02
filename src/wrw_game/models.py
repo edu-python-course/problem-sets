@@ -4,6 +4,7 @@ Game models
 """
 import random
 
+from wrw_game import settings
 from wrw_game.exceptions import EnemyDown, GameOver
 
 
@@ -17,7 +18,7 @@ class Enemy:
 
     """
 
-    def __init__(self, level: int) -> None:
+    def __init__(self, level: int = settings.INITIAL_ENEMY_LEVEL) -> None:
         """Initialize instance"""
 
         self.health = level
@@ -48,7 +49,8 @@ class Enemy:
     def _select_fight_choice() -> int:  # pragma: no cover
         """Return a random fight choice"""
 
-        return random.choice((1, 2, 3))
+        choices = settings.WARRIOR, settings.ROBBER, settings.WIZARD
+        return random.choice(choices)
 
     def select_attack(self) -> int:  # pragma: no cover
         return self._select_fight_choice()
@@ -73,7 +75,7 @@ class Player:
         """Initialize instance"""
 
         self.name = name
-        self.health = 5
+        self.health = settings.INITIAL_PLAYER_HEALTH
         self.score = 0
 
     def __repr__(self) -> str:
@@ -102,11 +104,12 @@ class Player:
         """Return fight choice from the user's prompt"""
 
         choice: int = 0
-        valid_choices = 1, 2, 3
+        valid_choices = settings.WARRIOR, settings.ROBBER, settings.WIZARD
+        msg = f"MAKE YOUR CHOICE ({', '.join(map(str, valid_choices))}): "
 
         while choice not in valid_choices:
             try:
-                choice = int(input("MAKE YOUR CHOICE (1, 2, 3): "))
+                choice = int(input(msg))
             except ValueError:
                 pass
 
@@ -122,18 +125,14 @@ class Player:
     def fight(attack: int, defence: int) -> int:
         """Return a fight result"""
 
-        # warrior - 1, robber - 2, wizard - 3
-        success_attacks = 1 - 2, 2 - 3, 3 - 1
-        failure_attacks = 1 - 3, 2 - 1, 3 - 2
-
         if attack == defence:
-            return 0  # it's a draw
+            return settings.DRAW
 
-        if attack - defence in success_attacks:
-            return 1
+        if attack - defence in settings.SUCCESS_ATTACK:
+            return settings.SUCCESS
 
-        if attack - defence in failure_attacks:
-            return -1
+        if attack - defence in settings.FAILURE_ATTACK:
+            return settings.FAILURE
 
     def add_score_points(self, score_points: int) -> None:
         """Add score points"""
@@ -147,20 +146,20 @@ class Player:
         defence = enemy.select_defence()
         fight_result = self.fight(attack, defence)
 
-        if fight_result == 1:
-            print("YOUR ATTACK IS SUCCESSFUL!")
+        if fight_result == settings.SUCCESS:
+            print(settings.MSG_SUCCESS_ATTACK)
             try:
                 enemy.decrease_health()
-                self.add_score_points(1)
+                self.add_score_points(settings.SCORE_SUCCESS_ATTACK)
             except EnemyDown:
-                self.add_score_points(5)
+                self.add_score_points(settings.SCORE_ENEMY_DOWN)
                 raise
 
-        elif fight_result == -1:
-            print("YOUR ATTACK IS FAILED!")
+        elif fight_result == settings.FAILURE:
+            print(settings.MSG_FAILURE_ATTACK)
 
-        elif fight_result == 0:
-            print("IT'S A DRAW!")
+        elif fight_result == settings.DRAW:
+            print(settings.MSG_DRAW)
 
     def defence(self, enemy: Enemy) -> None:
         """Defend from an enemy's attack"""
@@ -169,12 +168,12 @@ class Player:
         defence = self.select_defence()
         fight_result = self.fight(attack, defence)
 
-        if fight_result == 1:
-            print("YOUR DEFENCE IS FAILED!")
+        if fight_result == settings.SUCCESS:
+            print(settings.MSG_FAILURE_DEFENCE)
             self.decrease_health()
 
-        elif fight_result == -1:
-            print("YOUR DEFENCE IS SUCCESSFUL!")
+        elif fight_result == settings.FAILURE:
+            print(settings.MSG_SUCCESS_DEFENCE)
 
-        elif fight_result == 0:
-            print("IT'S A DRAW!")
+        elif fight_result == settings.DRAW:
+            print(settings.MSG_DRAW)
