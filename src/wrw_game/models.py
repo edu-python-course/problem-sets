@@ -5,6 +5,7 @@ Game models
 import random
 
 from wrw_game import settings
+from wrw_game.enums import FightChoice, FightResult
 from wrw_game.exceptions import EnemyDown, GameOver
 
 
@@ -46,16 +47,15 @@ class Enemy:
             raise EnemyDown(self)
 
     @staticmethod
-    def _select_fight_choice() -> int:  # pragma: no cover
+    def _select_fight_choice() -> FightChoice:  # pragma: no cover
         """Return a random fight choice"""
 
-        choices = settings.WARRIOR, settings.ROBBER, settings.WIZARD
-        return random.choice(choices)
+        return random.choice(tuple(FightChoice))
 
-    def select_attack(self) -> int:  # pragma: no cover
+    def select_attack(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
-    def select_defence(self) -> int:  # pragma: no cover
+    def select_defence(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
 
@@ -100,39 +100,31 @@ class Player:
             raise GameOver(self)
 
     @staticmethod
-    def _select_fight_choice() -> int:
+    def _select_fight_choice() -> FightChoice:
         """Return fight choice from the user's prompt"""
 
-        choice: int = 0
-        valid_choices = settings.WARRIOR, settings.ROBBER, settings.WIZARD
-        msg = f"MAKE YOUR CHOICE ({', '.join(map(str, valid_choices))}): "
-
-        while choice not in valid_choices:
+        choices = ", ".join(
+            f"{choice.name} - {choice.value}" for choice in FightChoice
+        )
+        msg = f"MAKE A FIGHT CHOICE FROM ({choices}): "
+        while True:
             try:
                 choice = int(input(msg))
+                return FightChoice(choice)
             except ValueError:
                 pass
 
-        return choice
-
-    def select_attack(self) -> int:  # pragma: no cover
+    def select_attack(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
-    def select_defence(self) -> int:  # pragma: no cover
+    def select_defence(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
     @staticmethod
-    def fight(attack: int, defence: int) -> int:
+    def fight(attack: FightChoice, defence: FightChoice) -> FightResult:
         """Return a fight result"""
 
-        if attack == defence:
-            return settings.DRAW
-
-        if attack - defence in settings.SUCCESS_ATTACK:
-            return settings.SUCCESS
-
-        if attack - defence in settings.FAILURE_ATTACK:
-            return settings.FAILURE
+        return attack - defence
 
     def add_score_points(self, score_points: int) -> None:
         """Add score points"""
@@ -146,7 +138,7 @@ class Player:
         defence = enemy.select_defence()
         fight_result = self.fight(attack, defence)
 
-        if fight_result == settings.SUCCESS:
+        if fight_result == FightResult.SUCCESS:
             print(settings.MSG_SUCCESS_ATTACK)
             try:
                 enemy.decrease_health()
@@ -155,10 +147,10 @@ class Player:
                 self.add_score_points(settings.SCORE_ENEMY_DOWN)
                 raise
 
-        elif fight_result == settings.FAILURE:
+        elif fight_result == FightResult.FAILURE:
             print(settings.MSG_FAILURE_ATTACK)
 
-        elif fight_result == settings.DRAW:
+        elif fight_result == FightResult.DRAW:
             print(settings.MSG_DRAW)
 
     def defence(self, enemy: Enemy) -> None:
@@ -168,12 +160,12 @@ class Player:
         defence = self.select_defence()
         fight_result = self.fight(attack, defence)
 
-        if fight_result == settings.SUCCESS:
+        if fight_result == FightResult.SUCCESS:
             print(settings.MSG_FAILURE_DEFENCE)
             self.decrease_health()
 
-        elif fight_result == settings.FAILURE:
+        elif fight_result == FightResult.FAILURE:
             print(settings.MSG_SUCCESS_DEFENCE)
 
-        elif fight_result == settings.DRAW:
+        elif fight_result == FightResult.DRAW:
             print(settings.MSG_DRAW)

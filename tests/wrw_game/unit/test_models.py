@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
 
+from wrw_game import enums
 from wrw_game import exceptions
 from wrw_game import models
 from wrw_game import settings
@@ -12,7 +13,6 @@ class TestEnemyModel(unittest.TestCase):
     def setUp(self) -> None:
         self.instance = models.Enemy(level=TestEnemyModel.ENEMY_LEVEL)
 
-    @unittest.skip(reason="Defaults are not implemented yet")
     def test_defaults(self):
         instance = models.Enemy()
         self.assertEqual(instance.level, settings.INITIAL_ENEMY_LEVEL)
@@ -47,7 +47,6 @@ class TestPlayerModel(unittest.TestCase):
     def setUp(self) -> None:
         self.instance = models.Player(name=TestPlayerModel.PLAYER_NAME)
 
-    @unittest.skip(reason="Defaults are not implemented yet")
     def test_defaults(self):
         self.assertEqual(self.instance.health, settings.INITIAL_PLAYER_HEALTH)
 
@@ -77,46 +76,64 @@ class TestPlayerModel(unittest.TestCase):
         self.assertEqual(mock_input.call_count, 4)
 
     def test_warrior_selection(self):
-        choice = settings.WARRIOR
-        with mock.patch("builtins.input", return_value=str(choice)):
+        choice = enums.FightChoice.WARRIOR
+        with mock.patch("builtins.input", return_value=str(choice.value)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_robber_selection(self):
-        choice = settings.ROBBER
-        with mock.patch("builtins.input", return_value=str(choice)):
+        choice = enums.FightChoice.ROBBER
+        with mock.patch("builtins.input", return_value=str(choice.value)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_wizard_selection(self):
-        choice = settings.WIZARD
-        with mock.patch("builtins.input", return_value=str(choice)):
+        choice = enums.FightChoice.WIZARD
+        with mock.patch("builtins.input", return_value=str(choice.value)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_success_fights(self):
-        result = models.Player.fight(settings.WARRIOR, settings.ROBBER)
-        self.assertEqual(result, settings.SUCCESS)
+        result = models.Player.fight(
+            enums.FightChoice.WARRIOR, enums.FightChoice.ROBBER
+        )
+        self.assertEqual(result, enums.FightResult.SUCCESS)
 
-        result = models.Player.fight(settings.ROBBER, settings.WIZARD)
-        self.assertEqual(result, settings.SUCCESS)
+        result = models.Player.fight(
+            enums.FightChoice.ROBBER, enums.FightChoice.WIZARD
+        )
+        self.assertEqual(result, enums.FightResult.SUCCESS)
 
-        result = models.Player.fight(settings.WIZARD, settings.WARRIOR)
-        self.assertEqual(result, settings.SUCCESS)
+        result = models.Player.fight(
+            enums.FightChoice.WIZARD, enums.FightChoice.WARRIOR
+        )
+        self.assertEqual(result, enums.FightResult.SUCCESS)
 
     def test_failure_fights(self):
-        result = models.Player.fight(settings.WARRIOR, settings.WIZARD)
-        self.assertEqual(result, settings.FAILURE)
+        result = models.Player.fight(
+            enums.FightChoice.WARRIOR, enums.FightChoice.WIZARD
+        )
+        self.assertEqual(result, enums.FightResult.FAILURE)
 
-        result = models.Player.fight(settings.ROBBER, settings.WARRIOR)
-        self.assertEqual(result, settings.FAILURE)
+        result = models.Player.fight(
+            enums.FightChoice.ROBBER, enums.FightChoice.WARRIOR
+        )
+        self.assertEqual(result, enums.FightResult.FAILURE)
 
-        result = models.Player.fight(3, settings.ROBBER)
-        self.assertEqual(result, settings.FAILURE)
+        result = models.Player.fight(
+            enums.FightChoice.WIZARD, enums.FightChoice.ROBBER
+        )
+        self.assertEqual(result, enums.FightResult.FAILURE)
 
     def test_draw_fights(self):
-        result = models.Player.fight(settings.WARRIOR, settings.WARRIOR)
-        self.assertEqual(result, settings.DRAW)
+        result = models.Player.fight(
+            enums.FightChoice.WARRIOR, enums.FightChoice.WARRIOR
+        )
+        self.assertEqual(result, enums.FightResult.DRAW)
 
-        result = models.Player.fight(settings.ROBBER, settings.ROBBER)
-        self.assertEqual(result, settings.DRAW)
+        result = models.Player.fight(
+            enums.FightChoice.ROBBER, enums.FightChoice.ROBBER
+        )
+        self.assertEqual(result, enums.FightResult.DRAW)
 
-        result = models.Player.fight(settings.WIZARD, settings.WIZARD)
-        self.assertEqual(result, settings.DRAW)
+        result = models.Player.fight(
+            enums.FightChoice.WIZARD, enums.FightChoice.WIZARD
+        )
+        self.assertEqual(result, enums.FightResult.DRAW)
