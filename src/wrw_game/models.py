@@ -45,15 +45,15 @@ class Enemy:
             raise EnemyDown(self)
 
     @staticmethod
-    def _select_fight_choice() -> int:
+    def _select_fight_choice() -> int:  # pragma: no cover
         """Return a random fight choice"""
 
         return random.choice((1, 2, 3))
 
-    def select_attack(self) -> int:
+    def select_attack(self) -> int:  # pragma: no cover
         return self._select_fight_choice()
 
-    def select_defence(self) -> int:
+    def select_defence(self) -> int:  # pragma: no cover
         return self._select_fight_choice()
 
 
@@ -112,10 +112,10 @@ class Player:
 
         return choice
 
-    def select_attack(self) -> int:
+    def select_attack(self) -> int:  # pragma: no cover
         return self._select_fight_choice()
 
-    def select_defence(self) -> int:
+    def select_defence(self) -> int:  # pragma: no cover
         return self._select_fight_choice()
 
     @staticmethod
@@ -135,6 +135,11 @@ class Player:
         if attack - defence in failure_attacks:
             return -1
 
+    def add_score_points(self, score_points: int) -> None:
+        """Add score points"""
+
+        self.score += score_points
+
     def attack(self, enemy: Enemy) -> None:
         """Attack an enemy"""
 
@@ -146,9 +151,9 @@ class Player:
             print("YOUR ATTACK IS SUCCESSFUL!")
             try:
                 enemy.decrease_health()
-                self.score += 1
+                self.add_score_points(1)
             except EnemyDown:
-                self.score += 5
+                self.add_score_points(5)
                 raise
 
         elif fight_result == -1:

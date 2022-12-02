@@ -27,7 +27,7 @@ class TestEnemyModel(unittest.TestCase):
         self.instance.decrease_health()
         self.assertEqual(self.instance.health, test_value)
 
-    def test_decrease_health_raises(self):
+    def test_enemy_down(self):
         self.instance.health = 1
         self.assertRaises(exceptions.EnemyDown, self.instance.decrease_health)
 
@@ -52,14 +52,22 @@ class TestPlayerModel(unittest.TestCase):
     def test_initializer(self):
         self.assertEqual(self.instance.name, TestPlayerModel.PLAYER_NAME)
 
+    def test_stringify(self):
+        self.assertEqual(str(self.instance), TestPlayerModel.PLAYER_NAME)
+
     def test_decrease_health(self):
         test_value = self.instance.health - 1
         self.instance.decrease_health()
         self.assertEqual(self.instance.health, test_value)
 
-    @unittest.skip(reason="Method not implemented yet")
+    def test_game_over(self):
+        self.instance.health = 1
+        self.assertRaises(exceptions.GameOver, self.instance.decrease_health)
+
     def test_score_assignment(self):
-        ...  # TODO:
+        self.instance.score = 5
+        self.instance.add_score_points(10)
+        self.assertEqual(self.instance.score, 15)
 
     @mock.patch("builtins.input", side_effect=["-1", "f", "0", "1"])
     def test_invalid_fight_choice(self, mock_input):
