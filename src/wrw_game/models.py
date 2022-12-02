@@ -5,6 +5,7 @@ Game models
 
 import logging
 import random
+from abc import ABC, abstractmethod
 
 from wrw_game import settings
 from wrw_game.enums import FightChoice, FightResult
@@ -12,7 +13,23 @@ from wrw_game.exceptions import EnemyDown, GameOver
 from wrw_game.loggers import stream_handler
 
 
-class Enemy:
+class _AbstractModel(ABC):
+    """Abstract game model"""
+
+    @abstractmethod
+    def select_attack(self) -> FightChoice:
+        """Return a selected attack choice"""
+
+    @abstractmethod
+    def select_defence(self) -> FightChoice:
+        """Return a selected defence choice"""
+
+    @abstractmethod
+    def decrease_health(self) -> None:
+        """Decrease instance health points"""
+
+
+class Enemy(_AbstractModel):
     """Enemy model
 
     :ivar level: enemy's level
@@ -62,7 +79,7 @@ class Enemy:
         return self._select_fight_choice()
 
 
-class Player:
+class Player(_AbstractModel):
     """Player model
 
     :ivar name: player's name
@@ -177,3 +194,6 @@ class Player:
             self.logger.info(settings.MSG_SUCCESS_DEFENCE)
         elif fight_result == FightResult.DRAW:
             self.logger.info(settings.MSG_DRAW)
+
+
+__all__ = ["Enemy", "Player"]
