@@ -1,3 +1,8 @@
+"""
+Game engine
+
+"""
+
 import logging
 
 from wrw_game.exceptions import EnemyDown, GameOver
@@ -10,6 +15,8 @@ logger.addHandler(stream_handler)
 
 
 def get_player_name() -> str:
+    """Return a player's name from the user prompt"""
+
     player_name: str = ""
 
     while not player_name:
@@ -19,6 +26,8 @@ def get_player_name() -> str:
 
 
 def play() -> None:
+    """Play the game"""
+
     player_name = get_player_name()
     player = Player(player_name)
     enemy = Enemy()
@@ -31,8 +40,9 @@ def play() -> None:
             logger.info(exc)
             enemy = Enemy(enemy.level + 1)
         except GameOver as exc:
+            msg_score_points = f"SCORE POINTS: {player.score}"
             logger.info(exc)
-            logger.info(f"SCORE POINTS: {player.score}")
+            logger.info(msg_score_points)
             break
 
 
