@@ -37,3 +37,7 @@ pgsql/
 # build and distribution directories
 _build/
 dist/
+
+# emacs cache and backup files
+\#*\#
+*~
