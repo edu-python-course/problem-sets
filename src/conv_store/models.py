@@ -21,7 +21,7 @@ class Product:
     """
 
     def __init__(
-            self, name: str, price: float, unit: Union[int, float]
+        self, name: str, price: float, unit: Union[int, float]
     ) -> None:
         """Initialize instance
 
@@ -59,8 +59,11 @@ class Product:
         if not isinstance(other, Product):
             return False
 
-        return self.name == other.name and self.price == other.price and \
-               self.unit == other.unit
+        return (
+            self.name == other.name and
+            self.price == other.price and
+            self.unit == other.unit
+        )
 
     def get_total(self, quantity: Union[int, float]) -> float:
         """Return the total price for a specified amount of product"""
@@ -133,8 +136,8 @@ class ShoppingCart:
             self.quantities.pop(idx)
 
     def add_product(
-            self, product: Product,
-            quantity: Optional[Union[int, float]] = None
+        self, product: Product,
+        quantity: Optional[Union[int, float]] = None
     ) -> None:
         """Add product to the shopping cart
 
@@ -160,7 +163,7 @@ class ShoppingCart:
             self.remove_product(product)
 
     def sub_product(
-            self, product: Product, quantity: Union[int, float]
+        self, product: Product, quantity: Union[int, float]
     ) -> None:
         """Subtract product from the shopping cart
 
