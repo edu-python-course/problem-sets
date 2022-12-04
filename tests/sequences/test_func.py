@@ -29,6 +29,23 @@ def test_palindrome_phrase():
     assert sequences.is_palindrome("Dammit I'm Mad") is True
 
 
+def test_get_longest_palindrome_odd():
+    # noinspection SpellCheckingInspection
+    assert sequences.get_longest_palindrome("ABBABBC") == "BBABB"
+
+
+def test_get_longest_palindrome_even():
+    assert sequences.get_longest_palindrome("abba") == "abba"
+
+
+def test_get_longest_palindrome_one_char():
+    assert sequences.get_longest_palindrome("abcdefg") == "g"
+
+
+def test_get_longest_palindrome_empty():
+    assert sequences.get_longest_palindrome("") == ""
+
+
 def test_parentheses_validator():
     assert sequences.are_parentheses_balanced("<[{(()[{}<>{}]())}]>") is True
     assert sequences.are_parentheses_balanced("") is True
@@ -36,3 +53,12 @@ def test_parentheses_validator():
     assert sequences.are_parentheses_balanced("[]]") is False
     assert sequences.are_parentheses_balanced("(()") is False
     assert sequences.are_parentheses_balanced("(some <text>)") is True
+
+
+def test_fibonacci_number_getter():
+    assert sequences.get_fibonacci_number(-10) == 0  # special test case
+    assert sequences.get_fibonacci_number(0) == 0
+    assert sequences.get_fibonacci_number(1) == 1
+    assert sequences.get_fibonacci_number(2) == 1
+    assert sequences.get_fibonacci_number(3) == 2
+    assert sequences.get_fibonacci_number(9) == 34
