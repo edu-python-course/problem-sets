@@ -44,10 +44,9 @@ python = "^3.9"
 pytest-cov = "^4.0.0"
 mypy = "^0.991"
 pylint = "^2.15.5"
-tox = "^3.27.1"
+tox = "^4.0"
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^5.3.0"
 
 [tool.poetry.scripts]
 wrw_game = "wrw_game.__main__:run"
@@ -86,7 +85,7 @@ max-nested-blocks = 3
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-minversion = 3.9.0
+minversion = 4.0
 envlist = py39, py310, mypy, pylint
 isolated_build = true
 skip_missing_interpreters = true
