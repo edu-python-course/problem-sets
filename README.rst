@@ -68,28 +68,12 @@ It's also include to the project's deps, run it with:
 
     poetry run tox
 
-Building documentation
-----------------------
-
-It's good to have well documented functions and classes. This project has no
-purpose to generate documents, but since it is a part of a bigger one project
-it's good to get docstrings here. Sphinx documentation generator is included
-to dev-dependencies. You can use it to check the documentation builds:
-
-.. code-block::
-
-    poetry run sphinx-build -b html docs _build
-
-An **index.html** file will be generated inside of **_build** directory. Check
-it to review the documentation.
-
 Project structure
 =================
 
 ::
 
     /problem-sets
-    |-- docs/
     |-- src/
     |-- tests/
 

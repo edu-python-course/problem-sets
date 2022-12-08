@@ -1,1 +1,0 @@
-.. automodule:: conv_store
