@@ -63,6 +63,8 @@ def get_longest_palindrome(origin: str) -> str:
     :return: the longest palindrome
     :rtype: str
 
+    Usage examples:
+
     >>> assert get_longest_palindrome("ABBABBC") == "BBABB"
 
     """
@@ -140,6 +142,18 @@ def get_fibonacci_number(idx: int) -> int:
 
     :return: a sequence's member
     :rtype: int
+
+    The Fibonacci number is a number from the Fibonacci sequence, in which
+    each number is the sum of the two preceding ones. This sequence commonly
+    starts from 0 and 1: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+
+    Usage examples:
+
+    >>> assert get_fibonacci_number(0) == 0
+    >>> assert get_fibonacci_number(1) == 1
+    >>> assert get_fibonacci_number(2) == 1
+    >>> assert get_fibonacci_number(3) == 2
+    >>> assert get_fibonacci_number(4) == 3
 
     """
 
