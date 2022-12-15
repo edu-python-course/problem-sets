@@ -62,3 +62,10 @@ def test_fibonacci_number_getter():
     assert sequences.get_fibonacci_number(2) == 1
     assert sequences.get_fibonacci_number(3) == 2
     assert sequences.get_fibonacci_number(9) == 34
+
+
+# noinspection SpellCheckingInspection
+def test_get_longest_uniq_sequence_length():
+    assert sequences.get_longest_uniq_length("abcdefg") == 7
+    assert sequences.get_longest_uniq_length("abcacba") == 3
+    assert sequences.get_longest_uniq_length("hwccjayhiszbmomlqkem") == 11

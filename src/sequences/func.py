@@ -150,3 +150,32 @@ def get_fibonacci_number(idx: int) -> int:
         return 1
 
     return get_fibonacci_number(idx - 1) + get_fibonacci_number(idx - 2)
+
+
+def get_longest_uniq_length(origin: str) -> int:
+    """Return the length of the longest on sequence of unique characters
+
+    Usage examples:
+    
+    >>> assert get_longest_uniq_length("abcdefg") == 7
+    >>> assert get_longest_uniq_length("abcacba") == 3
+
+    :param origin: original sequences
+    :type origin: str
+
+    :return: the length of the longest unique characters sequence
+    :rtype: int
+
+    """
+
+    length: int = 0
+
+    size: int = len(origin)
+    left_idx: int = 0
+
+    for right_idx in range(size):
+        while origin[right_idx] in origin[left_idx:right_idx]:
+            left_idx += 1
+        length = max(length, right_idx - left_idx + 1)
+
+    return length
