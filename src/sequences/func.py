@@ -193,3 +193,44 @@ def get_longest_uniq_length(origin: str) -> int:
         length = max(length, right_idx - left_idx + 1)
 
     return length
+
+
+def get_strings_sum(number_1: str, number_2: str) -> str:
+    """Return the sum of two numbers of string type as string
+
+    :param number_1: first number
+    :type number_1: str
+    :param number_2: second number
+    :type number_2: str
+
+    :return: the sum of two numbers
+    :rtype: str
+
+    """
+
+    result: str = ""
+    size: int = max(len(number_1), len(number_2))
+
+    # reverse numbers
+    number_1, number_2 = number_1[::-1], number_2[::-1]
+
+    # make strings of the same lengths
+    while len(number_1) < size:
+        number_1 += "0"
+    while len(number_2) < size:
+        number_2 += "0"
+
+    carry: int = 0
+    for digit_1, digit_2 in zip(number_1, number_2):
+        sum_of_digits = int(digit_1) + int(digit_2) + carry
+        result += str(sum_of_digits % 10)
+        carry = sum_of_digits // 10
+
+    if carry:
+        result += str(carry)
+
+    return result[::-1]
+
+
+if __name__ == "__main__":
+    print(f"{get_strings_sum('456', '789') = }")
