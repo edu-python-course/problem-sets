@@ -71,15 +71,27 @@ def test_get_longest_uniq_sequence_length():
     assert sequences.get_longest_uniq_length("hwccjayhiszbmomlqkem") == 11
 
 
-def test_sum_of_two_digits():
-    assert sequences.get_strings_sum("123", "456") == "579"
-    assert sequences.get_strings_sum("123", "789") == "912"
-    assert sequences.get_strings_sum("99", "1") == "100"
+def test_sum_of_strings():
+    assert sequences.get_sum_of_strings("123", "456") == "579"
+    assert sequences.get_sum_of_strings("123", "789") == "912"
+    assert sequences.get_sum_of_strings("99", "1") == "100"
 
 
-def test_sum_of_two_digits_big():
+def test_sum_of_strings_big_numbers():
     x, y, test_value = "490053634", "20846201", "510899835"
-    assert sequences.get_strings_sum(x, y) == test_value
+    assert sequences.get_sum_of_strings(x, y) == test_value
 
     x, y, test_value = "616526149", "364644330", "981170479"
-    assert sequences.get_strings_sum(x, y) == test_value
+    assert sequences.get_sum_of_strings(x, y) == test_value
+
+
+def test_sum_of_strings_leading_zeros():
+    assert sequences.get_sum_of_strings("009", "000001") == "10"
+    assert sequences.get_sum_of_strings("020", "000000") == "20"
+    assert sequences.get_sum_of_strings("000", "000000") == "0"
+
+
+def test_sum_of_strings_empty():
+    assert sequences.get_sum_of_strings("123", "") == "123"
+    assert sequences.get_sum_of_strings("", "456") == "456"
+    assert sequences.get_sum_of_strings("", "") == "0"

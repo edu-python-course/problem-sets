@@ -195,7 +195,7 @@ def get_longest_uniq_length(origin: str) -> int:
     return length
 
 
-def get_strings_sum(number_1: str, number_2: str) -> str:
+def get_sum_of_strings(number_1: str, number_2: str) -> str:
     """Return the sum of two numbers of string type as string
 
     :param number_1: first number
@@ -206,7 +206,30 @@ def get_strings_sum(number_1: str, number_2: str) -> str:
     :return: the sum of two numbers
     :rtype: str
 
+    Valid input is a string of any length containing numeric characters from
+    0 to 9. Empty strings are allowed as well and should be considered as 0.
+
+    Usage examples:
+
+    >>> assert get_sum_of_strings("123", "456") == "579"
+    >>> assert get_sum_of_strings("099", "001") == "100"
+    >>> assert get_sum_of_strings("", "10") == "10"
+    >>> assert get_sum_of_strings("", "") == "0"
+
     """
+
+    # remove leading zeros
+    for digit in number_1:
+        if digit != "0":
+            break
+        number_1 = number_1[1::]
+    for digit in number_2:
+        if digit != "0":
+            break
+        number_2 = number_2[1::]
+
+    if not number_1 or not number_2:
+        return number_1 or number_2 or "0"
 
     result: str = ""
     size: int = max(len(number_1), len(number_2))
@@ -230,7 +253,3 @@ def get_strings_sum(number_1: str, number_2: str) -> str:
         result += str(carry)
 
     return result[::-1]
-
-
-if __name__ == "__main__":
-    print(f"{get_strings_sum('456', '789') = }")
