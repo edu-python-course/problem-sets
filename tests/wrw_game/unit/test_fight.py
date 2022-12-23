@@ -1,6 +1,6 @@
 import unittest
 
-from wrw_game.enums import FightChoice, FightResult
+from wrw_game.enums import FightChoice, FightResult, get_fight_result
 
 
 class TestFightChoice(unittest.TestCase):
@@ -32,45 +32,46 @@ class TestFightResult(unittest.TestCase):
 
 class TestFights(unittest.TestCase):
     def test_draw_warrior(self):
-        fight_result = FightChoice.WARRIOR - FightChoice.WARRIOR
+        fight_result = get_fight_result(FightChoice.WARRIOR,
+                                        FightChoice.WARRIOR)
         self.assertEqual(FightResult.DRAW, fight_result)
 
     def test_draw_robber(self):
-        fight_result = FightChoice.ROBBER - FightChoice.ROBBER
+        fight_result = get_fight_result(FightChoice.ROBBER, FightChoice.ROBBER)
         self.assertEqual(FightResult.DRAW, fight_result)
 
     def test_draw_wizard(self):
-        fight_result = FightChoice.WIZARD - FightChoice.WIZARD
+        fight_result = get_fight_result(FightChoice.WIZARD, FightChoice.WIZARD)
         self.assertEqual(FightResult.DRAW, fight_result)
 
     def test_success_warrior(self):
-        fight_result = FightChoice.WARRIOR - FightChoice.ROBBER
+        fight_result = get_fight_result(FightChoice.WARRIOR, FightChoice.ROBBER)
         self.assertEqual(FightResult.SUCCESS, fight_result)
 
     def test_success_robber(self):
-        fight_result = FightChoice.ROBBER - FightChoice.WIZARD
+        fight_result = get_fight_result(FightChoice.ROBBER, FightChoice.WIZARD)
         self.assertEqual(FightResult.SUCCESS, fight_result)
 
     def test_success_wizard(self):
-        fight_result = FightChoice.WIZARD - FightChoice.WARRIOR
+        fight_result = get_fight_result(FightChoice.WIZARD, FightChoice.WARRIOR)
         self.assertEqual(FightResult.SUCCESS, fight_result)
 
     def test_failure_warrior(self):
-        fight_result = FightChoice.WARRIOR - FightChoice.WIZARD
+        fight_result = get_fight_result(FightChoice.WARRIOR, FightChoice.WIZARD)
         self.assertEqual(FightResult.FAILURE, fight_result)
 
     def test_failure_robber(self):
-        fight_result = FightChoice.ROBBER - FightChoice.WARRIOR
+        fight_result = get_fight_result(FightChoice.ROBBER, FightChoice.WARRIOR)
         self.assertEqual(FightResult.FAILURE, fight_result)
 
     def test_failure_wizard(self):
-        fight_result = FightChoice.WIZARD - FightChoice.ROBBER
+        fight_result = get_fight_result(FightChoice.WIZARD, FightChoice.ROBBER)
         self.assertEqual(FightResult.FAILURE, fight_result)
 
     def test_exception(self):
-        self.assertRaises(TypeError, FightChoice.WARRIOR.__sub__, 1)
-        self.assertRaises(TypeError, FightChoice.WARRIOR.__sub__, "1")
-        self.assertRaises(TypeError, FightChoice.WARRIOR.__sub__, None)
+        self.assertRaises(TypeError, get_fight_result, None, None)
+        self.assertRaises(TypeError, get_fight_result, FightChoice.WARRIOR, 1)
+        self.assertRaises(TypeError, get_fight_result, 1, FightChoice.WARRIOR)
 
 
 if __name__ == "__main__":

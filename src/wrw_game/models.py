@@ -8,7 +8,7 @@ import random
 from abc import ABC, abstractmethod
 
 from wrw_game import settings
-from wrw_game.enums import FightChoice, FightResult
+from wrw_game.enums import FightChoice, FightResult, get_fight_result
 from wrw_game.exceptions import EnemyDown, GameOver
 from wrw_game.loggers import stream_handler
 
@@ -148,9 +148,9 @@ class Player(_AbstractModel):
 
     @staticmethod
     def fight(attack: FightChoice, defence: FightChoice) -> FightResult:
-        """Return a fight result"""
+        """Implements a fight result calculation interface"""
 
-        return attack - defence
+        return get_fight_result(attack, defence)
 
     def add_score_points(self, score_points: int) -> None:
         """Add score points"""

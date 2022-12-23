@@ -31,24 +31,49 @@ class FightChoice(enum.Enum):
 
         return self.name
 
-    def __sub__(self, other) -> FightResult:
-        """Return a fight result"""
 
-        if not isinstance(other, FightChoice):
-            raise TypeError(
-                f"unsupported operand type(s) for -: "
-                f"{self.__class__.__name__} and {other.__class__.__name__}"
-            )
+def get_fight_result(attack: FightChoice, defence: FightChoice) -> FightResult:
+    """Return a fight result based on attack and defence choices
 
-        if self == other:
-            return FightResult.DRAW
+    This function performs argument types validation first and raises
+    TypeError in case of failure. After that the attack choice is compared
+    with the defence choice. The comparison rules are:
 
-        success_attacks = (
-            FightChoice.WARRIOR.value - FightChoice.ROBBER.value,
-            FightChoice.ROBBER.value - FightChoice.WIZARD.value,
-            FightChoice.WIZARD.value - FightChoice.WARRIOR.value,
+    - if attack and defence are the same - draw result is returned
+    - if attack and defence pair is in successful attacks preset, the attack
+      is considered to be successful
+    - otherwise attack is considered to be failed
+
+    :param attack: attack choice
+    :type attack: :class: `FightChoice`
+    :param defence: defence choice
+    :type defence: :class: `FightChoice`
+
+    :return:
+    :rtype: :class: `FightResult`
+
+    :raise: TypeError
+
+    """
+
+    # perform type validation
+    if not isinstance(attack, FightChoice) or \
+       not isinstance(defence, FightChoice):
+        raise TypeError(
+            f"unsupported argument type(s): "
+            f"'{attack.__class__.__name__}' and '{defence.__class__.__name__}'"
         )
-        if self.value - other.value in success_attacks:
-            return FightResult.SUCCESS
 
-        return FightResult.FAILURE
+    # calculate result
+    if attack == defence:
+        return FightResult.DRAW
+
+    successful_attacks = (
+        (FightChoice.WARRIOR, FightChoice.ROBBER),
+        (FightChoice.ROBBER, FightChoice.WIZARD),
+        (FightChoice.WIZARD, FightChoice.WARRIOR),
+    )
+    if (attack, defence) in successful_attacks:
+        return FightResult.SUCCESS
+
+    return FightResult.FAILURE
