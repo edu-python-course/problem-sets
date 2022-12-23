@@ -41,3 +41,7 @@ dist/
 # emacs cache and backup files
 \#*\#
 *~
+
+# various logs
+logs/
+*.log
