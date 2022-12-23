@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(stream_handler)
 
 
-def run():
+def run() -> None:
     """Run the game"""
 
     try:

@@ -21,7 +21,10 @@ class Product:
     """
 
     def __init__(
-        self, name: str, price: float, unit: Union[int, float]
+            self,
+            name: str,
+            price: float,
+            unit: Union[int, float]
     ) -> None:
         """Initialize instance
 
@@ -60,9 +63,9 @@ class Product:
             return False
 
         return (
-            self.name == other.name and
-            self.price == other.price and
-            self.unit == other.unit
+                self.name == other.name and
+                self.price == other.price and
+                self.unit == other.unit
         )
 
     def get_total(self, quantity: Union[int, float]) -> float:
@@ -106,17 +109,19 @@ class ShoppingCart:
 
         return len(self.products)
 
+    size_of = __len__
+
     def __getitem__(self, idx: int) -> Tuple[Product, Union[int, float]]:
         """Return a product - quantity pair"""
 
         return self.products[idx], self.quantities[idx]
 
-    def __contains__(self, item) -> bool:
+    def __contains__(self, item: object) -> bool:
         """Return True if item is present in the shopping cart"""
 
         return item in self.products
 
-    def __iter__(self) -> Iterator:
+    def __iter__(self) -> Iterator[Tuple[Product, Union[int, float]]]:
         """Return shopping cart iterator"""
 
         return zip(self.products, self.quantities)
@@ -136,8 +141,8 @@ class ShoppingCart:
             self.quantities.pop(idx)
 
     def add_product(
-        self, product: Product,
-        quantity: Optional[Union[int, float]] = None
+            self, product: Product,
+            quantity: Optional[Union[int, float]] = None
     ) -> None:
         """Add product to the shopping cart
 
@@ -163,7 +168,7 @@ class ShoppingCart:
             self.remove_product(product)
 
     def sub_product(
-        self, product: Product, quantity: Union[int, float]
+            self, product: Product, quantity: Union[int, float]
     ) -> None:
         """Subtract product from the shopping cart
 
