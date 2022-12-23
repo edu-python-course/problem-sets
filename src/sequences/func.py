@@ -54,7 +54,6 @@ def is_palindrome(origin: str) -> bool:
 
 
 def get_longest_palindrome(origin: str) -> str:
-    # noinspection SpellCheckingInspection
     """Return the longest palindrome substring from the given input
 
     :param origin:
@@ -65,7 +64,8 @@ def get_longest_palindrome(origin: str) -> str:
 
     Usage examples:
 
-    >>> assert get_longest_palindrome("ABBABBC") == "BBABB"
+    >>> assert get_longest_palindrome("0123219") == "12321"
+    >>> assert get_longest_palindrome("1012210") == "012210"
 
     """
 
@@ -169,16 +169,16 @@ def get_fibonacci_number(idx: int) -> int:
 def get_longest_uniq_length(origin: str) -> int:
     """Return the length of the longest on sequence of unique characters
 
-    Usage examples:
-
-    >>> assert get_longest_uniq_length("abcdefg") == 7
-    >>> assert get_longest_uniq_length("abcacba") == 3
-
     :param origin: original sequences
     :type origin: str
 
     :return: the length of the longest unique characters sequence
     :rtype: int
+
+    Usage examples:
+
+    >>> assert get_longest_uniq_length("abcdefg") == 7
+    >>> assert get_longest_uniq_length("racecar") == 4
 
     """
 
