@@ -38,7 +38,5 @@ __all__ = [
     "is_palindrome",
     "get_longest_palindrome",
     "are_parentheses_balanced",
-    "get_fibonacci_number",
     "get_longest_uniq_length",
-    "get_sum_of_strings",
 ]

@@ -33,6 +33,7 @@ classifiers = [
 ]
 packages = [
     { include = "bisearch", from = "src" },
+    { include = "calc", from = "src" },
     { include = "conv_store", from = "src" },
     { include = "sequences", from = "src" },
     { include = "sorting", from = "src" },
