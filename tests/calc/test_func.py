@@ -1,6 +1,11 @@
 import calc
 
 
+def test_get_factorial():
+    assert calc.get_factorial(0) == 1
+    assert calc.get_factorial(5) == 120
+
+
 def test_fibonacci_number_getter():
     assert calc.get_fibonacci_number(-10) == 0  # special test case
     assert calc.get_fibonacci_number(0) == 0

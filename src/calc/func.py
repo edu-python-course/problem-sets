@@ -4,6 +4,33 @@ Calculation functions implementations
 """
 
 
+def get_factorial(number: int) -> int:
+    """Return the factorial value for a given number
+
+    :param number:
+    :type number: int
+
+    :return: the factorial value
+    :rtype: int
+
+    In mathematics the factorial is the product of all positive integers
+    less than or equal to given number.
+    E.g. 5! = 5 * 4! = 5 * 4 * 3 * 2 * 1 = 120.
+    The value of 0! = 1 according to the convention of an empty product.
+
+    Usage examples:
+
+    >>> assert get_factorial(0) == 1
+    >>> assert get_factorial(5) == 120
+
+    """
+
+    if number <= 1:
+        return 1
+
+    return number * get_factorial(number - 1)
+
+
 def get_fibonacci_number(idx: int) -> int:
     """Return a Fibonacci's sequence number at a specified index
 
