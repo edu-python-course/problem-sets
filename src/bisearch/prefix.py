@@ -83,6 +83,7 @@ def find_all(origin: List[str], search: str = "") -> List[str]:
 
     :return: the list of strings starting with the search prefix
     :rtype: list[str]
+
     """
 
     try:
