@@ -57,3 +57,47 @@ def get_grid_travels(height: int, width: int, /) -> int:
                 table[row_idx][col_idx + 1] += table[row_idx][col_idx]
 
     return table[height][width]
+
+
+def can_get_target(target: int, numbers: List[int]) -> bool:
+    """Check if the target value can be generated using given numbers
+
+    :param target: the desired number
+    :type target: int
+    :param numbers: the sequence of numbers available for usage
+    :type numbers: list[int]
+
+    :return: the check result
+    :rtype: bool
+
+    Numbers from the list can be used as many times as needed.
+
+    """
+
+    # check base cases
+    if target < 0:
+        return False
+
+    # inner function uses closure with size and table variables
+    # from the outer scope
+    def set_true(table_idx):
+        if table_idx < size:
+            table[table_idx] = True
+
+    # inner function uses closure with idx variable from the outer scope
+    def update_values():
+        for number in numbers:
+            set_true(idx + number)
+
+    # initialize values table
+    table = [True] + [False] * target
+    size = len(table)
+
+    # perform calculation
+    idx = 0
+    while not table[target] and idx < size:
+        if table[idx]:
+            update_values()
+        idx += 1
+
+    return table[target]
