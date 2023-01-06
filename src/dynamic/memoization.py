@@ -33,7 +33,7 @@ def get_fibonacci_number(idx):
 
 
 @memoize
-def get_grid_travels(height: int, width: int) -> int:
+def get_grid_travels(height: int, width: int, /) -> int:
     """Calculate the number of available route for a specified grid size
 
     :param height: grid height

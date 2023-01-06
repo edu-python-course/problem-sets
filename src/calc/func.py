@@ -4,7 +4,7 @@ Calculation functions implementations
 """
 
 
-def get_factorial(number: int) -> int:
+def get_factorial(number: int, /) -> int:
     """Return the factorial value for a given number
 
     :param number:
@@ -31,7 +31,7 @@ def get_factorial(number: int) -> int:
     return number * get_factorial(number - 1)
 
 
-def get_fibonacci_number(idx: int) -> int:
+def get_fibonacci_number(idx: int, /) -> int:
     """Return a Fibonacci's sequence number at a specified index
 
     :param idx: a Fibonacci sequence index starting from 0
@@ -63,7 +63,7 @@ def get_fibonacci_number(idx: int) -> int:
     return get_fibonacci_number(idx - 1) + get_fibonacci_number(idx - 2)
 
 
-def get_sum_of_strings(number_1: str, number_2: str) -> str:
+def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
     """Return the sum of two numbers of string type as string
 
     :param number_1: first number
