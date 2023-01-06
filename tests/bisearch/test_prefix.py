@@ -4,19 +4,19 @@ from bisearch import prefix
 from bisearch.prefix import NotFound
 
 
-def test_prefix_right(strings_fixtures, pr_fixture):
-    search, test_value = pr_fixture
-    assert prefix.bisect_right(strings_fixtures, search) == test_value
+def test_prefix_right(strings_large, prefix_right_fixture):
+    search, test_value = prefix_right_fixture
+    assert prefix.bisect_right(strings_large, search) == test_value
 
 
-def test_prefix_left(strings_fixtures, pl_fixture):
-    search, test_value = pl_fixture
-    assert prefix.bisect_left(strings_fixtures, search) == test_value
+def test_prefix_left(strings_large, prefix_left_fixture):
+    search, test_value = prefix_left_fixture
+    assert prefix.bisect_left(strings_large, search) == test_value
 
 
-def test_find_all(strings_fixtures, fa_fixture):
-    search, test_value = fa_fixture
-    assert prefix.find_all(strings_fixtures, search) == test_value
+def test_find_all(strings_large, find_all_fixture):
+    search, test_value = find_all_fixture
+    assert prefix.find_all(strings_large, search) == test_value
 
 
 def test_prefix_right_default(strings_small):
