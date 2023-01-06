@@ -34,12 +34,14 @@ def test_find_all_default(strings_small_fixture):
 
 def test_prefix_right_last(strings_small_fixture):
     string_idx = len(strings_small_fixture)
-    assert prefix.bisect_right(strings_small_fixture, "cab") == string_idx
+    search = strings_small_fixture[-1]
+    assert prefix.bisect_right(strings_small_fixture, search) == string_idx
 
 
 def test_prefix_left_last(strings_small_fixture):
     string_idx = len(strings_small_fixture) - 1
-    assert prefix.bisect_left(strings_small_fixture, "cab") == string_idx
+    search = strings_small_fixture[-1]
+    assert prefix.bisect_left(strings_small_fixture, search) == string_idx
 
 
 def test_prefix_right_negative(strings_small_fixture):
