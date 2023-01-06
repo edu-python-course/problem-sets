@@ -4,12 +4,12 @@ import pytest
 
 
 @pytest.fixture
-def strings_small():
+def strings_small_fixture():
     return sorted(["a", "b", "c", "ab", "bc", "ca", "abc", "bca", "cab"])
 
 
 @pytest.fixture
-def strings_large():
+def strings_large_fixture():
     # 10_000 strings generated with https://random.org
     fixture_path = Path(__file__).parent.joinpath("fixtures/strings.txt")
     with open(fixture_path) as fixture_file:
