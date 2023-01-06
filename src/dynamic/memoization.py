@@ -1,3 +1,8 @@
+"""
+Dynamic programming memoization functions
+
+"""
+
 import functools
 from typing import Any, Dict, Tuple
 
@@ -30,7 +35,7 @@ def memoize(func):
 
 @memoize
 @functools.wraps(fib_classic, ("__annotations__", "__doc__"))
-def get_fibonacci_number(idx):
+def get_fibonacci_number(idx):  # pylint: disable=C0116
     if idx <= 0:
         return 0
     if idx < 3:

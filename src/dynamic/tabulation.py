@@ -10,7 +10,7 @@ from calc.func import get_fibonacci_number as fib_classic
 
 
 @functools.wraps(fib_classic, ("__annotations__", "__doc__"))
-def get_fibonacci_number(idx):
+def get_fibonacci_number(idx):  # pylint:disable=C0116
     if idx <= 0:
         return 0
 
