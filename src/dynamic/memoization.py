@@ -8,6 +8,17 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def memoize(func):
+    """Memoization decorator implementation
+
+    The memoization technique helps to reduce the number of recursive
+    calls by caching the results already calculated for some inputs.
+
+    Current implementation caches the inputs as tuples containing args,
+    so it has limitations for "un-hashable" inputs, that can not be
+    stored in a cache dictionary.
+
+    """
+
     cache: Dict[Tuple[Any], int] = {}
 
     @functools.wraps(func)
