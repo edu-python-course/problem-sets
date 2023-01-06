@@ -1,10 +1,7 @@
 import functools
-import logging
-from typing import Dict, Tuple, Any
+from typing import Any, Dict, Tuple
 
 from calc.func import get_fibonacci_number as fib_classic
-
-logging.basicConfig(level=logging.DEBUG)
 
 
 def memoize(func):
@@ -25,7 +22,6 @@ def memoize(func):
     def wrapper(*args):
         if args not in cache:
             cache[args] = func(*args)
-            logging.debug(f"cache updated: {args}, cache length: {len(cache)}")
 
         return cache[args]
 
