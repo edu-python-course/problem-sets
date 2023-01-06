@@ -4,6 +4,11 @@ import pytest
 
 
 @pytest.fixture
+def strings_small():
+    return sorted(["a", "b", "c", "ab", "bc", "ca", "abc", "bca", "cab"])
+
+
+@pytest.fixture
 def strings_fixtures():
     fixture_path = Path(__file__).parent.joinpath("fixtures/strings.txt")
     with open(fixture_path) as fixture_file:

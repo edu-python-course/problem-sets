@@ -14,3 +14,19 @@ def test_prefix_left(strings_fixtures, pl_fixture):
 def test_find_all(strings_fixtures, fa_fixture):
     search, test_value = fa_fixture
     assert prefix.find_all(strings_fixtures, search) == test_value
+
+
+def test_prefix_right_default(strings_small):
+    assert prefix.bisect_right(strings_small) == len(strings_small)
+
+
+def test_prefix_left_default(strings_small):
+    assert prefix.bisect_left(strings_small) == 0
+
+
+def test_find_all_default(strings_small):
+    assert prefix.find_all(strings_small) == strings_small
+
+
+def test_find_all_negative(strings_small):
+    assert prefix.find_all(strings_small, "d") == []
