@@ -1,6 +1,10 @@
 from typing import List
 
 
+class NotFound(Exception):
+    """Raised in case the search function failed to find requested value"""
+
+
 def bisect_right(origin: List[str], search: str = "") -> int:
     """Return the most right index
 
@@ -11,6 +15,8 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
     :return: the index of the first string starting with search prefix
     :rtype: int
+
+    :raise: NotFound
 
     """
 
@@ -27,6 +33,9 @@ def bisect_right(origin: List[str], search: str = "") -> int:
         else:
             high = idx
 
+    if low >= len(origin) and not origin[-1].startswith(search):
+        raise NotFound(f"'{search}'")
+
     return low
 
 
@@ -40,6 +49,8 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
     :return: the index after the last string starting with search prefix
     :rtype: int
+
+    :raise: NotFound
 
     """
 
@@ -56,11 +67,29 @@ def bisect_left(origin: List[str], search: str = "") -> int:
         else:
             high = idx
 
+    if low >= len(origin):
+        raise NotFound(f"'{search}'")
+
     return low
 
 
 def find_all(origin: List[str], search: str = "") -> List[str]:
-    start = bisect_left(origin, search)
-    end = bisect_right(origin, search)
+    """Return strings starting with prefix
 
-    return origin[start:end]
+    :param origin: the list of strings
+    :type origin: list[str]
+    :param search: the prefix to search, defaults to empty string
+    :type search: str
+
+    :return: the list of strings starting with the search prefix
+    :rtype: list[str]
+    """
+
+    try:
+        start = bisect_left(origin, search)
+        end = bisect_right(origin, search)
+
+        return origin[start:end]
+
+    except NotFound:
+        return []

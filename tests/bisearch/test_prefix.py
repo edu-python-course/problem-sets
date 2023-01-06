@@ -1,4 +1,7 @@
+import pytest
+
 from bisearch import prefix
+from bisearch.prefix import NotFound
 
 
 def test_prefix_right(strings_fixtures, pr_fixture):
@@ -26,6 +29,16 @@ def test_prefix_left_default(strings_small):
 
 def test_find_all_default(strings_small):
     assert prefix.find_all(strings_small) == strings_small
+
+
+def test_prefix_right_negative(strings_small):
+    with pytest.raises(NotFound):
+        prefix.bisect_right(strings_small, "d")
+
+
+def test_prefix_left_negative(strings_small):
+    with pytest.raises(NotFound):
+        prefix.bisect_left(strings_small, "d")
 
 
 def test_find_all_negative(strings_small):
