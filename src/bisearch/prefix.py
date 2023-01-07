@@ -13,7 +13,7 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     :param search: a prefix to search
     :type search: str
 
-    :return: the index of the first string starting with search prefix
+    :return: the index after the last string starting with search prefix
     :rtype: int
 
     :raise: NotFound
@@ -47,7 +47,7 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     :param search: a prefix to search
     :type search: str
 
-    :return: the index after the last string starting with search prefix
+    :return: the index of the first string starting with search prefix
     :rtype: int
 
     :raise: NotFound
