@@ -4,13 +4,17 @@ Dynamic programming memoization functions
 """
 
 import functools
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, Tuple, Callable
 
 from calc.func import get_fibonacci_number as fib_classic
 
 
-def memoize(func):
+def memoize(func: Callable) -> Callable:
     """Memoization decorator implementation
+
+    :param func: a function to decorate with memoization technique
+
+    :return: the decorated function
 
     The memoization technique helps to reduce the number of recursive
     calls by caching the results already calculated for some inputs.
