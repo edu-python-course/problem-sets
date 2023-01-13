@@ -52,3 +52,14 @@ def test_get_target_numbers():
     assert tabulation.get_target_numbers(7, [1, 2, 3]) == [1, 3, 3]
     assert tabulation.get_target_numbers(8, [1, 3, 5]) == [3, 5]
     assert tabulation.get_target_numbers(300, [7, 14, 28]) is None
+
+
+def test_get_subsequences():
+    # test base cases
+    assert tabulation.get_chunks([]) == [], []
+    assert tabulation.get_chunks([0]) == [], [0]
+    assert tabulation.get_chunks([10]) == [], [10]
+    assert tabulation.get_chunks([-1, 1]) == [], [-1, 1]
+    # test custom cases
+    assert tabulation.get_chunks([1, 2, 3, 4, 5]) == [1, 2, 4], [3, 5]
+    assert tabulation.get_chunks([1, 3, 3, 4, 5]) == [1, 3, 4], [3, 5]
