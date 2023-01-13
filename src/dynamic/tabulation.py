@@ -149,6 +149,7 @@ def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
         if current is None or len(current) > len(updated):
             table[table_idx] = updated
 
+    # perform calculation
     idx: int = 0
     while idx < size:
         if table[idx] is not None:

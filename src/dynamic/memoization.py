@@ -101,10 +101,12 @@ def can_get_target(target: int, numbers: List[int],
     if not target:
         return True
 
+    # check cached values
     cache = cache or {}
     if target in cache:
         return cache[target]
 
+    # perform calculation
     for number in numbers:
         cache[target] = can_get_target(target - number, numbers, cache)
         if cache[target]:
