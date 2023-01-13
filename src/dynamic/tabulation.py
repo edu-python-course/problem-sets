@@ -4,7 +4,7 @@ Dynamic programming tabulation functions
 """
 
 import functools
-from typing import List
+from typing import List, Optional, Union
 
 from calc.func import get_fibonacci_number as fib_classic
 
@@ -80,24 +80,80 @@ def can_get_target(target: int, numbers: List[int]) -> bool:
 
     # initialize values table
     table: List[bool] = [True] + [False] * target
-    size: int = len(table)
-    idx: int = 0
+    size: int = target + 1
 
-    # inner function uses closure with idx variable from the outer scope
+    # inner function uses closure with ``idx`` variable from the outer scope
     def iterate_numbers():
         for number in numbers:
             set_value(idx + number)
 
-    # inner function uses closure with size and table variables
+    # inner function uses closure with ``size`` and ``table`` variables
     # from the outer scope
     def set_value(table_idx):
         if table_idx < size:
             table[table_idx] = True
 
     # perform calculation
+    idx: int = 0
     while not table[target] and idx < size:
         if table[idx]:
             iterate_numbers()
+        idx += 1
+
+    return table[target]
+
+
+def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
+    """Return a collection of numbers to get the target one if possible
+
+    :param target: the desired number
+    :type target: int
+    :param numbers: the sequence of numbers available for usage
+    :type numbers: list[int]
+
+    :return: None if impossible, otherwise list of numbers
+    :rtype: list[int] | None
+
+    This function returns the best collection of numbers to generate the
+    target one. If it's impossible to generate None will be returned.
+
+    The shortest one available sequence is considered the best one.
+
+    Numbers can be used as many times as it needed.
+
+    """
+
+    # check base cases
+    if target < 0:
+        return None
+
+    # initialize values table
+    table: List[Union[None, List[int]]] = [None] * (target + 1)
+    table[0] = []
+    size: int = target + 1
+
+    # inner function uses closure with ``idx`` variable from the outer scope
+    def iterate_numbers():
+        for number in numbers:
+            set_value(idx + number, number)
+
+    # inner function uses closure with ``idx`` and ``table`` variables
+    # from the outer scope
+    def set_value(table_idx, value):
+        if table_idx >= size:
+            return
+
+        current = table[table_idx]
+        updated = [*table[idx], value]
+
+        if current is None or len(current) > len(updated):
+            table[table_idx] = updated
+
+    idx: int = 0
+    while idx < size:
+        if table[idx] is not None:
+            iterate_numbers()
+
         idx += 1
 
     return table[target]

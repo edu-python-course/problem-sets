@@ -38,3 +38,17 @@ def test_can_get_target():
     assert tabulation.can_get_target(7, [2, 4, 6]) is False
     assert tabulation.can_get_target(8, [1, 3, 5]) is True
     assert tabulation.can_get_target(300, [7, 14, 28]) is False
+
+
+def test_get_target_numbers():
+    # test base cases
+    assert tabulation.get_target_numbers(-10, [1]) is None
+    assert tabulation.get_target_numbers(10, []) is None
+    assert tabulation.get_target_numbers(0, []) == []
+    assert tabulation.get_target_numbers(0, [1, 1, 1]) == []
+
+    # test custom cases
+    assert tabulation.get_target_numbers(7, [1]) == [1, 1, 1, 1, 1, 1, 1]
+    assert tabulation.get_target_numbers(7, [1, 2, 3]) == [1, 3, 3]
+    assert tabulation.get_target_numbers(8, [1, 3, 5]) == [3, 5]
+    assert tabulation.get_target_numbers(300, [7, 14, 28]) is None
