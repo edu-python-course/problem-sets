@@ -78,26 +78,26 @@ def can_get_target(target: int, numbers: List[int]) -> bool:
     if target < 0:
         return False
 
+    # initialize values table
+    table: List[bool] = [True] + [False] * target
+    size: int = len(table)
+    idx: int = 0
+
+    # inner function uses closure with idx variable from the outer scope
+    def iterate_numbers():
+        for number in numbers:
+            set_value(idx + number)
+
     # inner function uses closure with size and table variables
     # from the outer scope
-    def set_true(table_idx):
+    def set_value(table_idx):
         if table_idx < size:
             table[table_idx] = True
 
-    # inner function uses closure with idx variable from the outer scope
-    def update_values():
-        for number in numbers:
-            set_true(idx + number)
-
-    # initialize values table
-    table = [True] + [False] * target
-    size = len(table)
-
     # perform calculation
-    idx = 0
     while not table[target] and idx < size:
         if table[idx]:
-            update_values()
+            iterate_numbers()
         idx += 1
 
     return table[target]
