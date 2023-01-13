@@ -4,7 +4,7 @@ Dynamic programming memoization functions
 """
 
 import functools
-from typing import Any, Dict, Tuple, Callable
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from calc.func import get_fibonacci_number as fib_classic
 
@@ -74,3 +74,40 @@ def get_grid_travels(height: int, width: int, /) -> int:
 
     return (get_grid_travels(height - 1, width)
             + get_grid_travels(height, width - 1))
+
+
+def can_get_target(target: int, numbers: List[int],
+                   cache: Optional[Dict[int, bool]] = None) -> bool:
+    """Check if the target value can be generated using given numbers
+
+    :param target: the desired number
+    :type target: int
+    :param numbers: the sequence of numbers available for usage
+    :type numbers: list[int]
+    :param cache: optional dictionary that stores already calculated results
+    :type cache: dict[int, bool]
+
+    :return: the check result
+    :rtype: bool
+
+    Numbers from the list can be used as many times as needed.
+
+    """
+
+    # check base cases
+    if target < 0:
+        return False
+
+    if not target:
+        return True
+
+    cache = cache or {}
+    if target in cache:
+        return cache[target]
+
+    for number in numbers:
+        cache[target] = can_get_target(target - number, numbers, cache)
+        if cache[target]:
+            return True
+
+    return False
