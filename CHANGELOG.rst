@@ -82,6 +82,6 @@ Tests are included as well.
 Warriors, Robbers and Wizards Game
 ==================================
 
-Added the basic "wrw game" challenge description and implementation. This tasks
+Added the basic "wrw game" challenge description and implementation. This task
 is considered to be the final exam for the OOP block. Tests are included as
 well.
