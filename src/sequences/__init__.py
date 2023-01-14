@@ -32,11 +32,11 @@ respective right parenthesis to match its pair in a well-nested format.
 
 """
 
-from .func import *
-
 __all__ = [
     "is_palindrome",
     "get_longest_palindrome",
     "are_parentheses_balanced",
     "get_longest_uniq_length",
 ]
+
+from .func import *

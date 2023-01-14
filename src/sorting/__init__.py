@@ -54,8 +54,6 @@ Heap Sort
 
 """
 
-from .func import *
-
 __all__ = [
     "bubble_sort",
     "bucket_sort",
@@ -68,3 +66,5 @@ __all__ = [
     "selection_sort",
     "shell_sort"
 ]
+
+from .func import *

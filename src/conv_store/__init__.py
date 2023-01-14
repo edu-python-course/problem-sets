@@ -25,6 +25,6 @@ In general, this is a container for products.
 
 """
 
-from .models import Product, ShoppingCart
-
 __all__ = ["Product", "ShoppingCart"]
+
+from .models import Product, ShoppingCart

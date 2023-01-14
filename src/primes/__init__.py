@@ -24,10 +24,10 @@ The more efficient algorithm to get primes within a range.
 
 """
 
-from .func import *
-
 __all__ = [
     "is_prime",
     "get_primes",
     "eratosthenes_sieve",
 ]
+
+from .func import *
