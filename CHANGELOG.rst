@@ -1,4 +1,31 @@
 ###############
+Release 2023-01
+###############
+
+***********************
+Basic Python Challenges
+***********************
+
+Recursive Algorithms
+====================
+
+Added factorial and fibonacci number calculation functions.
+
+Dynamic Programming
+===================
+
+Implemented the most common challenges (and solutions):
+
+- fibonacci number getter function
+- grid travel challenge
+- target number against sequences of numbers checkers (can get, generate chunk)
+
+Binary Search
+=============
+
+Added binary search algorithm challenge: find strings starting with prefix.
+
+###############
 Release 2022-11
 ###############
 

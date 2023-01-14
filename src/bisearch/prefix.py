@@ -1,3 +1,14 @@
+"""
+Prefix challenge
+================
+
+The objective is to get all strings, that start with a specified prefixes,
+from the sorted collection.
+
+The most efficient way is to use binary search algorithm for this task.
+
+"""
+
 from typing import List
 
 
