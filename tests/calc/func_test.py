@@ -12,7 +12,7 @@ def test_fibonacci_number_getter():
     assert calc.get_fibonacci_number(1) == 1
     assert calc.get_fibonacci_number(2) == 1
     assert calc.get_fibonacci_number(3) == 2
-    assert calc.get_fibonacci_number(9) == 34
+    assert calc.get_fibonacci_number(10) == 55
 
 
 def test_sum_of_strings():
@@ -21,7 +21,7 @@ def test_sum_of_strings():
     assert calc.get_sum_of_strings("99", "1") == "100"
 
 
-def test_sum_of_strings_big_numbers():
+def test_sum_of_strings_big_integers():
     x, y, test_value = "490053634", "20846201", "510899835"
     assert calc.get_sum_of_strings(x, y) == test_value
 

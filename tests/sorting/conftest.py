@@ -24,8 +24,3 @@ def sorted_list_a():
 @pytest.fixture
 def sorted_list_b():
     return [3, 7, 24, 51, 73, 83, 89, 90, 96]
-
-
-@pytest.fixture
-def sorted_merged_list():
-    return [3, 3, 7, 24, 38, 41, 41, 44, 44, 51, 56, 73, 80, 83, 86, 89, 90, 96]

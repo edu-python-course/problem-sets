@@ -72,7 +72,3 @@ class TestFights(unittest.TestCase):
         self.assertRaises(TypeError, get_fight_result, None, None)
         self.assertRaises(TypeError, get_fight_result, FightChoice.WARRIOR, 1)
         self.assertRaises(TypeError, get_fight_result, 1, FightChoice.WARRIOR)
-
-
-if __name__ == "__main__":
-    unittest.main()
