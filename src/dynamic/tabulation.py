@@ -4,7 +4,7 @@ Dynamic programming tabulation functions
 """
 
 import functools
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional, Union
 
 from calc.func import get_fibonacci_number as fib_classic
 
@@ -158,24 +158,3 @@ def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
         idx += 1
 
     return table[target]
-
-
-def get_chunks(origin: List[int]) -> Tuple[List[int], List[int]]:
-    """Return two chunks of the origin list
-
-    :param origin: an original sequence of numbers
-    :type origin: list[int]
-
-    :return: chunks of the origin list with equal (or closed to) sum
-    :rtype: tuple[list[int, list[int]]
-
-    The original list is split based on chunks sums. This means, that
-    the difference between partitions sums is as minimal as possible.
-
-    """
-
-    # TODO: add implementation
-    list_1: List[int] = []
-    list_2: List[int] = sorted(origin)
-
-    return list_1, list_2
