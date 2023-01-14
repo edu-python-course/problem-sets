@@ -60,6 +60,3 @@ def test_get_longest_uniq_sequence_length():
     assert sequences.get_longest_uniq_length("abcdefg") == 7
     assert sequences.get_longest_uniq_length("abcacba") == 3
     assert sequences.get_longest_uniq_length("hwccjayhiszbmomlqkem") == 11
-
-
-

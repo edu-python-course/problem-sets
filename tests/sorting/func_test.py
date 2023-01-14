@@ -16,9 +16,8 @@ def test_insertion_sort(unsorted_list, reversed_list, sorted_list):
     assert sorting.insertion_sort(reversed_list) == sorted_list
 
 
-def test_merge_two_lists(sorted_list_a, sorted_list_b, sorted_merged_list):
-    assert sorting.merge_lists(sorted_list_a, sorted_list_b) == \
-           sorted_merged_list
+def test_merge_two_lists(sorted_list_a, sorted_list_b, sorted_list):
+    assert sorting.merge_lists(sorted_list_a, sorted_list_b) == sorted_list
 
 
 def test_merge_sort(unsorted_list, reversed_list, sorted_list):
