@@ -81,7 +81,3 @@ There are two major directories: **src** and **tests**. Any useful code should
 be included to the source (src). Test cases for functions, classes etc. should
 lie inside of tests directory. It's ok to created nested packages within these
 directories if needed.
-
-The **docs** directory contains optional config for the documentation generator
-and is used for documentation builds check only. The docs for this project are
-to be generated within the main project and another configuration will be used.
