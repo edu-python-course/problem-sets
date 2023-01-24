@@ -19,6 +19,15 @@ def is_prime(number: int) -> bool:
     The result of this function is True if a number is prime, otherwise
     False.
 
+    Usage examples:
+
+    >>> assert not is_prime(0)
+    >>> assert not is_prime(1)
+    >>> assert is_prime(2)
+    >>> assert is_prime(3)
+    >>> assert not is_prime(4)
+    >>> assert is_prime(5)
+
     """
 
     if number < 2:
@@ -39,6 +48,11 @@ def get_primes(limit: int) -> List[int]:
 
     :return: the list of prime numbers within a specified range
     :rtype: list[int]
+
+    Usage examples:
+
+    >>> assert get_primes(10) == [2, 3, 5, 7]
+    >>> assert get_primes(20) == [2, 3, 5, 7, 11, 13, 17, 19]
 
     """
 
@@ -71,6 +85,11 @@ def eratosthenes_sieve(limit: int) -> List[int]:
     primes within a range.
 
     .. seealso:: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+    Usage examples:
+
+    >>> assert eratosthenes_sieve(10) == [2, 3, 5, 7]
+    >>> assert eratosthenes_sieve(20) == [2, 3, 5, 7, 11, 13, 17, 19]
 
     """
 
