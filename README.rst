@@ -37,15 +37,17 @@ This will also install internal packages for future tests.
 PIP support
 ^^^^^^^^^^^
 
-For whose, who prefer use `pip`_ as a package manager, it's supported as well.
+For whose, who prefer to use `pip`_ as a package manager, it's supported.
 However it's not a primary package manager for this project, so problems may
 still appear - please, report to bug tracker in case of any.
 
-To install dependencies do:
+You will need to install project dependencies and source code.
+To do this use commands:
 
 .. code-block::
 
     pip install -r requirements.txt
+    pip install -e .
 
 .. _pip: https://pip.pypa.io/
 
@@ -101,7 +103,3 @@ There are two major directories: **src** and **tests**. Any useful code should
 be included to the source (src). Test cases for functions, classes etc. should
 lie inside of tests directory. It's ok to created nested packages within these
 directories if needed.
-
-The **docs** directory contains optional config for the documentation generator
-and is used for documentation builds check only. The docs for this project are
-to be generated within the main project and another configuration will be used.
