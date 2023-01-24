@@ -57,10 +57,37 @@ def get_fibonacci_number(idx: int, /) -> int:
     if idx <= 0:
         return 0
 
-    if 0 < idx < 3:  # the same as ``idx == 1 or idx == 2``
+    if idx <= 1:
         return 1
 
     return get_fibonacci_number(idx - 1) + get_fibonacci_number(idx - 2)
+
+
+def get_fibonacci_number_nr(idx: int, /) -> int:
+    """Return a Fibonacci's sequence number at a specified index
+
+    :param idx: a Fibonacci sequence index starting from 0
+    :type idx: int
+
+    :return: a sequence's member
+    :rtype: int
+
+    This function implements the non-recursive algorithm, which is more
+    efficient, since it does not have multiple recursive calls.
+
+    """
+
+    if idx <= 0:
+        return 0
+
+    if idx <= 1:
+        return 1
+
+    previous, fib_number = 0, 1
+    for _ in range(idx - 1):
+        previous, fib_number = fib_number, previous + fib_number
+
+    return fib_number
 
 
 def get_sum_of_strings(number_1: str, number_2: str, /) -> str:

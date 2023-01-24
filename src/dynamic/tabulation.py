@@ -9,18 +9,41 @@ from typing import List, Optional, Union
 from calc.func import get_fibonacci_number as fib_classic
 
 
+def get_fibonacci_sequence(size: int, /) -> List[int]:
+    """Return the Fibonacci numbers sequences of a given size
+
+    :param size: the size of the requested sequence
+    :type size: int
+
+    :return: the Fibonacci sequence
+    :rtype: list[int]
+
+    The Fibonacci numbers (aka the Fibonacci sequence) is a sequence in
+    which each number is the sum of the two preceding onces. The sequence
+    commonly starts with 0 and 1.
+
+    Usage examples:
+
+    >>> assert get_fibonacci_sequence(0) == []
+    >>> assert get_fibonacci_sequence(1) == [0]
+    >>> assert get_fibonacci_sequence(5) == [0, 1, 1, 2, 3]
+    >>> assert get_fibonacci_sequence(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+    """
+
+    fibonacci: List[int] = [0, 1] + [0] * size
+    for idx in range(2, size):
+        fibonacci[idx] = fibonacci[idx - 1] + fibonacci[idx - 2]
+
+    return fibonacci[:size]
+
+
 @functools.wraps(fib_classic, ("__annotations__", "__doc__"))
 def get_fibonacci_number(idx):  # pylint:disable=C0116
     if idx <= 0:
         return 0
 
-    table: List[int] = [0, 1] + [0] * idx
-
-    for i in range(idx):
-        table[i + 1] += table[i]
-        table[i + 2] += table[i]
-
-    return table[idx]
+    return get_fibonacci_sequence(idx + 1)[idx]
 
 
 def get_grid_travels(height: int, width: int, /) -> int:

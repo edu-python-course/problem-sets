@@ -6,13 +6,28 @@ def test_get_factorial():
     assert calc.get_factorial(5) == 120
 
 
-def test_fibonacci_number_getter():
-    assert calc.get_fibonacci_number(-10) == 0  # special test case
+def test_get_fibonacci_number():
+    # test base cases
+    assert calc.get_fibonacci_number(-10) == 0
     assert calc.get_fibonacci_number(0) == 0
     assert calc.get_fibonacci_number(1) == 1
+    # test custom cases
     assert calc.get_fibonacci_number(2) == 1
     assert calc.get_fibonacci_number(3) == 2
     assert calc.get_fibonacci_number(10) == 55
+
+
+def test_fibonacci_number_nr():
+    # test base cases
+    assert calc.get_fibonacci_number_nr(-10) == 0
+    assert calc.get_fibonacci_number_nr(0) == 0
+    assert calc.get_fibonacci_number_nr(1) == 1
+    assert calc.get_fibonacci_number_nr(2) == 1
+    # test custom cases
+    assert calc.get_fibonacci_number_nr(3) == 2
+    assert calc.get_fibonacci_number_nr(10) == 55
+    assert calc.get_fibonacci_number_nr(50) == 12_586_269_025
+    assert calc.get_fibonacci_number_nr(100) == 354_224_848_179_261_915_075
 
 
 def test_sum_of_strings():

@@ -1,6 +1,12 @@
 from dynamic import tabulation
 
 
+def test_get_fibonacci_sequence():
+    assert tabulation.get_fibonacci_sequence(0) == []
+    assert tabulation.get_fibonacci_sequence(1) == [0]
+    assert tabulation.get_fibonacci_sequence(9) == [0, 1, 1, 2, 3, 5, 8, 13, 21]
+
+
 def test_get_fibonacci_number():
     # test base cases
     assert tabulation.get_fibonacci_number(-10) == 0
