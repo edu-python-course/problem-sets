@@ -17,7 +17,7 @@ class NotFound(Exception):
 
 
 def bisect_right(origin: List[str], search: str = "") -> int:
-    """Return the most right index
+    """Return the most right one index matching the search value
 
     :param origin: a list of strings
     :type origin: list[str]
@@ -29,6 +29,10 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
     :raise: NotFound
 
+    Current function implements common ``bisect_right`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
+
     """
 
     low: int = 0
@@ -37,9 +41,9 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
     while low < high:
         idx = low + (high - low) // 2  # the same as (high + low) // 2
-        cur = origin[idx][:prefix_size]
+        val = origin[idx][:prefix_size]
 
-        if cur <= search:
+        if val <= search:
             low = idx + 1
         else:
             high = idx
@@ -51,7 +55,7 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
 
 def bisect_left(origin: List[str], search: str = "") -> int:
-    """Return the most left index
+    """Return the most left one index matching the search value
 
     :param origin: a list of strings
     :type origin: list[str]
@@ -63,6 +67,10 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
     :raise: NotFound
 
+    Current function implements common ``bisect_left`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
+
     """
 
     low: int = 0
@@ -71,9 +79,9 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
     while low < high:
         idx = low + (high - low) // 2  # the same as (high + low) // 2
-        cur = origin[idx][:prefix_size]
+        val = origin[idx][:prefix_size]
 
-        if cur < search:
+        if val < search:
             low = idx + 1
         else:
             high = idx
