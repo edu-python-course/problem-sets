@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def short_bricks_wall():
+def small_bricks_wall():
     return [[1], [1], [1]]
 
 
@@ -18,18 +18,18 @@ def bricks_wall():
 
 
 @pytest.fixture
-def regular_brick_wall_mtx():
+def matrix():
     return {5: 4, 10: 4, 13: 3, 17: 2, 3: 2, 6: 2, 12: 1, 2: 1, 11: 1, 16: 1,
             7: 1, 14: 1, 15: 1}
 
 
 @pytest.fixture
-def weakest_point():
+def position():
     return 5
 
 
 @pytest.fixture
-def number_of_bricks():
+def bricks_count():
     return 29
 
 
