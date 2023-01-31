@@ -6,6 +6,9 @@ Datasets functions implementation
 from typing import Dict, List
 
 
+# TODO: this solution should be transformed to find the least number of
+#       bricks in a vertical line
+
 # brick wall challenge
 def get_bricks_count(structure: List[List[int]]) -> int:
     """Return number of bricks in the wall structure
