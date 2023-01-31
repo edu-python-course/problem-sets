@@ -4,8 +4,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2022.11.dev"
-description = "python training course - problem sets"
+version = "2023.01.1"
+description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
     "Serhii Horodilov <sgorodil@gmail.com>"
@@ -20,7 +20,11 @@ keywords = [
     "challenge",
     "educational",
     "tutorial",
-    "training"
+    "training",
+    "basic",
+    "oop",
+    "dynamic",
+    "programming",
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -45,12 +49,12 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
+
+[tool.poetry.dev-dependencies]
 pytest-cov = "^4.0.0"
 mypy = "^0.991"
 pylint = "^2.15.5"
 tox = "^4.0"
-
-[tool.poetry.dev-dependencies]
 
 [tool.poetry.scripts]
 wrw_game = "wrw_game.__main__:run"

@@ -2,7 +2,7 @@
 name = "astroid"
 version = "2.13.3"
 description = "An abstract syntax tree for Python with inference support."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
@@ -18,7 +18,7 @@ wrapt = [
 name = "attrs"
 version = "22.2.0"
 description = "Classes Without Boilerplate"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -34,7 +34,7 @@ tests_no_zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "c
 name = "cachetools"
 version = "5.3.0"
 description = "Extensible memoizing collections and decorators"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "~=3.7"
 
@@ -42,7 +42,7 @@ python-versions = "~=3.7"
 name = "chardet"
 version = "5.1.0"
 description = "Universal encoding detector for Python 3"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -50,7 +50,7 @@ python-versions = ">=3.7"
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 
@@ -58,7 +58,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7
 name = "coverage"
 version = "7.1.0"
 description = "Code coverage measurement for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -72,7 +72,7 @@ toml = ["tomli"]
 name = "dill"
 version = "0.3.6"
 description = "serialize all of python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -83,7 +83,7 @@ graph = ["objgraph (>=1.7.2)"]
 name = "distlib"
 version = "0.3.6"
 description = "Distribution utilities"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -91,7 +91,7 @@ python-versions = "*"
 name = "exceptiongroup"
 version = "1.1.0"
 description = "Backport of PEP 654 (exception groups)"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -102,7 +102,7 @@ test = ["pytest (>=6)"]
 name = "filelock"
 version = "3.9.0"
 description = "A platform independent file lock."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -114,7 +114,7 @@ testing = ["covdefaults (>=2.2.2)", "coverage (>=7.0.1)", "pytest-cov (>=4)", "p
 name = "iniconfig"
 version = "2.0.0"
 description = "brain-dead simple config-ini parsing"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -122,7 +122,7 @@ python-versions = ">=3.7"
 name = "isort"
 version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8.0"
 
@@ -136,7 +136,7 @@ plugins = ["setuptools"]
 name = "lazy-object-proxy"
 version = "1.9.0"
 description = "A fast and thorough lazy object proxy."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -144,7 +144,7 @@ python-versions = ">=3.7"
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -152,7 +152,7 @@ python-versions = ">=3.6"
 name = "mypy"
 version = "0.991"
 description = "Optional static typing for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -171,7 +171,7 @@ reports = ["lxml"]
 name = "mypy-extensions"
 version = "0.4.3"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -179,7 +179,7 @@ python-versions = "*"
 name = "packaging"
 version = "23.0"
 description = "Core utilities for Python packages"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -187,7 +187,7 @@ python-versions = ">=3.7"
 name = "platformdirs"
 version = "2.6.2"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -199,7 +199,7 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.2.2)", "pytest-cov (>=4)", "pytes
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -211,7 +211,7 @@ dev = ["tox", "pre-commit"]
 name = "pylint"
 version = "2.15.10"
 description = "python code static checker"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
@@ -237,7 +237,7 @@ testutils = ["gitpython (>3)"]
 name = "pyproject-api"
 version = "1.5.0"
 description = "API to interact with the python pyproject.toml based projects"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -253,7 +253,7 @@ testing = ["covdefaults (>=2.2.2)", "importlib-metadata (>=5.1)", "pytest-cov (>
 name = "pytest"
 version = "7.2.1"
 description = "pytest: simple powerful testing with Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -273,7 +273,7 @@ testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.
 name = "pytest-cov"
 version = "4.0.0"
 description = "Pytest plugin for measuring coverage."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -288,7 +288,7 @@ testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtuale
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -296,7 +296,7 @@ python-versions = ">=3.7"
 name = "tomlkit"
 version = "0.11.6"
 description = "Style preserving TOML library"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -304,7 +304,7 @@ python-versions = ">=3.6"
 name = "tox"
 version = "4.4.3"
 description = "tox is a generic virtualenv management and test command line tool"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -328,7 +328,7 @@ testing = ["build[virtualenv] (>=0.9)", "covdefaults (>=2.2.2)", "devpi-process 
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -336,7 +336,7 @@ python-versions = ">=3.7"
 name = "virtualenv"
 version = "20.17.1"
 description = "Virtual Python Environment builder"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -353,14 +353,14 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 name = "wrapt"
 version = "1.14.1"
 description = "Module for decorators, wrappers and monkey patching."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "e1b17f667cc28482e1dbff188939b02a4174798306ecd072167ae03e37337d28"
+content-hash = "1f561c9c06faf8af24dc0205996f895e12e80d1effc63b66d6a331b59c435735"
 
 [metadata.files]
 astroid = [
