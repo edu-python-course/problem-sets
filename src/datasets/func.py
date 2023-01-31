@@ -80,10 +80,7 @@ def get_least_bricks_position(structure: List[List[int]]) -> int:
     if not matrix:
         return 0
 
-    max_value = max(matrix.values())
-    for position, count in matrix.items():
-        if count == max_value:
-            return position
+    return max(matrix, key=matrix.get)  # type: ignore
 
 
 def get_least_bricks_count(structure: List[List[int]]) -> int:
