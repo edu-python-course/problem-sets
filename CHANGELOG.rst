@@ -1,3 +1,22 @@
+#################
+Release 2023.01.2
+#################
+
+********************
+Brick Wall Challenge
+********************
+
+Added brick wall challenge. Original problem set is published at:
+https://leetcode.com/problems/brick-wall/
+
+**************
+Project Itself
+**************
+
+- Moved project dependencies to dev-section. Project has dev-deps only.
+- From now pip package manage is supported as well.
+- Removed legacy documentation section from README
+
 ###############
 Release 2023-01
 ###############
@@ -82,6 +101,6 @@ Tests are included as well.
 Warriors, Robbers and Wizards Game
 ==================================
 
-Added the basic "wrw game" challenge description and implementation. This tasks
+Added the basic "wrw game" challenge description and implementation. This task
 is considered to be the final exam for the OOP block. Tests are included as
 well.

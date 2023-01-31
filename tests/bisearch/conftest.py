@@ -16,6 +16,7 @@ def strings_large_fixture():
         return fixture_file.read().splitlines()
 
 
+# noinspection SpellCheckingInspection
 @pytest.fixture
 def find_all_fixture():
     return ("ua",

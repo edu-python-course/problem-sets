@@ -30,4 +30,4 @@ __all__ = [
     "eratosthenes_sieve",
 ]
 
-from .func import *
+from primes.func import *

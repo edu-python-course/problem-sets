@@ -67,4 +67,4 @@ __all__ = [
     "shell_sort"
 ]
 
-from .func import *
+from sorting.func import *

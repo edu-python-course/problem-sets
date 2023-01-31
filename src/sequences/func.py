@@ -134,9 +134,6 @@ def are_parentheses_balanced(origin: str) -> bool:
     return not parentheses_stack
 
 
-
-
-
 def get_longest_uniq_length(origin: str) -> int:
     """Return the length of the longest on sequence of unique characters
 
