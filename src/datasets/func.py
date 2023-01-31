@@ -6,9 +6,6 @@ Datasets functions implementation
 from typing import Dict, List
 
 
-# TODO: this solution should be transformed to find the least number of
-#       bricks in a vertical line
-
 # brick wall challenge
 def get_bricks_count(structure: List[List[int]]) -> int:
     """Return number of bricks in the wall structure
@@ -63,4 +60,43 @@ def get_weakest_point(structure: List[List[int]]) -> int:
     """
 
     matrix = get_structure_matrix(structure)
-    return max(matrix, key=matrix.get)  # type: ignore
+    if not matrix:
+        return 0
+
+    max_value = max(matrix.values())
+    for position, count in matrix.items():
+        if count == max_value:
+            return position
+
+
+def get_max_bricks(structure: List[List[int]]) -> int:
+    """Return maximum numbers of bricks in a vertical line
+
+    :param structure: represents wall structure as sequences of integers
+    :type structure: list[list[int]]
+
+    :return: maximum number of bricks
+    :rtype: int
+
+    """
+
+    max_value: int = 0
+    matrix = get_structure_matrix(structure)
+    for count in matrix.values():
+        max_value = max(max_value, count)
+
+    return max_value
+
+
+def get_least_bricks(structure: List[List[int]]) -> int:
+    """Return the least number of bricks in a vertical line
+
+    :param structure: represents wall structure as sequences of integers
+    :type structure: list[list[int]]
+
+    :return:
+    :rtype: int
+
+    """
+
+    return len(structure) - get_max_bricks(structure)

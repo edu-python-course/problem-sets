@@ -7,3 +7,8 @@ def test_brick_counter(bricks_wall, number_of_bricks):
 
 def test_matrix_builder(bricks_wall, weakest_point):
     assert datasets.get_weakest_point(bricks_wall) == weakest_point
+
+
+def test_least_bricks(bricks_wall, short_bricks_wall):
+    assert datasets.get_least_bricks(bricks_wall) == 1
+    assert datasets.get_least_bricks(short_bricks_wall) == 3

@@ -31,3 +31,8 @@ def weakest_point():
 @pytest.fixture
 def number_of_bricks():
     return 29
+
+
+@pytest.fixture
+def least_bricks():
+    return 1
