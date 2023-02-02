@@ -3,10 +3,11 @@ Datasets functions implementation
 
 """
 
-from typing import Dict, List
+from typing import Any, Dict, List, Optional
 
 
-# brick wall challenge
+# BRICK WALL CHALLENGE
+# ====================
 def get_bricks_count(structure: List[List[int]]) -> int:
     """Return number of bricks in the wall structure
 
@@ -106,3 +107,23 @@ def get_least_bricks_count(structure: List[List[int]]) -> int:
         max_value = max(max_value, count)
 
     return len(structure) - max_value
+
+
+# FILTER DATASET CHALLENGE
+# ========================
+
+def filter_by_values(origin: List[Dict[str, Any]],
+                     keys: Optional[List[str]] = None) -> List[Dict[str, Any]]:
+    filtered_dataset = []
+    filtered_values = []
+
+    keys = keys or origin[0].keys()
+    for entry in origin:
+        entry_values = [value for key, value in entry.items() if key in keys]
+        if entry_values in filtered_values:
+            continue
+
+        filtered_values.append(entry_values)
+        filtered_dataset.append(entry)
+
+    return filtered_dataset
