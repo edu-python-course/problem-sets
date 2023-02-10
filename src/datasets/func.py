@@ -146,7 +146,7 @@ def filter_by_values(origin: List[Dict[str, Any]],
     filtered_dataset: List[Dict[str, Any]] = []
     filtered_values: Set[int] = set()
 
-    keys = keys or list(origin[0].keys())
+    keys = keys or origin[0].keys()
     for entry in origin:
         entry_values = hash(tuple(map(entry.get, keys)))
         if entry_values in filtered_values:
