@@ -49,72 +49,36 @@ def read_fixture(filename):
 
 
 @pytest.fixture
-def ds_sm():
-    filename = FIXTURES_PATH.joinpath("ds_sm.csv")
+def dataset():
+    filename = FIXTURES_PATH.joinpath("dataset.csv")
     return read_fixture(filename)
 
 
 @pytest.fixture
-def ds_sm_f1():
-    filename = FIXTURES_PATH.joinpath("ds_sm_f1.csv")
+def filter_1():
+    filename = FIXTURES_PATH.joinpath("filter_1.csv")
     return read_fixture(filename), "first_name"
 
 
 @pytest.fixture
-def ds_sm_f2():
-    filename = FIXTURES_PATH.joinpath("ds_sm_f2.csv")
+def filter_2():
+    filename = FIXTURES_PATH.joinpath("filter_2.csv")
     return read_fixture(filename), "gender"
 
 
 @pytest.fixture
-def ds_sm_f3():
-    filename = FIXTURES_PATH.joinpath("ds_sm_f3.csv")
+def filter_3():
+    filename = FIXTURES_PATH.joinpath("filter_3.csv")
     return read_fixture(filename), "first_name", "age"
 
 
 @pytest.fixture
-def ds_sm_f4():
-    filename = FIXTURES_PATH.joinpath("ds_sm_f4.csv")
+def filter_4():
+    filename = FIXTURES_PATH.joinpath("filter_4.csv")
     return read_fixture(filename), "last_name", "gender"
 
 
 @pytest.fixture
-def ds_sm_f5():
-    filename = FIXTURES_PATH.joinpath("ds_sm_f5.csv")
-    return read_fixture(filename), "last_name", "city"
-
-
-@pytest.fixture
-def ds_lg():
-    filename = FIXTURES_PATH.joinpath("ds_lg.csv")
-    return read_fixture(filename)
-
-
-@pytest.fixture
-def ds_lg_f1():
-    filename = FIXTURES_PATH.joinpath("ds_lg_f1.csv")
-    return read_fixture(filename), "first_name"
-
-
-@pytest.fixture
-def ds_lg_f2():
-    filename = FIXTURES_PATH.joinpath("ds_lg_f2.csv")
-    return read_fixture(filename), "gender"
-
-
-@pytest.fixture
-def ds_lg_f3():
-    filename = FIXTURES_PATH.joinpath("ds_lg_f3.csv")
-    return read_fixture(filename), "first_name", "age"
-
-
-@pytest.fixture
-def ds_lg_f4():
-    filename = FIXTURES_PATH.joinpath("ds_lg_f4.csv")
-    return read_fixture(filename), "last_name", "gender"
-
-
-@pytest.fixture
-def ds_lg_f5():
-    filename = FIXTURES_PATH.joinpath("ds_lg_f5.csv")
+def filter_5():
+    filename = FIXTURES_PATH.joinpath("filter_5.csv")
     return read_fixture(filename), "last_name", "city"
