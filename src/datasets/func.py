@@ -117,7 +117,7 @@ def filter_by_values(origin: List[Dict[str, Any]],
     filtered_dataset = []
     filtered_values = []
 
-    keys = keys or origin[0].keys()
+    keys = keys or list(origin[0].keys())
     for entry in origin:
         entry_values = [value for key, value in entry.items() if key in keys]
         if entry_values in filtered_values:
