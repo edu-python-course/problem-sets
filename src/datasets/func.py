@@ -115,15 +115,15 @@ def get_least_bricks_count(structure: List[List[int]]) -> int:
 def filter_by_values(origin: List[Dict[str, Any]],
                      keys: Optional[List[str]] = None) -> List[Dict[str, Any]]:
     filtered_dataset = []
-    filtered_values = []
+    filtered_values = set()
 
     keys = keys or list(origin[0].keys())
     for entry in origin:
-        entry_values = [value for key, value in entry.items() if key in keys]
+        entry_values = hash(tuple(map(entry.get, keys)))
         if entry_values in filtered_values:
             continue
 
-        filtered_values.append(entry_values)
+        filtered_values.add(entry_values)
         filtered_dataset.append(entry)
 
     return filtered_dataset
