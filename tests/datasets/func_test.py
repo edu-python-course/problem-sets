@@ -47,3 +47,19 @@ def test_dataset_filter_4(dataset, filter_4):
 def test_dataset_filter_5(dataset, filter_5):
     filtered, *keys = filter_5
     assert datasets.filter_by_values(dataset, keys) == filtered
+
+
+def test_dataset_filter_no_keys(dataset):
+    # no unique rows in dataset
+    assert datasets.filter_by_values(dataset) == dataset
+
+    # 9 - 4 filter
+    dataset = [
+        {"x": 1, "y": 1}, {"x": 1, "y": 2}, {"x": 2, "y": 1},
+        {"x": 1, "y": 1}, {"x": 2, "y": 1}, {"x": 2, "y": 2},
+        {"x": 1, "y": 2}, {"x": 2, "y": 2}, {"x": 1, "y": 1},
+    ]
+    test_dataset = [
+        {"x": 1, "y": 1}, {"x": 1, "y": 2}, {"x": 2, "y": 1}, {"x": 2, "y": 2},
+    ]
+    assert datasets.filter_by_values(dataset) == test_dataset
