@@ -3,10 +3,11 @@ Datasets functions implementation
 
 """
 
-from typing import Dict, List
+from typing import Any, Dict, List, Optional, Set
 
 
-# brick wall challenge
+# BRICK WALL CHALLENGE
+# ====================
 def get_bricks_count(structure: List[List[int]]) -> int:
     """Return number of bricks in the wall structure
 
@@ -106,3 +107,52 @@ def get_least_bricks_count(structure: List[List[int]]) -> int:
         max_value = max(max_value, count)
 
     return len(structure) - max_value
+
+
+# FILTER DATASET CHALLENGE
+# ========================
+
+def filter_by_values(origin: List[Dict[str, Any]],
+                     keys: Optional[List[str]] = None) -> List[Dict[str, Any]]:
+    """Return a filtered datasets by unique values in a given keys sets
+
+    :param origin: an original dataset with entries to filter
+    :type origin: list
+    :param keys: a collection of keys to use for filtering
+    :type keys: list, optional
+
+    :return: a filtered dataset
+    :rtype: list
+
+    The origin dataset is a list of dictionaries. All the dictionaries have
+    the same set of keys of a string type. At least one entry with at least
+    one key is granted.
+
+    The keys parameter is used to set the dictionary keys to filter unique
+    values. Keys list is considered to be validated before passing to this
+    function, all values (if any) are valid. In case this parameter is
+    omitted - all available keys should be used.
+
+    Usage:
+
+    >>> ds = [{"x": 1, "y": 2, "z": 3}, {"x": 0, "y": 2, "z": 3}]
+    >>> assert filter_by_values(ds, ["x"]) == ds       # the same as origin
+    >>> assert filter_by_values(ds, ["x", "z"]) == ds  # the same as origin
+    >>> assert filter_by_values(ds, ["y"]) == [{"x": 1, "y": 2, "z": 3}]
+    >>> assert filter_by_values(ds, ["y", "z"]) == [{"x": 1, "y": 2, "z": 3}]
+
+    """
+
+    filtered_dataset: List[Dict[str, Any]] = []
+    filtered_values: Set[int] = set()
+
+    keys = keys or origin[0].keys()  # type: ignore
+    for entry in origin:
+        entry_values = hash(tuple(map(entry.get, keys)))  # type: ignore
+        if entry_values in filtered_values:
+            continue
+
+        filtered_values.add(entry_values)
+        filtered_dataset.append(entry)
+
+    return filtered_dataset
