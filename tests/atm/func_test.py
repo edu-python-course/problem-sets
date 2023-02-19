@@ -26,3 +26,13 @@ def test_withdraw_outcome_balance():
     assert atm.get_total(atm.withdraw(24500)) == 24500
     assert atm.get_total(atm.withdraw(17545)) == 17545
     assert atm.get_total(atm.withdraw(2000)) == 2000
+
+
+def test_withdraw_rev():
+    assert atm.withdraw_rev(-500) == []
+    assert atm.withdraw_rev(0) == []
+
+    assert atm.withdraw_rev(5) == [(5, 1)]
+    assert atm.withdraw_rev(10) == [(10, 1)]
+    assert atm.withdraw_rev(12) == [(10, 1), (1, 2)]
+    assert atm.withdraw_rev(17) == [(9, 1), (4, 2)]
