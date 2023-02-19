@@ -12,6 +12,9 @@ DENOMINATIONS = BILLS + COINS
 def withdraw(amount: int,
              denominations: Optional[List[int]] = None
              ) -> List[Tuple[int, int]]:
+    if amount <= 0:
+        return []
+
     denominations = denominations or DENOMINATIONS
     multipliers = [0] * len(denominations)
     den_idx = 0
