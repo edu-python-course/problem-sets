@@ -32,6 +32,26 @@ def withdraw(amount: int,
     return list(filtered)
 
 
+def withdraw_rev(amount: int,
+                 limit: Optional[int] = 10,
+                 denominations: Optional[List[int]] = None
+                 ) -> List[Tuple[int, int]]:
+    # check base cases
+    if amount <= 0:
+        return []
+
+    denominations = sorted(denominations or DENOMINATIONS)
+
+    smallest, *denominations = denominations
+    if (multiplier := amount // smallest) <= limit:
+        return [(multiplier, smallest)]
+
+    [(multiplier, denomination)] = withdraw_rev(amount, limit, denominations)
+    # TODO: adjust multipliers
+
+    return []
+
+
 def get_total(amount: List[Tuple[int, int]]) -> int:
     balance = 0
     for multiplier, denomination in amount:
