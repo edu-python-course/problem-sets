@@ -36,6 +36,7 @@ classifiers = [
     "Topic :: Education",
 ]
 packages = [
+    { include = "atm", from = "src" },
     { include = "bisearch", from = "src" },
     { include = "calc", from = "src" },
     { include = "chess", from = "src" },
