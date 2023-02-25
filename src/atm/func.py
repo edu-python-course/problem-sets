@@ -11,12 +11,11 @@ DENOMINATIONS = BILLS + COINS
 
 
 def withdraw(amount: int,
-             denominations: Optional[List[int]] = None
+             denominations: Optional[Tuple[int]] = DENOMINATIONS
              ) -> List[Tuple[int, int]]:
     if amount <= 0:
         return []
 
-    denominations = denominations or DENOMINATIONS
     multipliers = [0] * len(denominations)
     den_idx = 0
 
@@ -35,13 +34,13 @@ def withdraw(amount: int,
 
 def withdraw_rev(amount: int,
                  limit: Optional[int] = 10,
-                 denominations: Optional[List[int]] = None
+                 denominations: Optional[Tuple[int]] = DENOMINATIONS
                  ) -> List[Tuple[int, int]]:
     # check base cases
     if amount <= 0:
         return []
 
-    denominations = sorted(denominations or DENOMINATIONS)
+    denominations = sorted(denominations)
 
     smallest, *denominations = denominations
     if (smallest_multiplier := amount // smallest) <= limit:
