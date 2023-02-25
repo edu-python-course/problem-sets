@@ -16,15 +16,12 @@ def withdraw(amount: int,
     if amount <= 0:
         return []
 
-    multipliers = [0] * len(denominations)
-    den_idx = 0
+    size: int = len(denominations)
+    multipliers = [0] * size
 
-    while amount > 0:
-        if amount // denominations[den_idx]:
-            multipliers[den_idx] += 1
-            amount -= denominations[den_idx]
-        else:
-            den_idx += 1
+    for idx in range(size):
+        multipliers[idx] = amount // denominations[idx]
+        amount -= multipliers[idx] * denominations[idx]
 
     # filter zero multipliers
     filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
