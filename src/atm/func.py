@@ -42,12 +42,14 @@ def withdraw(target: int,
         denominations = DENOMINATIONS
     denominations = sorted(denominations, reverse=True)
 
+    idx: int = 0
     size: int = len(denominations)
     multipliers = [0] * size
 
-    for idx in range(size):
+    while target > 0:
         multipliers[idx] = target // denominations[idx]
         target -= multipliers[idx] * denominations[idx]
+        idx += 1
 
     # filter zero multipliers
     filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
@@ -85,12 +87,14 @@ def withdraw_rev(target: int,
         denominations = DENOMINATIONS
     denominations = sorted(denominations)
 
+    idx: int = 0
     size: int = len(denominations)
     multipliers = [0] * size
 
-    for idx in range(size):
+    while target > 0:
         multipliers[idx] = min(limit, target // denominations[idx])
         target -= multipliers[idx] * denominations[idx]
+        idx += 1
 
     # filter zero multipliers
     filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
@@ -119,3 +123,8 @@ def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
     """
 
     return sum(map(lambda pair: pair[0] * pair[1], pairs))
+
+
+if __name__ == "__main__":
+    withdraw_rev(10)
+    withdraw_rev(14)
