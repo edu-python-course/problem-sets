@@ -3,7 +3,7 @@ ATM package functions
 
 """
 
-from typing import List, Optional, Sequence, Tuple
+from typing import Iterable, List, Optional, Sequence, Tuple
 
 COINS: Tuple[int, ...] = 1, 2, 5, 10, 25, 50
 BILLS: Tuple[int, ...] = 100_00, 50_00, 20_00, 10_00, 5_00, 2_00, 1_00
@@ -56,7 +56,7 @@ def withdraw(target: int,
 
 
 def withdraw_rev(target: int,
-                 denominations: Optional[Tuple[int]] = DENOMINATIONS,
+                 denominations: Optional[Tuple[int]] = None,
                  limit: Optional[int] = 10
                  ) -> List[Tuple[int, int]]:
     """Return pairs of denominations and their multipliers to reach target
@@ -81,7 +81,7 @@ def withdraw_rev(target: int,
     raise NotImplementedError
 
 
-def get_total(pairs: List[Tuple[int, int]]) -> int:
+def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
     """Calculate the total sum
 
     :param pairs: pairs of denominations and their multipliers
@@ -101,8 +101,4 @@ def get_total(pairs: List[Tuple[int, int]]) -> int:
 
     """
 
-    balance = 0
-    for multiplier, denomination in pairs:
-        balance += multiplier * denomination
-
-    return balance
+    return sum(map(lambda pair: pair[0] * pair[1], pairs))
