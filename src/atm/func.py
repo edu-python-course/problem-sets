@@ -56,29 +56,46 @@ def withdraw(target: int,
 
 
 def withdraw_rev(target: int,
-                 denominations: Optional[Tuple[int]] = None,
+                 denominations: Optional[Sequence[int]] = None,
                  limit: Optional[int] = 10
                  ) -> List[Tuple[int, int]]:
     """Return pairs of denominations and their multipliers to reach target
 
-    :param target: the target amount to get
+    :param target: the target amount
     :type target: int
-    :param denominations: a list of denominations available to use. Defaults
-        to ``DENOMINATIONS``
+    :param denominations: denominations available to use. Defaults
+        to ``DENOMINATIONS``.
     :type denominations: tuple, Optional
-    :param limit: a limitation on each denomination usage. Defaults to 10.
+    :param limit: restricts the number of times a denomination can be used
+        to make up the target amount. Defaults to 10.
     :type limit: int, Optional
 
     Usage examples:
 
-    >>> withdraw_rev(0) == []
-    >>> withdraw_rev(14) == [(10, 1), (2, 2)]
-    >>> withdraw_rev(17) == [(9, 1), (4, 2)]
+    >>> assert withdraw_rev(0) == []
+    >>> assert withdraw_rev(14) == [(10, 1), (2, 2)]
+    >>> assert withdraw_rev(17) == [(9, 1), (4, 2)]
 
     """
 
-    # TODO: add function implementation
-    raise NotImplementedError
+    if target < 1:
+        return []
+
+    if denominations is None:
+        denominations = DENOMINATIONS
+    denominations = sorted(denominations)
+
+    size: int = len(denominations)
+    multipliers = [0] * size
+
+    for idx in range(size):
+        multipliers[idx] = min(limit, target // denominations[idx])
+        target -= multipliers[idx] * denominations[idx]
+
+    # filter zero multipliers
+    filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
+
+    return sorted(filtered, key=lambda pair: pair[1])
 
 
 def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
