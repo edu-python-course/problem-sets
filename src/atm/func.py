@@ -3,7 +3,7 @@ ATM package functions
 
 """
 
-from typing import List, Optional, Tuple
+from typing import List, Optional, Sequence, Tuple
 
 COINS: Tuple[int, ...] = 1, 2, 5, 10, 25, 50
 BILLS: Tuple[int, ...] = 100_00, 50_00, 20_00, 10_00, 5_00, 2_00, 1_00
@@ -11,7 +11,7 @@ DENOMINATIONS: Tuple[int, ...] = BILLS + COINS
 
 
 def withdraw(target: int,
-             denominations: Optional[Tuple[int]] = DENOMINATIONS
+             denominations: Optional[Sequence[int]] = None
              ) -> List[Tuple[int, int]]:
     """Return pairs of denominations and their multipliers to get target number
 
@@ -33,10 +33,13 @@ def withdraw(target: int,
 
     """
 
+    # check base cases
     if target <= 0:
         return []
 
     # sort denominations in descending order
+    if denominations is None:
+        denominations = DENOMINATIONS
     denominations = sorted(denominations, reverse=True)
 
     size: int = len(denominations)
@@ -49,10 +52,7 @@ def withdraw(target: int,
     # filter zero multipliers
     filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
 
-    # sort output by denomination values ascending order
-    output = sorted(filtered, key=lambda pair: pair[1])
-
-    return list(output)
+    return sorted(filtered, key=lambda pair: pair[1])
 
 
 def withdraw_rev(target: int,
