@@ -5,7 +5,7 @@ ATM package functions
 
 from typing import Iterable, List, Optional, Sequence, Tuple
 
-COINS: Tuple[int, ...] = 1, 2, 5, 10, 25, 50
+COINS: Tuple[int, ...] = 50, 25, 10, 5, 2, 1
 BILLS: Tuple[int, ...] = 100_00, 50_00, 20_00, 10_00, 5_00, 2_00, 1_00
 DENOMINATIONS: Tuple[int, ...] = BILLS + COINS
 
@@ -13,23 +13,27 @@ DENOMINATIONS: Tuple[int, ...] = BILLS + COINS
 def withdraw(target: int,
              denominations: Optional[Sequence[int]] = None
              ) -> List[Tuple[int, int]]:
-    """Return pairs of denominations and their multipliers to get target number
-
+    """Return pairs of denominations and their multipliers
 
     :param target: the target amount to get
     :type target: int
     :param denominations: a list of denominations available to use. Defaults
-        to ``DENOMINATIONS``
+        to ``(10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 2, 1)``
     :type denominations: tuple, Optional
 
     :return: a list of pairs containing denominations and their multipliers
     :rtype: list
 
+    This algorithm uses a greedy approach, where the highest denomination
+    available is always used as many times as possible to minimize the total
+    number of coins/bills. If no exact solution is possible, the algorithm
+    returns the largest possible amount that is less than the target amount.
+
     Usage examples:
 
     >>> assert withdraw(0) == []
-    >>> assert withdraw(100) == [(1, 100)]
     >>> assert withdraw(135) == [(1, 10), (1, 25), (1, 100)]
+    >>> assert withdraw(100000) == [(10, 10000)]
 
     """
 
@@ -66,11 +70,15 @@ def withdraw_rev(target: int,
     :param target: the target amount
     :type target: int
     :param denominations: denominations available to use. Defaults
-        to ``DENOMINATIONS``.
+        to ``(10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 2, 1)``
     :type denominations: tuple, Optional
     :param limit: restricts the number of times a denomination can be used
         to make up the target amount. Defaults to 10.
     :type limit: int, Optional
+
+    This function uses a "reverse" version of a greedy algorithm and tries
+    to use the smallest denominations as many times as it possible (it's
+    limited with ``limit`` argument).
 
     Usage examples:
 
