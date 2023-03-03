@@ -154,6 +154,8 @@ class ShoppingCart:
 
         return product, quantity
 
+    pop = remove_product
+
     def add_product(self,
                     product: Product,
                     quantity: Optional[Union[int, float]] = None
@@ -169,17 +171,18 @@ class ShoppingCart:
 
         quantity = quantity or product.unit
 
-        if product in self.products:
+        try:
             idx = self.products.index(product)
             self.quantities[idx] += quantity
-
-        else:
+        except ValueError:
             self.products.append(product)
             self.quantities.append(quantity)
 
         idx = self.products.index(product)
         if self.quantities[idx] <= 0:
             self.remove_product(product)
+
+    add = add_product
 
     def sub_product(self,
                     product: Product,
