@@ -96,6 +96,8 @@ def withdraw_rev(target: int,
     size: int = len(denominations)
     multipliers = [0] * size
 
+    # TODO: adjust multipliers (e.g. withdraw_rev(17) -> [(10, 1), (3, 2)]
+    #       instead of [(9, 1), (4, 2)]
     for idx in range(size):
         multipliers[idx] = min(limit, target // denominations[idx])
         target -= multipliers[idx] * denominations[idx]
