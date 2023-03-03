@@ -73,11 +73,16 @@ class Product:
         )
 
     def get_total(self, quantity: Union[int, float]) -> int:
-        """Return the total price for a specified amount of product"""
+        """Return the total price for a specified amount of a product"""
 
         total_price = round(self.price * quantity / self.unit, 2)
 
         return int(total_price)
+
+    def get_units(self, quantity: Union[int, float]) -> int:
+        """Return the number of units for a specified amount of a product"""
+
+        return int(round(quantity / self.unit))
 
 
 class ShoppingCart:
