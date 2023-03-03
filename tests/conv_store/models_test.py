@@ -63,10 +63,17 @@ class TestShoppingCartModel(unittest.TestCase):
 
     def test_remove_product(self):
         candy = models.Product("candy", 1059, 0.1)
-        self.instance.remove_product(candy)
+        returned_value = self.instance.remove_product(candy)
+        self.assertEqual((candy, 0.7), returned_value)
         self.assertNotIn(candy, self.instance.products)
         self.assertEqual(len(self.instance.products), 1)
         self.assertEqual(len(self.instance.quantities), 1)
+
+    def test_remove_product_raises(self):
+        spice = models.Product("spice", 12025, 0.1)
+        self.assertRaises(ValueError, self.instance.remove_product, spice)
+        self.assertEqual(2, len(self.instance.products))
+        self.assertEqual(2, len(self.instance.quantities))
 
     def test_add_product(self):
         spice = models.Product("spice", 12025, 0.1)
