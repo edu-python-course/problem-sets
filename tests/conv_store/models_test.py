@@ -7,7 +7,7 @@ class TestProductModel(unittest.TestCase):
 
     def setUp(self) -> None:
         self.product_name = "candy"
-        self.product_price = 10.59
+        self.product_price = 1059
         self.product_unit = 0.1
         self.instance = models.Product(
             self.product_name, self.product_price, self.product_unit
@@ -23,35 +23,35 @@ class TestProductModel(unittest.TestCase):
 
     def test_repr(self):
         values = self.product_name, self.product_price, self.product_unit
-        test_value = "Product('%s', %.2f, %s)" % values
+        test_value = "Product('%s', %d, %s)" % values
         self.assertEqual(repr(self.instance), test_value)
 
     def test_float(self):
-        self.assertEqual(float(self.instance), self.product_price)
+        self.assertEqual(self.product_price / 100, float(self.instance))
 
     def test_equal(self):
-        another = models.Product("candy", 10.59, 0.1)
+        another = models.Product("candy", 1059, 0.1)
         self.assertEqual(self.instance, another)
 
     def test_not_equal(self):
-        another = models.Product("juice", 36.55, 1)
+        another = models.Product("juice", 3655, 1)
         self.assertNotEqual(self.instance, another)
-        another = models.Product("candy", 36.55, 1)
+        another = models.Product("candy", 3655, 1)
         self.assertNotEqual(self.instance, another)
-        another = models.Product("candy", 10.59, 1)
+        another = models.Product("candy", 1059, 1)
         self.assertNotEqual(self.instance, another)
         self.assertNotEqual(self.instance, "candy")
         self.assertNotEqual(self.instance, 10.59)
 
     def test_get_total(self):
-        self.assertEqual(74.13, self.instance.get_total(0.7))
+        self.assertEqual(7413, self.instance.get_total(0.7))
 
 
 class TestShoppingCartModel(unittest.TestCase):
     def setUp(self) -> None:
         self.instance = models.ShoppingCart()
-        candy = models.Product("candy", 10.59, 0.1)
-        juice = models.Product("juice", 36.55, 1)
+        candy = models.Product("candy", 1059, 0.1)
+        juice = models.Product("juice", 3655, 1)
         self.products = [candy, juice]
         self.quantities = [0.7, 4]
         self.instance.add_product(candy, 0.7)
@@ -62,22 +62,22 @@ class TestShoppingCartModel(unittest.TestCase):
         self.assertListEqual(self.quantities, self.instance.quantities)
 
     def test_remove_product(self):
-        candy = models.Product("candy", 10.59, 0.1)
+        candy = models.Product("candy", 1059, 0.1)
         self.instance.remove_product(candy)
         self.assertNotIn(candy, self.instance.products)
         self.assertEqual(len(self.instance.products), 1)
         self.assertEqual(len(self.instance.quantities), 1)
 
     def test_add_product(self):
-        spice = models.Product("spice", 120.25, 0.1)
+        spice = models.Product("spice", 12025, 0.1)
         self.instance.add_product(spice)
         self.assertListEqual(self.products + [spice], self.instance.products)
         self.assertListEqual(self.quantities + [.1], self.instance.quantities)
 
     def test_add_existing_product(self):
         # avoid existing objects usage
-        candy = models.Product("candy", 10.59, 0.1)
-        juice = models.Product("juice", 36.55, 1)
+        candy = models.Product("candy", 1059, 0.1)
+        juice = models.Product("juice", 3655, 1)
         quantities = [self.quantities[0] + 1.5, self.quantities[1] + 2]
 
         self.instance.add_product(candy, 1.5)
@@ -86,19 +86,19 @@ class TestShoppingCartModel(unittest.TestCase):
         self.assertListEqual(quantities, self.instance.quantities)
 
     def test_sub_product(self):
-        juice = models.Product("juice", 36.55, 1)
+        juice = models.Product("juice", 3655, 1)
         self.instance.sub_product(juice, 2)
         self.assertEqual(self.instance.quantities[1], 2)
 
     def test_sub_product_removes(self):
-        juice = models.Product("juice", 36.55, 1)
+        juice = models.Product("juice", 3655, 1)
         self.instance.sub_product(juice, 5)
         self.assertNotIn(juice, self.instance.products)
         self.assertEqual(len(self.instance.products), 1)
         self.assertEqual(len(self.instance.quantities), 1)
 
     def test_get_total(self):
-        self.assertEqual(220.33, self.instance.get_total())
+        self.assertEqual(22033, self.instance.get_total())
 
     def test_empty(self):
         self.assertTrue(self.instance)
@@ -108,12 +108,12 @@ class TestShoppingCartModel(unittest.TestCase):
         self.assertEqual(len(self.instance), 2)
 
     def test_get_item(self):
-        test_value = models.Product("juice", 36.55, 1), 4
+        test_value = models.Product("juice", 3655, 1), 4
         self.assertTupleEqual(self.instance[1], test_value)
 
     def test_contains(self):
-        juice = models.Product("juice", 36.55, 1)
-        eggs = models.Product("eggs", 65.0, 10)
+        juice = models.Product("juice", 3655, 1)
+        eggs = models.Product("eggs", 6500, 10)
         self.assertIn(juice, self.instance)
         self.assertNotIn(eggs, self.instance)
 

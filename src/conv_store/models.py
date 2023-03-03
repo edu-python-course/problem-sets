@@ -14,24 +14,23 @@ class Product:
     :ivar name: the name of a product
     :type name: str
     :ivar price: the price for a single product unit
-    :type price: float
+    :type price: int
     :ivar unit: the size of a single product unit
-    :type unit: int or float
+    :type unit: int | float
 
     """
 
-    def __init__(
-            self,
-            name: str,
-            price: float,
-            unit: Union[int, float]
-    ) -> None:
+    def __init__(self,
+                 name: str,
+                 price: int,
+                 unit: Union[int, float]
+                 ) -> None:
         """Initialize instance
 
         :param name: product name
         :type name: str
         :param price: product price
-        :type price: float
+        :type price: int
         :param unit: product unit size
         :type unit: int or float
 
@@ -44,17 +43,22 @@ class Product:
     def __repr__(self) -> str:
         """Return a string representation of an instance"""
 
-        return f"Product('{self.name}', {self.price:.2f}, {self.unit})"
+        return f"Product('{self.name}', {self.price}, {self.unit})"
 
     def __str__(self) -> str:
         """Return a string version of an instance"""
 
         return self.name
 
+    def __int__(self) -> int:
+        """Cast product instance to integer type"""
+
+        return self.price
+
     def __float__(self) -> float:
         """Cast product instance to float type"""
 
-        return self.price
+        return self.price / 100.0
 
     def __eq__(self, other: object) -> bool:
         """Return equality comparing result (self == other)"""
@@ -63,15 +67,17 @@ class Product:
             return False
 
         return (
-                self.name == other.name and
-                self.price == other.price and
-                self.unit == other.unit
+            self.name == other.name and
+            self.price == other.price and
+            self.unit == other.unit
         )
 
-    def get_total(self, quantity: Union[int, float]) -> float:
+    def get_total(self, quantity: Union[int, float]) -> int:
         """Return the total price for a specified amount of product"""
 
-        return round(self.price * quantity / self.unit, 2)
+        total_price = round(self.price * quantity / self.unit, 2)
+
+        return int(total_price)
 
 
 class ShoppingCart:
@@ -140,10 +146,10 @@ class ShoppingCart:
             self.products.pop(idx)
             self.quantities.pop(idx)
 
-    def add_product(
-            self, product: Product,
-            quantity: Optional[Union[int, float]] = None
-    ) -> None:
+    def add_product(self,
+                    product: Product,
+                    quantity: Optional[Union[int, float]] = None
+                    ) -> None:
         """Add product to the shopping cart
 
         :param product: a product instance to add to cart
@@ -167,9 +173,10 @@ class ShoppingCart:
         if self.quantities[idx] <= 0:
             self.remove_product(product)
 
-    def sub_product(
-            self, product: Product, quantity: Union[int, float]
-    ) -> None:
+    def sub_product(self,
+                    product: Product,
+                    quantity: Union[int, float]
+                    ) -> None:
         """Subtract product from the shopping cart
 
         If quantity value is less or equal to 0 the product is to be
@@ -186,7 +193,7 @@ class ShoppingCart:
         quantity = - abs(quantity)
         return self.add_product(product, quantity)
 
-    def get_total(self) -> float:
+    def get_total(self) -> int:
         """Return the total price for all the product in the cart
 
         :return: total cart price
@@ -194,8 +201,8 @@ class ShoppingCart:
 
         """
 
-        total = 0.0
-        for product, quantity in zip(self.products, self.quantities):
+        total = 0
+        for product, quantity in self:
             total += product.get_total(quantity)
 
-        return round(total, 2)
+        return total
