@@ -27,4 +27,4 @@ In general, this is a container for products.
 
 __all__ = ["Product", "ShoppingCart"]
 
-from .models import Product, ShoppingCart
+from conv_store.models import Product, ShoppingCart
