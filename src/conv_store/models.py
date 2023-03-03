@@ -132,19 +132,27 @@ class ShoppingCart:
 
         return zip(self.products, self.quantities)
 
-    def remove_product(self, product: Product) -> None:
+    def remove_product(self,
+                       product: Product
+                       ) -> Tuple[Product, Union[int, float]]:
         """Remove product from a cart instance
 
 
         :param product: a product instance to add to cart
         :type product: :class: `Product`
 
+        :return: a shopping cart product/quantity entry
+        :rtype: tuple
+
+        :raise: ValueError
+
         """
 
-        if product in self.products:
-            idx = self.products.index(product)
-            self.products.pop(idx)
-            self.quantities.pop(idx)
+        idx = self.products.index(product)
+        product = self.products.pop(idx)
+        quantity = self.quantities.pop(idx)
+
+        return product, quantity
 
     def add_product(self,
                     product: Product,
