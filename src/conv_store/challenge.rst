@@ -129,6 +129,61 @@ default objects string representations. It's time to fix this.
     assert sweet != juice
     assert cart
 
+******************
+Payment Processors
+******************
+
+The owner asked you to implement a flexible payment system.
+Purchasing the shopping card consists of several steps:
+
+- cart validation - it should not be empty or already purchased
+- payment validation - various payment types requires various validations
+- purchasing the cart
+
+For now there are two payment types available in the store: cash and credit
+card, but they maybe extended at any time.
+
+#.  Update the ``ShoppingCart`` class to handle ``purchased`` state. Make this
+    property *protected*, since it should not be accessed outside the card
+    instance.
+#.  Implement ``PaymentValidator`` class with ``is_valid`` that takes
+    no arguments and return a value of a boolean type. This is an abstract
+    class for the future usage.
+#.  Implement ``PaymentProcessor`` class with ``purchase`` method that takes
+    a ``ShoppingCart`` object and returns nothing. This is an abstract class
+    for the future usage.
+#.  Inherit ``CashPaymentValidator`` from the base validator.
+    The instances of this class are considered to be always valid.
+#.  Inherit ``CodeValidator`` from the base validator.
+
+    - The instances of this class are created with ``security_code`` argument.
+    - ``is_valid`` method should ask a customer for a security code and check
+      it against the stored value. In case codes are equal payment considered
+      to be valid.
+
+#.  Create ``CashPaymentProcessor`` that combines ``CashValidator`` and
+    ``PaymentProcessor`` behaviors. While purchasing the cart the messages
+    "Processing cash payment..." and "Cart bill: {float total}" should be
+    printed out.
+
+#.  Create ``CardPaymentProcessor`` that combines ``CodeValidator`` and
+    ``PaymentProcessor`` behaviors. While purchasing the cart the messages
+    "Processing card payment..." and "Security code: {code}" should be
+    printed out.
+
+.. rubric:: Test Cases
+
+.. code-block:: python
+
+    cart = ShoppingCart()
+    cart.add_product(Product("juice", 3655, 1), 1)
+
+    cash_processor = CashPaymentProcessor()
+    cash_processor.purchase(cart)  # Cart bill: 36.55
+
+    card_processor = CardPaymentProcessor("1234")
+    card_processor.purchase(cart)  # Security code: 1234
+
 ************************************
 More Enhancements for Shopping Carts
 ************************************
