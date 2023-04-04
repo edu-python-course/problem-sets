@@ -1,5 +1,5 @@
 ###############################################################################
-                          CONVENIENCE STORE CHALLENGE
+                          Convenience Store Challenge
 ###############################################################################
 
 The local store is struggling with their payment registry system. The owner
@@ -29,7 +29,7 @@ This class represents goods available to purchase in the store.
 #.  Each product instance should have next attributes:
 
     * ``name`` - a product title (e.g. "apple", "juice")
-    * ``price`` - a price for a single product unit (e.g. 36.55)
+    * ``price`` - a price for a single product unit (e.g. 3655, 500, 12999)
     * ``unit`` - a size of a single product's unit (e.g. 1, 0.500, 12)
 
 #.  ``Product`` class should implement ``get_total`` method to calculate
@@ -39,16 +39,16 @@ This class represents goods available to purchase in the store.
     In case argument hasn't been passed just consider it is equal to unit
     attribute value.
 
-**Test cases**
+.. rubric:: Test Cases
 
 .. code-block:: python
 
     product_obj = Product()
     product_obj.name = "candy"
-    product_obj.price = 10.59
+    product_obj.price = 1059
     product_obj.unit = 0.1
 
-    assert product_obj.get_total(0.7) == 74.13
+    assert product_obj.get_total(0.7) == 7413
 
 Shopping Cart
 =============
@@ -64,19 +64,19 @@ is to store information about the purchases and their amount (quantities).
 #.  ``ShoppingCart`` should implement ``get_total`` method to calculate the
     total price for the entire cart contents.
 
-**Test cases**
+.. rubric:: Test Cases
 
 .. code-block:: python
 
     product_obj = Product()
     product_obj.name = "juice"
-    product_obj.price = 36.55
+    product_obj.price = 3655
     product_obj.unit = 1
     cart_obj = ShoppingCart()
     cart_obj.add_product(product_obj, 3)  # put 3 packs of juice to cart
     cart_obj.add_product(product_obj)     # add one more (unit = 1)
 
-    assert cart_obj.get_total() == 146.2  # 36.55 x 4
+    assert cart_obj.get_total() == 14620  # 3655 x 4
 
 ***********************************************
 Initialization, Representation and Type Casting
@@ -97,31 +97,31 @@ default objects string representations. It's time to fix this.
     ``name`` attribute value.
 #.  While casting product instance to ``float`` type it should be equal to its
     ``price`` attribute value.
-#.  While casting product instance to ``float`` type it should be equal to its
-    total price value.
+#.  While casting shopping cart instance to ``float`` type it should be equal
+    to its total price value.
 #.  While casting shopping cart instance to ``bool`` consider it ``True`` if
     at least one product is attach to current cart.
 
-#.  Implement equality operator support for your objects
+#.  Implement equality operator support for your objects:
 
     * consider products equal if all their properties are the same
     * consider carts equal if products and corresponding quantities are
       the same
 
-**Test cases**
+.. rubric:: Test Cases
 
 .. code-block:: python
 
-    candy = Product("candy", 10.59, 0.1)
-    sweet = Product("candy", 10.59, 0.1)
-    juice = Product("juice", 36.55, 1)
+    candy = Product("candy", 1059, 0.1)
+    sweet = Product("candy", 1059, 0.1)
+    juice = Product("juice", 3655, 1)
     cart_1 = ShoppingCart()
     cart_2 = ShoppingCart()
     cart_1.add_product(candy, 1)
     cart_1.add_product(sweet, 0.5)
     cart_2.add_product(juice)
 
-    assert cart_1.get_total() == 158.85
+    assert cart_1.get_total() == 15885
     assert str(candy) == "candy"
     assert float(candy) == 10.59
     assert float(cart_2) == 36.55
@@ -151,21 +151,21 @@ More Enhancements for Shopping Carts
 #.  Implement ``sub_product`` to decrease some product quantity. If quantity
     is equal to 0 (zero) or less - remove product from the cart.
 
-**Test cases**
+.. rubric:: Test Cases
 
 .. code-block:: python
 
-    candy = Product("candy", 10.59, 0.1)
-    sweet = Product("candy", 10.59, 0.1)
-    juice = Product("juice", 36.55, 1)
+    candy = Product("candy", 1059, 0.1)
+    sweet = Product("candy", 1059, 0.1)
+    juice = Product("juice", 3655, 1)
     cart = ShoppingCart()
     cart.add_product(candy, 0.75)
     cart.add_product(sweet, 0.75)
     cart.add_product(juice, 3)
 
     assert len(cart) == 2
-    assert cart[0] == candy, 0.7  # this may use other value as key
-    for cart_item, purchase in zip(cart, ((candy, 0.7), (juice, 3))):
+    assert cart[0] == candy, 1.5  # this may use other value as key
+    for cart_item, purchase in zip(cart, ((candy, 1.5), (juice, 3))):
         assert cart_item == purchase
 
     cart.remove_product(candy)

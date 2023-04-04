@@ -110,6 +110,9 @@ class TestShoppingCartModel(unittest.TestCase):
     def test_get_total(self):
         self.assertEqual(22033, self.instance.get_total())
 
+    def test_float_cast(self):
+        self.assertEqual(220.33, float(self.instance))
+
     def test_empty(self):
         self.assertTrue(self.instance)
         self.assertFalse(models.ShoppingCart())
