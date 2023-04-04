@@ -58,7 +58,7 @@ class Product:
     def __float__(self) -> float:
         """Cast product instance to float type"""
 
-        return self.price / 100.0
+        return self.price / 100
 
     def __eq__(self, other: object) -> bool:
         """Return equality comparing result (self == other)"""
@@ -114,6 +114,11 @@ class ShoppingCart:
         """Cast to bool type"""
 
         return bool(self.products)
+
+    def __float__(self) -> float:
+        """Cast to float type"""
+
+        return self.get_total() / 100
 
     def __len__(self) -> int:
         """Return a number of products in the shopping cart"""
