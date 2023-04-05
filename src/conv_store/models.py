@@ -32,7 +32,7 @@ class Product:
         :param price: product price
         :type price: int
         :param unit: product unit size
-        :type unit: int or float
+        :type unit: int | float
 
         """
 
@@ -72,10 +72,22 @@ class Product:
             self.unit == other.unit
         )
 
-    def get_total(self, quantity: Union[int, float]) -> int:
-        """Return the total price for a specified amount of a product"""
+    def get_total(self, quantity: Optional[Union[int, float]] = None) -> int:
+        """Return the total price for a specified amount of a product
 
-        total_price = round(self.price * quantity / self.unit, 2)
+        If the quantity argument is omitted, unit attribute value should be
+        used instead.
+
+        :param quantity: a quantity to purchase, defaults to None
+        :type quantity: int | float | None
+
+        :return: total price for a specified amount of a product
+        :rtype: int
+
+        """
+
+        quantity = quantity or self.unit
+        total_price = round(self.price * quantity / self.unit, 0)
 
         return int(total_price)
 

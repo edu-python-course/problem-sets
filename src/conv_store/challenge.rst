@@ -17,8 +17,8 @@ Your notes are here,
 Products and Carts
 ******************
 
-It's a good idea to with basics - the objects you're going to work with. At
-stage one the main goal is to implement data models - classes to work around
+It's a good idea to start with basics - the objects you're going to work with.
+At stage one the main goal is to implement data models - classes to work around
 data in the future.
 
 Product
@@ -32,23 +32,32 @@ This class represents goods available to purchase in the store.
     * ``price`` - a price for a single product unit (e.g. 3655, 500, 12999)
     * ``unit`` - a size of a single product's unit (e.g. 1, 0.500, 12)
 
-#.  ``Product`` class should implement ``get_total`` method to calculate
-    price for a specified quantity of a product. Quantity arguments is
-    something you can think about as "total number of product's units".
-    It is of a numeric type (``int`` or ``float``) and it may be omitted.
-    In case argument hasn't been passed just consider it is equal to unit
-    attribute value.
+    For example: **apple** costs 1059 for each 0.1 kg. This means ``name``
+    will store ``"apple"``, ``price`` is ``1059`` and ``unit`` is equal
+    to ``0.1``.
 
-.. rubric:: Test Cases
+#.  ``Product`` class should implement ``get_total`` method to calculate
+    a total price for a specified quantity of a product to purchase.
+    Desired quantity will be passed as an optional argument of a numeric type
+    (``int`` or ``float``). In case quantity argument is omitted -
+    just use ``unit`` attribute value instead.
+
+.. rubric:: Code notes
+
+.. autoclass:: conv_store.Product
+    :members: get_total
+
+.. rubric:: Test cases
 
 .. code-block:: python
 
     product_obj = Product()
     product_obj.name = "candy"
-    product_obj.price = 1059
-    product_obj.unit = 0.1
+    product_obj.price = 1059   # 1059 coins
+    product_obj.unit = 0.1     # for each 0.1
 
-    assert product_obj.get_total(0.7) == 7413
+    assert product_obj.get_total(0.7) == 7413  # purchase 0.7 units
+    assert product_obj.get_total() == 1059
 
 Shopping Cart
 =============
@@ -64,7 +73,8 @@ is to store information about the purchases and their amount (quantities).
 #.  ``ShoppingCart`` should implement ``get_total`` method to calculate the
     total price for the entire cart contents.
 
-.. rubric:: Test Cases
+
+.. rubric:: Test cases
 
 .. code-block:: python
 
@@ -108,7 +118,7 @@ default objects string representations. It's time to fix this.
     * consider carts equal if products and corresponding quantities are
       the same
 
-.. rubric:: Test Cases
+.. rubric:: Test cases
 
 .. code-block:: python
 
@@ -171,7 +181,7 @@ card, but they maybe extended at any time.
     "Processing card payment..." and "Security code: {code}" should be
     printed out.
 
-.. rubric:: Test Cases
+.. rubric:: Test cases
 
 .. code-block:: python
 
@@ -206,7 +216,7 @@ More Enhancements for Shopping Carts
 #.  Implement ``sub_product`` to decrease some product quantity. If quantity
     is equal to 0 (zero) or less - remove product from the cart.
 
-.. rubric:: Test Cases
+.. rubric:: Test cases
 
 .. code-block:: python
 
