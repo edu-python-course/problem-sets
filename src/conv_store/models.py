@@ -87,7 +87,7 @@ class Product:
         """
 
         quantity = quantity or self.unit
-        total_price = round(self.price * quantity / self.unit, 2)
+        total_price = round(self.price * quantity / self.unit, 0)
 
         return int(total_price)
 
