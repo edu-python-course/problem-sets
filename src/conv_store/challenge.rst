@@ -33,11 +33,11 @@ This class represents goods available to purchase in the store.
     * ``unit`` - a size of a single product's unit (e.g. 1, 0.500, 12)
 
 #.  ``Product`` class should implement ``get_total`` method to calculate
-    price for a specified quantity of a product. Quantity arguments is
-    something you can think about as "total number of product's units".
-    It is of a numeric type (``int`` or ``float``) and it may be omitted.
-    In case argument hasn't been passed just consider it is equal to unit
-    attribute value.
+    a total price for a specified quantity of a product. Desired quantity
+    will be passed as an optional argument of a numeric type (``int`` or
+    ``float``). The returned value is the multiplication result for
+    price and quantity values. In case quantity argument is omitted -
+    just use ``unit`` attribute instead.
 
 .. rubric:: Test Cases
 
@@ -49,6 +49,7 @@ This class represents goods available to purchase in the store.
     product_obj.unit = 0.1
 
     assert product_obj.get_total(0.7) == 7413
+    assert product_obj.get_total() == 1059
 
 Shopping Cart
 =============
