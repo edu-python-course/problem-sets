@@ -46,6 +46,9 @@ class TestProductModel(unittest.TestCase):
     def test_get_total(self):
         self.assertEqual(7413, self.instance.get_total(0.7))
 
+    def test_get_total_without_args(self):
+        self.assertEqual(self.product_price, self.instance.get_total())
+
     def test_get_units(self):
         self.assertEqual(7, self.instance.get_units(0.7))
 
