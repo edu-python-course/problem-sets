@@ -80,7 +80,14 @@ class King(Piece):
 
 
 class Queen(Piece):
-    ...  # TODO: add implementation
+    name = "queen"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if abs(dx) != abs(dy) and dx != 0 and dy != 0:
+            return False
+
+        return within_board(position)
 
 
 class Bishop(Piece):
