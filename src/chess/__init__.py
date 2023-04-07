@@ -16,8 +16,8 @@ class Piece:
 
     """
 
-    position: Tuple[int, int]
-    is_white: bool
+    position: Tuple[int, int] = 0, 0
+    is_white: bool = True
     name: str = "piece"
 
     def swap_color(self) -> None:
@@ -51,6 +51,21 @@ class Piece:
         """
 
         raise NotImplementedError
+
+    def get_delta(self, position: Tuple[int, int]) -> Tuple[int, int]:
+        """Return the deltas between current position and the specified one
+
+        :param position: a position to calculate delta with
+        :type position: tuple
+        :return: a pair of delta x and delta y values
+        :rtype: tuple
+
+        """
+
+        position_x, position_y = position
+        current_x, current_y = self.position
+
+        return position_x - current_x, position_y - current_y
 
 
 class King(Piece):
