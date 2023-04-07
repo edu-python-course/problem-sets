@@ -38,6 +38,7 @@ classifiers = [
 packages = [
     { include = "bisearch", from = "src" },
     { include = "calc", from = "src" },
+    { include = "chess", from = "src" },
     { include = "conv_store", from = "src" },
     { include = "datasets", from = "src" },
     { include = "dynamic", from = "src" },
