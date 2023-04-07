@@ -1,6 +1,6 @@
 import unittest
 
-from chess import Piece
+from chess import King, Piece
 
 
 class TestPieceModel(unittest.TestCase):
@@ -33,6 +33,26 @@ class TestPieceModel(unittest.TestCase):
         position = 10, 3
         dx, dy = 10 - 5, 3 - 5
         self.assertTupleEqual((dx, dy), self.instance.get_delta(position))
+
+
+class TestKingPiece(unittest.TestCase):
+    def setUp(self) -> None:
+        self.instance = King()
+        self.instance.set_position((5, 5))
+
+    def test_can_move(self):
+        positions = ((5, 6), (6, 6), (6, 5), (6, 4),
+                     (5, 4), (4, 4), (4, 5), (4, 6))
+        self.assertTrue(
+            all(self.instance.can_move(position) for position in positions)
+        )
+
+    def test_cannot_move(self):
+        self.instance.set_position((0, 0))
+        positions = ((-1, -1), (2, 8), (3, 7), (0, 7))
+        self.assertTrue(
+            all(not self.instance.can_move(position) for position in positions)
+        )
 
 
 if __name__ == "__main__":
