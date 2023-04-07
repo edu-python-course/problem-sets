@@ -28,6 +28,12 @@ class TestPieceModel(unittest.TestCase):
             self.instance.set_position(position)
             self.assertRegex(*logger.output, regex)
 
+    def test_get_delta(self):
+        self.instance.position = 5, 5
+        position = 10, 3
+        dx, dy = 10 - 5, 3 - 5
+        self.assertTupleEqual((dx, dy), self.instance.get_delta(position))
+
 
 if __name__ == "__main__":
     unittest.main()
