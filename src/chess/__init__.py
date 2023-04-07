@@ -1,46 +1,80 @@
+import logging
 from typing import List, Tuple
+
+logger = logging.getLogger(__name__)
 
 
 class Piece:
-    """Chess piece model"""
+    """Chess piece model
 
-    # TODO: add implementation
+    :ivar name: the name of a piece (e.g. "king", "pawn")
+    :type name: str
+    :ivar position: the position on a chess board
+    :type position: tuple
+    :ivar is_white: a flag indicating if a chess piece is white
+    :type position: bool
+
+    """
+
+    position: Tuple[int, int]
+    is_white: bool
+    name: str = "piece"
+
+    def swap_color(self) -> None:
+        """Change the piece color to the opposite one"""
+
+        self.is_white = not self.is_white
+
+    def set_position(self, position: Tuple[int, int]) -> None:
+        """Change piece position to a specified one
+
+        :param position: new position for a piece
+        :type position: tuple
+
+        """
+
+        if within_board(position):
+            self.position = position
+            return
+
+        logger.warning(f"Position {position} is outside the board")
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        """Check if a move to a specified position is valid
+
+        :param position: a position to check
+        :type position: tuple
+
+        :return: True if move is valid, otherwise False
+        :rtype: bool
+
+        """
+
+        raise NotImplementedError
 
 
 class King(Piece):
-    """King piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 class Queen(Piece):
-    """Queen piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 class Bishop(Piece):
-    """Bishop piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 class Knight(Piece):
-    """Knight piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 class Rook(Piece):
-    """Rook piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 class Pawn(Piece):
-    """Pawn piece model"""
-
-    # TODO: add implementation
+    ...  # TODO: add implementation
 
 
 def within_board(position: Tuple[int, int]) -> bool:
