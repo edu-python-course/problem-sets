@@ -69,28 +69,73 @@ class Piece:
 
 
 class King(Piece):
-    ...  # TODO: add implementation
+    name = "king"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if not -1 <= dx <= 1 or not -1 <= dy <= 1:
+            return False
+
+        return within_board(position)
 
 
 class Queen(Piece):
-    ...  # TODO: add implementation
+    name = "queen"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if abs(dx) != abs(dy) and dx != 0 and dy != 0:
+            return False
+
+        return within_board(position)
 
 
 class Bishop(Piece):
-    ...  # TODO: add implementation
+    name = "bishop"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if abs(dx) != abs(dy):
+            return False
+
+        return within_board(position)
 
 
 class Knight(Piece):
-    ...  # TODO: add implementation
+    name = "knight"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if (abs(dx), abs(dy)) not in ((2, 1), (1, 2)):
+            return False
+
+        return within_board(position)
 
 
 class Rook(Piece):
-    ...  # TODO: add implementation
+    name = "rook"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if dx != 0 and dy != 0:
+            return False
+
+        return within_board(position)
 
 
 class Pawn(Piece):
-    ...  # TODO: add implementation
+    name = "pawn"
 
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if dx != 0:
+            return False
+        if self.is_white and dy != 1:
+            return False
+        if not self.is_white and dy != -1:
+            return False
+
+        return within_board(position)
 
 def within_board(position: Tuple[int, int]) -> bool:
     """Check if position is within a chess board
