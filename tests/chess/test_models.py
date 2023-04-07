@@ -55,7 +55,7 @@ class TestKingPiece(unittest.TestCase):
         )
 
 
-class TestQueen(unittest.TestCase):
+class TestQueenPiece(unittest.TestCase):
     def setUp(self) -> None:
         self.instance = Queen()
         self.instance.set_position((2, 3))
