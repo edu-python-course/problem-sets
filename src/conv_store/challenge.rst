@@ -28,9 +28,9 @@ This class represents goods available to purchase in the store.
 
 #.  Each product instance should have next attributes:
 
-    * ``name`` - a product title (e.g. "apple", "juice")
-    * ``price`` - a price for a single product unit (e.g. 3655, 500, 12999)
-    * ``unit`` - a size of a single product's unit (e.g. 1, 0.500, 12)
+    - ``name`` - a product title (e.g. "apple", "juice")
+    - ``price`` - a price for a single product unit (e.g. 3655, 500, 12999)
+    - ``unit`` - a size of a single product's unit (e.g. 1, 0.500, 12)
 
     For example: **apple** costs 1059 for each 0.1 kg. This means ``name``
     will store ``"apple"``, ``price`` is ``1059`` and ``unit`` is equal
@@ -42,7 +42,7 @@ This class represents goods available to purchase in the store.
     (``int`` or ``float``). In case quantity argument is omitted -
     just use ``unit`` attribute value instead.
 
-.. rubric:: Code notes
+.. rubric:: Code explanation
 
 .. autoclass:: conv_store.Product
     :members: get_total
@@ -248,5 +248,4 @@ Add autotests for ``ShoppingCart`` and ``Product`` models.
 
 #.  Tests should be located inside of "tests" directory.
 #.  ``pytest`` and ``coverage`` libraries will be used for testing.
-#.  At least 50% coverage.
 #.  Project dependencies are to be updated.
