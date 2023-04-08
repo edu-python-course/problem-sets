@@ -12,13 +12,26 @@ class Piece:
     :ivar position: the position on a chess board
     :type position: tuple
     :ivar is_white: a flag indicating if a chess piece is white
-    :type position: bool
+    :type is_white: bool
 
     """
 
-    position: Tuple[int, int] = 0, 0
-    is_white: bool = True
     name: str = "piece"
+
+    def __init__(self,
+                 is_white: bool = True,
+                 position: Tuple[int, int] = (0, 0)) -> None:
+        """Initialize instance
+
+        :param is_white: indicating if a piece is white. Defaults to True.
+        :type is_white: bool
+        :param position: initial piece position. Defaults to (0, 0).
+        :type position: tuple
+
+        """
+
+        self.is_white = is_white
+        self.position = position
 
     def swap_color(self) -> None:
         """Change the piece color to the opposite one"""

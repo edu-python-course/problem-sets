@@ -9,6 +9,15 @@ class TestPieceModel(unittest.TestCase):
     def setUp(self) -> None:
         self.instance = Piece()
 
+    def test_default_initializer(self):
+        self.assertIs(True, self.instance.is_white)
+        self.assertTupleEqual((0, 0), self.instance.position)
+
+    def test_initializer(self):
+        instance = Piece(False, (7, 6))
+        self.assertIs(False, instance.is_white)
+        self.assertTupleEqual((7, 6), instance.position)
+
     def test_swap_color(self):
         self.instance.is_white = True
         self.instance.swap_color()
