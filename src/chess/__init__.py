@@ -1,3 +1,8 @@
+"""
+Chess challenge
+
+"""
+
 import logging
 from typing import List, Tuple
 
@@ -62,7 +67,7 @@ class Piece:
             self.position = position
             return
 
-        logger.warning(f"Position {position} is outside the board")
+        logger.warning("Position %s is outside the board", position)
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         """Check if a move to a specified position is valid
@@ -93,71 +98,71 @@ class Piece:
         return position_x - current_x, position_y - current_y
 
 
-class King(Piece):
+class King(Piece):  # pylint: disable=C0115
     name = "king"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if not -1 <= dx <= 1 or not -1 <= dy <= 1:
+        delta_x, delta_y = self.get_delta(position)
+        if not -1 <= delta_x <= 1 or not -1 <= delta_y <= 1:
             return False
 
         return within_board(position)
 
 
-class Queen(Piece):
+class Queen(Piece):  # pylint: disable=C0115
     name = "queen"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if abs(dx) != abs(dy) and dx != 0 and dy != 0:
+        delta_x, delta_y = self.get_delta(position)
+        if abs(delta_x) != abs(delta_y) and delta_x != 0 and delta_y != 0:
             return False
 
         return within_board(position)
 
 
-class Bishop(Piece):
+class Bishop(Piece):  # pylint: disable=C0115
     name = "bishop"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if abs(dx) != abs(dy):
+        delta_x, delta_y = self.get_delta(position)
+        if abs(delta_x) != abs(delta_y):
             return False
 
         return within_board(position)
 
 
-class Knight(Piece):
+class Knight(Piece):  # pylint: disable=C0115
     name = "knight"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if (abs(dx), abs(dy)) not in ((2, 1), (1, 2)):
+        delta_x, delta_y = self.get_delta(position)
+        if (abs(delta_x), abs(delta_y)) not in ((2, 1), (1, 2)):
             return False
 
         return within_board(position)
 
 
-class Rook(Piece):
+class Rook(Piece):  # pylint: disable=C0115
     name = "rook"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if dx != 0 and dy != 0:
+        delta_x, delta_y = self.get_delta(position)
+        if delta_x != 0 and delta_y != 0:
             return False
 
         return within_board(position)
 
 
-class Pawn(Piece):
+class Pawn(Piece):  # pylint: disable=C0115
     name = "pawn"
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        dx, dy = self.get_delta(position)
-        if dx != 0:
+        delta_x, delta_y = self.get_delta(position)
+        if delta_x != 0:
             return False
-        if self.is_white and dy != 1:
+        if self.is_white and delta_y != 1:
             return False
-        if not self.is_white and dy != -1:
+        if not self.is_white and delta_y != -1:
             return False
 
         return within_board(position)
@@ -174,9 +179,9 @@ def within_board(position: Tuple[int, int]) -> bool:
 
     """
 
-    x, y = position
+    position_x, position_y = position
 
-    return 0 <= x <= 7 and 0 <= y <= 7
+    return 0 <= position_x <= 7 and 0 <= position_y <= 7
 
 
 def filter_can_move(pieces: List[Piece],
