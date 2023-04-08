@@ -124,8 +124,18 @@ class Rook(Piece):
 
 
 class Pawn(Piece):
-    ...  # TODO: add implementation
+    name = "pawn"
 
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if dx != 0:
+            return False
+        if self.is_white and dy != 1:
+            return False
+        if not self.is_white and dy != -1:
+            return False
+
+        return within_board(position)
 
 def within_board(position: Tuple[int, int]) -> bool:
     """Check if position is within a chess board

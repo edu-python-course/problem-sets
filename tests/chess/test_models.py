@@ -1,6 +1,6 @@
 import unittest
 
-from chess import Bishop, King, Knight, Piece, Queen, Rook
+from chess import Bishop, King, Knight, Pawn, Piece, Queen, Rook
 
 
 class TestPieceModel(unittest.TestCase):
@@ -128,6 +128,28 @@ class TestRookPiece(unittest.TestCase):
         self.assertTrue(
             all(not self.instance.can_move(position) for position in positions)
         )
+
+
+class TestPawnPiece(unittest.TestCase):
+    def setUp(self) -> None:
+        self.instance = Pawn()
+        self.instance.set_position((6, 5))
+
+    def test_can_move(self):
+        self.instance.is_white = False
+        self.assertTrue(self.instance.can_move((6, 4)))
+
+        self.instance.is_white = True
+        self.assertTrue(self.instance.can_move((6, 6)))
+
+    def test_cannot_move(self):
+        self.instance.is_white = False
+        self.assertFalse(self.instance.can_move((6, 6)))
+        self.assertFalse(self.instance.can_move((6, 3)))
+        self.assertFalse(self.instance.can_move((5, 5)))
+
+        self.instance.is_white = True
+        self.assertFalse(self.instance.can_move((6, 4)))
 
 
 if __name__ == "__main__":
