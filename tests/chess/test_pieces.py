@@ -60,8 +60,7 @@ class TestPieceModel(unittest.TestCase):
 
 class TestKingPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.King(True)
-        self.instance.set_position((5, 5))
+        self.instance = piece.King(position=(5, 5))
 
     def test_str_white(self):
         self.instance.is_white = True
@@ -88,8 +87,7 @@ class TestKingPiece(unittest.TestCase):
 
 class TestQueenPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.Queen(False)
-        self.instance.set_position((2, 3))
+        self.instance = piece.Queen(position=(2, 3))
 
     def test_str_white(self):
         self.instance.is_white = True
@@ -115,8 +113,7 @@ class TestQueenPiece(unittest.TestCase):
 
 class TestBishopPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.Bishop()
-        self.instance.set_position((5, 5))
+        self.instance = piece.Bishop(position=(5, 5))
 
     def test_str_white(self):
         self.instance.is_white = True
@@ -141,8 +138,7 @@ class TestBishopPiece(unittest.TestCase):
 
 class TestKnightPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.Knight(False)
-        self.instance.set_position((3, 4))
+        self.instance = piece.Knight(position=(3, 4))
 
     def test_str_white(self):
         self.instance.is_white = True
@@ -169,8 +165,7 @@ class TestKnightPiece(unittest.TestCase):
 
 class TestRookPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.Rook()
-        self.instance.set_position((5, 2))
+        self.instance = piece.Rook(position=(5, 2))
 
     def test_str_white(self):
         self.instance.is_white = True
@@ -195,8 +190,7 @@ class TestRookPiece(unittest.TestCase):
 
 class TestPawnPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = piece.Pawn()
-        self.instance.set_position((6, 5))
+        self.instance = piece.Pawn(position=(6, 5))
 
     def test_str_white(self):
         self.instance.is_white = True
