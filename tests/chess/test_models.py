@@ -1,3 +1,4 @@
+import sys
 import unittest
 
 from chess import Bishop, King, Knight, Pawn, Piece, Queen, Rook
@@ -29,6 +30,12 @@ class TestPieceModel(unittest.TestCase):
         position = 2, 5
         self.instance.set_position(position)
         self.assertTupleEqual(position, self.instance.position)
+
+    @unittest.skipIf(sys.version_info < (3, 10),
+                     "Test requires Python3.10 or higher")
+    def test_no_log(self):
+        with self.assertNoLogs():
+            self.instance.set_position((1, 1))
 
     def test_position_outside(self):
         position = 10, 10
