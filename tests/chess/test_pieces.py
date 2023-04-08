@@ -2,6 +2,7 @@ import sys
 import unittest
 
 from chess import piece
+from chess import symbols
 
 
 class TestPieceModel(unittest.TestCase):
@@ -64,11 +65,11 @@ class TestKingPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_KING, str(self.instance))
+        self.assertEqual(symbols.WHITE_KING, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_KING, str(self.instance))
+        self.assertEqual(symbols.BLACK_KING, str(self.instance))
 
     def test_can_move(self):
         positions = ((5, 6), (6, 6), (6, 5), (6, 4),
@@ -92,11 +93,11 @@ class TestQueenPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_QUEEN, str(self.instance))
+        self.assertEqual(symbols.WHITE_QUEEN, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_QUEEN, str(self.instance))
+        self.assertEqual(symbols.BLACK_QUEEN, str(self.instance))
 
     def test_can_move(self):
         positions = ((2, 5), (4, 5), (7, 3), (3, 2),
@@ -119,11 +120,11 @@ class TestBishopPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_BISHOP, str(self.instance))
+        self.assertEqual(symbols.WHITE_BISHOP, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_BISHOP, str(self.instance))
+        self.assertEqual(symbols.BLACK_BISHOP, str(self.instance))
 
     def test_can_move(self):
         positions = ((6, 6), (7, 3), (2, 2), (3, 7))
@@ -145,11 +146,11 @@ class TestKnightPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_KNIGHT, str(self.instance))
+        self.assertEqual(symbols.WHITE_KNIGHT, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_KNIGHT, str(self.instance))
+        self.assertEqual(symbols.BLACK_KNIGHT, str(self.instance))
 
     def test_can_move(self):
         positions = ((4, 6), (5, 5), (5, 3), (4, 2),
@@ -173,11 +174,11 @@ class TestRookPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_ROOK, str(self.instance))
+        self.assertEqual(symbols.WHITE_ROOK, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_ROOK, str(self.instance))
+        self.assertEqual(symbols.BLACK_ROOK, str(self.instance))
 
     def test_can_move(self):
         positions = ((5, 4), (7, 2), (5, 1), (2, 2))
@@ -199,11 +200,11 @@ class TestPawnPiece(unittest.TestCase):
 
     def test_str_white(self):
         self.instance.is_white = True
-        self.assertEqual(piece.WHITE_PAWN, str(self.instance))
+        self.assertEqual(symbols.WHITE_PAWN, str(self.instance))
 
     def test_str_black(self):
         self.instance.is_white = False
-        self.assertEqual(piece.BLACK_PAWN, str(self.instance))
+        self.assertEqual(symbols.BLACK_PAWN, str(self.instance))
 
     def test_can_move(self):
         self.instance.is_white = False

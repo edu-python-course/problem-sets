@@ -1,22 +1,15 @@
+"""
+Chess pieces implementations
+
+"""
+
 import logging
 from typing import Tuple
 
+from chess import symbols
 from chess.func import within_board
 
 logger = logging.getLogger(__name__)
-
-WHITE_KING = chr(0x2654)
-BLACK_KING = chr(0x265A)
-WHITE_QUEEN = chr(0x2655)
-BLACK_QUEEN = chr(0x265B)
-WHITE_ROOK = chr(0x2656)
-BLACK_ROOK = chr(0x265C)
-WHITE_BISHOP = chr(0x2657)
-BLACK_BISHOP = chr(0x265D)
-WHITE_KNIGHT = chr(0x2658)
-BLACK_KNIGHT = chr(0x265E)
-WHITE_PAWN = chr(0x2659)
-BLACK_PAWN = chr(0x265F)
 
 
 class Piece:
@@ -99,7 +92,7 @@ class Piece:
 
 class King(Piece):  # pylint: disable=C0115
     def __str__(self) -> str:
-        return WHITE_KING if self.is_white else BLACK_KING
+        return symbols.WHITE_KING if self.is_white else symbols.BLACK_KING
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
@@ -111,7 +104,7 @@ class King(Piece):  # pylint: disable=C0115
 
 class Queen(Piece):  # pylint: disable=C0115
     def __str__(self) -> str:
-        return WHITE_QUEEN if self.is_white else BLACK_QUEEN
+        return symbols.WHITE_QUEEN if self.is_white else symbols.BLACK_QUEEN
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
@@ -124,7 +117,7 @@ class Queen(Piece):  # pylint: disable=C0115
 class Bishop(Piece):  # pylint: disable=C0115
 
     def __str__(self) -> str:
-        return WHITE_BISHOP if self.is_white else BLACK_BISHOP
+        return symbols.WHITE_BISHOP if self.is_white else symbols.BLACK_BISHOP
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
@@ -137,7 +130,7 @@ class Bishop(Piece):  # pylint: disable=C0115
 class Knight(Piece):  # pylint: disable=C0115
 
     def __str__(self) -> str:
-        return WHITE_KNIGHT if self.is_white else BLACK_KNIGHT
+        return symbols.WHITE_KNIGHT if self.is_white else symbols.BLACK_KNIGHT
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
@@ -150,7 +143,7 @@ class Knight(Piece):  # pylint: disable=C0115
 class Rook(Piece):  # pylint: disable=C0115
 
     def __str__(self) -> str:
-        return WHITE_ROOK if self.is_white else BLACK_ROOK
+        return symbols.WHITE_ROOK if self.is_white else symbols.BLACK_ROOK
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
@@ -163,7 +156,7 @@ class Rook(Piece):  # pylint: disable=C0115
 class Pawn(Piece):  # pylint: disable=C0115
 
     def __str__(self) -> str:
-        return WHITE_PAWN if self.is_white else BLACK_PAWN
+        return symbols.WHITE_PAWN if self.is_white else symbols.BLACK_PAWN
 
     def can_move(self, position: Tuple[int, int]) -> bool:
         delta_x, delta_y = self.get_delta(position)
