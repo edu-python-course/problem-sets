@@ -33,6 +33,18 @@ class Piece:
         self.is_white = is_white
         self.position = position
 
+    def __repr__(self) -> str:
+        """Return a string representation of an instance"""
+
+        return f"{self.__class__.__name__}({self.is_white}, {self.position})"
+
+    def __str__(self) -> str:
+        """Return a string version of an instance"""
+
+        color = "white" if self.is_white else "black"
+
+        return f"{color} {self.name} at {self.position}"
+
     def swap_color(self) -> None:
         """Change the piece color to the opposite one"""
 

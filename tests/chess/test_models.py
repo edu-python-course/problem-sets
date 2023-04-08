@@ -52,8 +52,11 @@ class TestPieceModel(unittest.TestCase):
 
 class TestKingPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = King()
+        self.instance = King(True)
         self.instance.set_position((5, 5))
+
+    def test_str(self):
+        self.assertEqual("white king at (5, 5)", str(self.instance))
 
     def test_can_move(self):
         positions = ((5, 6), (6, 6), (6, 5), (6, 4),
@@ -72,8 +75,11 @@ class TestKingPiece(unittest.TestCase):
 
 class TestQueenPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = Queen()
+        self.instance = Queen(False)
         self.instance.set_position((2, 3))
+
+    def test_str(self):
+        self.assertEqual("black queen at (2, 3)", str(self.instance))
 
     def test_can_move(self):
         positions = ((2, 5), (4, 5), (7, 3), (3, 2),
@@ -91,8 +97,11 @@ class TestQueenPiece(unittest.TestCase):
 
 class TestBishopPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = Bishop()
+        self.instance = Bishop(True)
         self.instance.set_position((5, 5))
+
+    def test_str(self):
+        self.assertEqual("white bishop at (5, 5)", str(self.instance))
 
     def test_can_move(self):
         positions = ((6, 6), (7, 3), (2, 2), (3, 7))
@@ -109,8 +118,11 @@ class TestBishopPiece(unittest.TestCase):
 
 class TestKnightPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = Knight()
+        self.instance = Knight(False)
         self.instance.set_position((3, 4))
+
+    def test_str(self):
+        self.assertEqual("black knight at (3, 4)", str(self.instance))
 
     def test_can_move(self):
         positions = ((4, 6), (5, 5), (5, 3), (4, 2),
@@ -129,8 +141,11 @@ class TestKnightPiece(unittest.TestCase):
 
 class TestRookPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = Rook()
+        self.instance = Rook(True)
         self.instance.set_position((5, 2))
+
+    def test_str(self):
+        self.assertEqual("white rook at (5, 2)", str(self.instance))
 
     def test_can_move(self):
         positions = ((5, 4), (7, 2), (5, 1), (2, 2))
@@ -147,8 +162,11 @@ class TestRookPiece(unittest.TestCase):
 
 class TestPawnPiece(unittest.TestCase):
     def setUp(self) -> None:
-        self.instance = Pawn()
+        self.instance = Pawn(False)
         self.instance.set_position((6, 5))
+
+    def test_str(self):
+        self.assertEqual("black pawn at (6, 5)", str(self.instance))
 
     def test_can_move(self):
         self.instance.is_white = False
