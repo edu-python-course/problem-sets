@@ -137,6 +137,7 @@ class Pawn(Piece):
 
         return within_board(position)
 
+
 def within_board(position: Tuple[int, int]) -> bool:
     """Check if position is within a chess board
 

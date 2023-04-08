@@ -28,6 +28,12 @@ class TestPieceModel(unittest.TestCase):
             self.instance.set_position(position)
             self.assertRegex(*logger.output, regex)
 
+    def test_position_unchanged(self):
+        initial = self.instance.position
+        position = 8, 8
+        self.instance.set_position(position)
+        self.assertTupleEqual(initial, self.instance.position)
+
     def test_get_delta(self):
         self.instance.position = 5, 5
         position = 10, 3
