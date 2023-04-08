@@ -1,3 +1,7 @@
+"""
+Chess pieces unicode symbols
+"""
+
 WHITE_KING = chr(0x2654)
 BLACK_KING = chr(0x265A)
 WHITE_QUEEN = chr(0x2655)
