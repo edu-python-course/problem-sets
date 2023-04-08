@@ -1,7 +1,7 @@
 import sys
 import unittest
 
-from chess import Bishop, King, Knight, Pawn, Piece, Queen, Rook
+from chess.piece import Bishop, King, Knight, Pawn, Piece, Queen, Rook
 
 
 class TestPieceModel(unittest.TestCase):
