@@ -1,0 +1,16 @@
+"""
+Chess pieces unicode symbols
+"""
+
+WHITE_KING = chr(0x2654)
+BLACK_KING = chr(0x265A)
+WHITE_QUEEN = chr(0x2655)
+BLACK_QUEEN = chr(0x265B)
+WHITE_ROOK = chr(0x2656)
+BLACK_ROOK = chr(0x265C)
+WHITE_BISHOP = chr(0x2657)
+BLACK_BISHOP = chr(0x265D)
+WHITE_KNIGHT = chr(0x2658)
+BLACK_KNIGHT = chr(0x265E)
+WHITE_PAWN = chr(0x2659)
+BLACK_PAWN = chr(0x265F)
