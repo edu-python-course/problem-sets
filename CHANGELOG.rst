@@ -1,4 +1,24 @@
 #################
+Release 2023.04.1
+#################
+
+***************
+Chess challenge
+***************
+
+Added a new challenge for the OOP block (by Vladyslav Ponomaryov).
+
+- Implement class for each chess piece
+- Implement function to filter pieces that can move to a specified place
+  on a chess board
+
+*****************
+Convenience store
+*****************
+
+Added "Payment processors" description.
+
+#################
 Release 2023.01.2
 #################
 
