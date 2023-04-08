@@ -168,4 +168,4 @@ def filter_can_move(pieces: List[Piece],
 
     """
 
-    # TODO: add implementation
+    return [piece for piece in pieces if piece.can_move(position)]
