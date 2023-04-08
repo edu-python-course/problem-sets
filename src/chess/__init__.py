@@ -113,7 +113,14 @@ class Knight(Piece):
 
 
 class Rook(Piece):
-    ...  # TODO: add implementation
+    name = "rook"
+
+    def can_move(self, position: Tuple[int, int]) -> bool:
+        dx, dy = self.get_delta(position)
+        if dx != 0 and dy != 0:
+            return False
+
+        return within_board(position)
 
 
 class Pawn(Piece):

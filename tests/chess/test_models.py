@@ -1,6 +1,6 @@
 import unittest
 
-from chess import Bishop, King, Knight, Piece, Queen
+from chess import Bishop, King, Knight, Piece, Queen, Rook
 
 
 class TestPieceModel(unittest.TestCase):
@@ -107,6 +107,24 @@ class TestKnightPiece(unittest.TestCase):
     def test_cannot_move(self):
         self.instance.set_position((6, 2))
         positions = ((6, 4), (8, 3), (4, 0), (0, 7), (5, 3))
+        self.assertTrue(
+            all(not self.instance.can_move(position) for position in positions)
+        )
+
+
+class TestRookPiece(unittest.TestCase):
+    def setUp(self) -> None:
+        self.instance = Rook()
+        self.instance.set_position((5, 2))
+
+    def test_can_move(self):
+        positions = ((5, 4), (7, 2), (5, 1), (2, 2))
+        self.assertTrue(
+            all(self.instance.can_move(position) for position in positions)
+        )
+
+    def test_cannot_move(self):
+        positions = ((3, 4), (4, 6), (8, 2), (3, 1))
         self.assertTrue(
             all(not self.instance.can_move(position) for position in positions)
         )
