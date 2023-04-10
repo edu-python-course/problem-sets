@@ -1,16 +1,35 @@
 """
+***********
 Game models
+***********
+
+Enemy
+=====
+
+.. autoclass:: Enemy
+    :members: decrease_health, select_attack, select_defence
+    :special_members: __init__
+
+Player
+======
+
+.. autoclass:: Player
+    :members: decrease_health, select_attack, select_defence, attack, defence
+    :special_members: __init__
 
 """
 
 import logging
 import random
 from abc import ABC, abstractmethod
+from functools import wraps
 
 from wtk import settings
 from wtk.enums import FightChoice, FightResult, get_fight_result
 from wtk.exceptions import EnemyDown, GameOver
 from wtk.loggers import stream_handler
+
+__all__ = ["Enemy", "Player"]
 
 
 class _AbstractModel(ABC):
@@ -30,9 +49,12 @@ class _AbstractModel(ABC):
 
 
 class Enemy(_AbstractModel):
-    """Enemy model
+    """
+    Enemy model
 
-    :ivar level: enemy's level
+    Represents the playing enemy-bot.
+
+    :ivar level: enemy's level value
     :type level: int
     :ivar health: enemy's instance health points
     :type health: int
@@ -40,7 +62,13 @@ class Enemy(_AbstractModel):
     """
 
     def __init__(self, level: int = settings.INITIAL_ENEMY_LEVEL) -> None:
-        """Initialize instance"""
+        """
+        Initialize instance
+
+        :param level: an enemy's level indicator
+        :type level: int
+
+        """
 
         self.health = level
         self.level = level
@@ -56,7 +84,11 @@ class Enemy(_AbstractModel):
         return f"Enemy level {self.level}"
 
     def decrease_health(self) -> None:
-        """Decrease health points
+        """
+        Decrease health points
+
+        This method decreases the health meter value. When it comes to be
+        less than 1 (one) an ``EnemyDown`` exception is raised.
 
         :raise: EnemyDown
 
@@ -68,19 +100,31 @@ class Enemy(_AbstractModel):
 
     @staticmethod
     def _select_fight_choice() -> FightChoice:  # pragma: no cover
-        """Return a random fight choice"""
+        """
+        Return a random fight choice
+
+        Choices made by an enemy are random.
+
+        :return: a fight choice
+
+        """
 
         return random.choice(tuple(FightChoice))
 
+    @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_attack(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
+    @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_defence(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
 
 class Player(_AbstractModel):
-    """Player model
+    """
+    Player model
+
+    This model is controlled by the player.
 
     :ivar name: player's name
     :type name: str
@@ -88,8 +132,6 @@ class Player(_AbstractModel):
     :type health: int
     :ivar score: player's instance gained score points
     :type score: int
-    :cvar logger: class based message logger
-    :type logger: :class: `logging.Logger`
 
     """
 
@@ -98,7 +140,16 @@ class Player(_AbstractModel):
     logger.addHandler(stream_handler)
 
     def __init__(self, name: str) -> None:
-        """Initialize instance"""
+        """
+        Initialize instance
+
+        This method performs player instance initialization. It set instance
+        name, initial score points value and health.
+
+        :param name: a player's name
+        :type name: str
+
+        """
 
         self.name = name
         self.health = settings.INITIAL_PLAYER_HEALTH
@@ -115,7 +166,11 @@ class Player(_AbstractModel):
         return self.name
 
     def decrease_health(self) -> None:
-        """Decrease instance health points
+        """
+        Decrease health points
+
+        This method decreases the health meter value. When it comes to be
+        less than 1 (one) an ``GameOver`` exception is raised.
 
         :raise: GameOver
 
@@ -127,7 +182,16 @@ class Player(_AbstractModel):
 
     @staticmethod
     def _select_fight_choice() -> FightChoice:
-        """Return fight choice from the user's prompt"""
+        """
+        Return fight choice from the user's prompt
+
+        The player is asked to make their decision for the upcoming fight.
+        The chosen value is validated and if it is invalid the question is
+        repeated.
+
+        :return: a fight choice
+
+        """
 
         choices = ", ".join(
             f"{choice.name} - {choice.value}" for choice in FightChoice
@@ -140,25 +204,50 @@ class Player(_AbstractModel):
             except ValueError:
                 pass
 
+    @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_attack(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
+    @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_defence(self) -> FightChoice:  # pragma: no cover
         return self._select_fight_choice()
 
     @staticmethod
     def fight(attack: FightChoice, defence: FightChoice) -> FightResult:
-        """Implements a fight result calculation interface"""
+        """
+        Fight result calculation interface
+
+        The method calculates the fight result based on the game rules:
+
+        - **knight** beats **thief**
+        - **thief** beats **wizard**
+        - **wizard** beats **knight**
+
+        """
 
         return get_fight_result(attack, defence)
 
     def add_score_points(self, score_points: int) -> None:
-        """Add score points"""
+        """Add score points to the player instance"""
 
         self.score += score_points
 
     def attack(self, enemy: Enemy) -> None:
-        """Attack an enemy"""
+        """
+        Attack an enemy
+
+        Perform attack on an enemy instance. This method takes an enemy
+        instance as an argument. After that, it takes attack choice from
+        the player model and the defence choice from an enemy model.
+        After fight result calculation required operation are to be
+        performed (decrease enemy health, assign score points etc.).
+        Based on fight result should print out a message:
+
+        - "YOUR ATTACK IS SUCCESSFUL!"
+        - "YOUR ATTACK IS FAILED!"
+        - "IT'S A DRAW!"
+
+        """
 
         attack = self.select_attack()
         defence = enemy.select_defence()
@@ -180,7 +269,21 @@ class Player(_AbstractModel):
             self.logger.info(settings.MSG_DRAW)
 
     def defence(self, enemy: Enemy) -> None:
-        """Defend from an enemy's attack"""
+        """
+        Defend from an enemy's attack
+
+        Perform defence from an enemy attack. This method takes an enemy
+        instance as an argument. After that, it takes defence choice from
+        the player model and the attack choice from an enemy model.
+        After fight result calculation required operation are to be
+        performed (decrease player health).
+        Based on fight result should print out a message:
+
+        - "YOUR DEFENCE IS SUCCESSFUL!"
+        - "YOUR DEFENCE IS FAILED!"
+        - "IT'S A DRAW!"
+
+        """
 
         attack = enemy.select_attack()
         defence = self.select_defence()
@@ -194,6 +297,3 @@ class Player(_AbstractModel):
             self.logger.info(settings.MSG_SUCCESS_DEFENCE)
         elif fight_result == FightResult.DRAW:
             self.logger.info(settings.MSG_DRAW)
-
-
-__all__ = ["Enemy", "Player"]
