@@ -1,13 +1,5 @@
 """
-***********
 Game engine
-***********
-
-The game engine implements core functions:
-
-.. autofunction:: get_player_name
-
-.. autofunction:: play
 
 """
 

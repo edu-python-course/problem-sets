@@ -1,5 +1,5 @@
 ###############################################################################
-                       WIZARDS, THIEFS AND KNIGHTS GAME
+                          Wizards, Thiefs and Knights
 ###############################################################################
 
 "Wizards, Thiefs and Knights" (WTK) game is a "Paper, Rock and Scissors" clone,
@@ -8,7 +8,7 @@ the use must type in his or her choice. The enemy is controlled by the script.
 The player's goal is to gain as many score points, as it possible.
 
 *****************
-Code Organization
+Code organization
 *****************
 
 Use separate modules to maintain your code base. For example:
@@ -22,13 +22,13 @@ Use separate modules to maintain your code base. For example:
     |-- settings.py
 
 ******************************
-General Playground Description
+General playground description
 ******************************
 
 The game process is divided into rounds. Each round consists of **attack** and
 **defence** stages. Rounds are repeated, until player is defeated.
 
-Fight Rules
+Fight rules
 ===========
 
 It's simple...
@@ -37,7 +37,7 @@ It's simple...
 - **Thief** beats **Wizard**
 - **Wizard** beats **Knight**
 
-Attack Stage
+Attack stage
 ============
 
 Player selects the choice to attack from **knight**, **thief** or **wizard**,
@@ -53,7 +53,7 @@ In case enemy is defeated:
 - player gains some extra score points
 - next defence stage is skipped, and player attacks again
 
-Defence Stage
+Defence stage
 =============
 
 Player selects the choice to defend from **knight**, **thief** or **wizard**,
@@ -71,19 +71,23 @@ If player is defeated:
 Exceptions
 **********
 
-Enemy Down
+Enemy down
 ==========
 
 This is an exceptional scenario when enemy is defeated. A custom exception
 ``EnemyDown`` should be used to track these cases. Exception should provide
 the details on the enemy's instance, especially its level.
 
-Game Over
+.. autoclass:: wtk.exceptions.EnemyDown
+
+Game over
 =========
 
 This is an exceptional scenario when player is defeated. A custom exception
 ``GameOver`` should be used to track these cases. Exception should provide
 the details on the player's instance, especially its score points.
+
+.. autoclass:: wtk.exceptions.GameOver
 
 ******
 Models
@@ -92,79 +96,51 @@ Models
 Enemy
 =====
 
-Represents the playing enemy-bot. All choices made by this model are random.
-The model should implement methods:
-
-:``__init__``:
-    Initialize enemy instance. Initializer should receive one argument of
-    integer type - ``level: int``. Health points value should be set equal
-    to level value.
-
-:``descrease_health``:
-    Method decreases the health points value by 1 (one). If this value becomes
-    less that 1 (one) the ``EnemyDown`` exception is raised.
-
-:``select_attack``:
-    Return a random attack choice from valid choices.
-
-:``select_defence``:
-    Return a random defence choice from valid choices.
+.. autoclass:: wtk.models.Enemy
+    :members: decrease_health, select_attack, select_defence
+    :special-members: __init__
 
 You are free to implement other methods you like, if needed.
 
 Player
 ======
 
-This model is controlled by the user. It represents a playing user. All choices
-are controlled by the user. The model should implement methods:
-
-:``__init__``:
-    Initialize player instance. Initializer should receive player's name as
-    an argument - ``name: str``. Health points are to be set from settings.
-    Score points should be initialized with 0 (zero).
-
-:``decrease_health``:
-    Method decreases the health points value by 1 (one). If this value becomes
-    less that 1 (one) the ``GameOver`` exception is raised.
-
-:``select_attack``:
-    Return a fight choice made by the user. Performs choice validation.
-
-:``select_defence``:
-    Return a fight choice made by the user. Performs choice validation.
-
-:``fight``:
-    Static method to perform a fight. Takes two arguments representing attack
-    and defence choices. Performs fight result calculation and return it back.
-
-:``attack``:
-    Perform attack on an enemy instance. This method takes an enemy instance as
-    an argument. After that, it takes attack choice from the player model and
-    the defence choice from an enemy model. After fight result calculation
-    required operation are to be performed (decrease enemy health, assign
-    score points etc.). Based on fight result should print out a message:
-
-    - ``"YOUR ATTACK IS SUCCESSFUL!"``
-    - ``"YOUR ATTACK IS FAILED!"``
-    - ``IT'S A DRAW!"``
-
-:``defence``:
-    Perform defence from an enemy attack. This method takes an enemy instance
-    as an argument. After that, it takes defence choice from the player model
-    and the attack choice from an enemy model. After fight result calculation
-    required operation are to be performed (decrease player health). Based on
-    fight result should print out a message:
-
-    - ``"YOUR DEFENCE IS SUCCESSFUL!"``
-    - ``"YOUR DEFENCE IS FAILED!"``
-    - ``IT'S A DRAW!"``
+.. autoclass:: wtk.models.Player
+    :members: decrease_health, select_attack, select_defence,
+              fight, attack, defence
+    :special-members: __init__
 
 ********
 Settings
 ********
 
-**settings.py** module contains constants values for the game (e.g.
-``INITIAL_PLAYER_HEALTH = 5``).
+Settings module contains constants values for the game.
+
+For example,
+
+.. py:data:: INITIAL_PLAYER_NAME
+
+    Initial health meter value for a player instance
+
+    :type: int
+
+.. py:data:: INITIAL_ENEMY_LEVEL
+
+    Indicates the level to initialize the first enemy instance.
+
+    :type: int
+
+.. py:data:: SCORE_SUCCESS_ATTACK
+
+    Set the score value to assign when an attack is successful
+
+    :type: int
+
+.. py:data:: SCORE_ENEMY_DOWN
+
+    Set the score value to assign when an enemy is defeated
+
+    :type: int
 
 ******
 Engine
@@ -182,6 +158,8 @@ Asks the user to type in his or her name and return it back.
 Leading and trailing whitespaces are to be trimmed.
 Name should contain at least one character.
 
+.. autofunction:: wtk.engine.get_player_name
+
 Play
 ====
 
@@ -194,6 +172,8 @@ terminal.
 ``KeyboardInterrupt`` should be handled as well - it's behavior is similar
 to "Game Over" event, but "game over" message should be omitted.
 
+.. autofunction:: wtk.engine.play
+
 *********************
 Optional Enhancements
 *********************
@@ -205,3 +185,4 @@ Optional Enhancements
         AVAILABLE MENU CHOICES: PLAY, SCORES, EXIT
         TYPE YOUR CHOICE HERE:
 
+#.  Store score table to the database instead of using text file.
