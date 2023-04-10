@@ -9,7 +9,9 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     # noinspection PyProtectedMember
-    from wrw_game.models import _AbstractModel
+    from wtk.models import _AbstractModel  # pragma: no cover
+
+__all__ = ["EnemyDown", "GameOver"]
 
 
 class _GameModelException(Exception):
@@ -32,6 +34,3 @@ class EnemyDown(_GameModelException):
 
 class GameOver(_GameModelException):
     """Raised when a player is defeated"""
-
-
-__all__ = ["EnemyDown", "GameOver"]

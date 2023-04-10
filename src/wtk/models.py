@@ -7,10 +7,10 @@ import logging
 import random
 from abc import ABC, abstractmethod
 
-from wrw_game import settings
-from wrw_game.enums import FightChoice, FightResult, get_fight_result
-from wrw_game.exceptions import EnemyDown, GameOver
-from wrw_game.loggers import stream_handler
+from wtk import settings
+from wtk.enums import FightChoice, FightResult, get_fight_result
+from wtk.exceptions import EnemyDown, GameOver
+from wtk.loggers import stream_handler
 
 
 class _AbstractModel(ABC):
