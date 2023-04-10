@@ -1,10 +1,10 @@
 import unittest
 from unittest import mock
 
-from wrw_game import enums
-from wrw_game import exceptions
-from wrw_game import models
-from wrw_game import settings
+from wtk import enums
+from wtk import exceptions
+from wtk import models
+from wtk import settings
 
 
 class TestEnemyModel(unittest.TestCase):

@@ -5,9 +5,9 @@ Game engine
 
 import logging
 
-from wrw_game.exceptions import EnemyDown, GameOver
-from wrw_game.loggers import stream_handler
-from wrw_game.models import Enemy, Player
+from wtk.exceptions import EnemyDown, GameOver
+from wtk.loggers import stream_handler
+from wtk.models import Enemy, Player
 
 logger = logging.getLogger("engine")
 logger.setLevel(logging.INFO)

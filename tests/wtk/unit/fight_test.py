@@ -1,6 +1,6 @@
 import unittest
 
-from wrw_game.enums import FightChoice, FightResult, get_fight_result
+from wtk.enums import FightChoice, FightResult, get_fight_result
 
 
 class TestFightChoice(unittest.TestCase):

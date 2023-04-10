@@ -45,7 +45,7 @@ packages = [
     { include = "sequences", from = "src" },
     { include = "sorting", from = "src" },
     { include = "primes", from = "src" },
-    { include = "wrw_game", from = "src" },
+    { include = "wtk", from = "src" },
 ]
 
 [tool.poetry.dependencies]
@@ -58,7 +58,7 @@ pylint = "^2.15.5"
 tox = "^4.0"
 
 [tool.poetry.scripts]
-wrw_game = "wrw_game.__main__:run"
+wtk = "wtk.__main__:run"
 
 [tool.pytest.ini_options]
 addopts = "--cov=src --verbose"

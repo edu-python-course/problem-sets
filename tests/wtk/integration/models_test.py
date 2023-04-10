@@ -1,10 +1,10 @@
 import unittest
 from unittest import mock
 
-from wrw_game import enums
-from wrw_game import exceptions
-from wrw_game import models
-from wrw_game import settings
+from wtk import enums
+from wtk import exceptions
+from wtk import models
+from wtk import settings
 
 
 class TestSuccessAttack(unittest.TestCase):
@@ -14,11 +14,11 @@ class TestSuccessAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.ROBBER
     )
     def test_decrease_health(self, *mocks):
@@ -28,11 +28,11 @@ class TestSuccessAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.ROBBER
     )
     def test_score_assignment(self, *mocks):
@@ -42,11 +42,11 @@ class TestSuccessAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.ROBBER
     )
     def test_score_assignment_enemy_down(self, *mocks):
@@ -57,11 +57,11 @@ class TestSuccessAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.ROBBER
     )
     def test_messages(self, *mocks):
@@ -78,11 +78,11 @@ class TestFailureAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WIZARD
     )
     def test_decrease_health(self, *mocks):
@@ -92,11 +92,11 @@ class TestFailureAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WIZARD
     )
     def test_score_assignment(self, *mocks):
@@ -106,11 +106,11 @@ class TestFailureAttack(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WIZARD
     )
     def test_messages(self, *mocks):
@@ -127,11 +127,11 @@ class TestSuccessDefence(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.ROBBER
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_decrease_health(self, *mocks):
@@ -141,11 +141,11 @@ class TestSuccessDefence(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.ROBBER
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_score_assignment(self, *mocks):
@@ -155,11 +155,11 @@ class TestSuccessDefence(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.ROBBER
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_messages(self, mock_print, *mocks):
@@ -176,11 +176,11 @@ class TestFailureDefence(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.WIZARD
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_decrease_health(self, *mocks):
@@ -190,11 +190,11 @@ class TestFailureDefence(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.WIZARD
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_messages(self, *mocks):
@@ -211,11 +211,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_player_decrease_health(self, *mocks):
@@ -225,11 +225,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_enemy_decrease_health(self, *mocks):
@@ -239,11 +239,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_score_assignment_attack(self, *mocks):
@@ -252,11 +252,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_score_assignment_defence(self, *mocks):
@@ -265,11 +265,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_attack",
+        "wtk.models.Player.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_defence",
+        "wtk.models.Enemy.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_attack_message(self, *mocks):
@@ -280,11 +280,11 @@ class TestDrawFight(unittest.TestCase):
 
     # noinspection PyUnusedLocal
     @mock.patch(
-        "wrw_game.models.Player.select_defence",
+        "wtk.models.Player.select_defence",
         return_value=enums.FightChoice.WARRIOR
     )
     @mock.patch(
-        "wrw_game.models.Enemy.select_attack",
+        "wtk.models.Enemy.select_attack",
         return_value=enums.FightChoice.WARRIOR
     )
     def test_defence_message(self, *mocks):

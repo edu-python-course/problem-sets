@@ -5,8 +5,8 @@ Game runner
 
 import logging
 
-from wrw_game import engine
-from wrw_game.loggers import stream_handler
+from wtk import engine
+from wtk.loggers import stream_handler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
