@@ -1,5 +1,11 @@
 """
+**************
 Game exception
+**************
+
+.. autoclass:: EnemyDown
+
+.. autoclass:: GameOver
 
 """
 
