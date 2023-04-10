@@ -73,13 +73,14 @@ class Product:
         )
 
     def get_total(self, quantity: Optional[Union[int, float]] = None) -> int:
-        """Return the total price for a specified amount of a product
+        """
+        Return the total price for a specified amount of a product
 
         If the quantity argument is omitted, unit attribute value should be
         used instead.
 
         :param quantity: a quantity to purchase, defaults to None
-        :type quantity: int | float | None
+        :type quantity: int | float, optional
 
         :return: total price for a specified amount of a product
         :rtype: int
@@ -105,9 +106,9 @@ class ShoppingCart:
     a shopping cart instance.
 
     :ivar products: product appended to the shopping cart instance
-    :type products: list[product]
+    :type products: list
     :ivar quantities: corresponding quantities for each product in cart
-    :type quantities: list[int or float]
+    :type quantities: list
 
     """
 
@@ -182,12 +183,17 @@ class ShoppingCart:
                     product: Product,
                     quantity: Optional[Union[int, float]] = None
                     ) -> None:
-        """Add product to the shopping cart
+        """
+        Add product to the shopping cart
+
+        This method adds a product instance and corresponding quantity value
+        to the cart.
 
         :param product: a product instance to add to cart
         :type product: :class: `Product`
-        :param quantity: a quantity of a product to add
-        :type quantity: int or float
+        :param quantity: a quantity of a product to add. Defaults to the
+            product unit value.
+        :type quantity: int | float, optional
 
         """
 

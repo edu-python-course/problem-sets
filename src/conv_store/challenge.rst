@@ -73,6 +73,10 @@ is to store information about the purchases and their amount (quantities).
 #.  ``ShoppingCart`` should implement ``get_total`` method to calculate the
     total price for the entire cart contents.
 
+.. rubric:: Code explanation
+
+.. autoclass:: conv_store.ShoppingCart
+    :members: add_product, get_total
 
 .. rubric:: Test cases
 
