@@ -22,8 +22,8 @@ class FightResult(enum.Enum):
 class FightChoice(enum.Enum):
     """Fight choice enumeration model"""
 
-    WARRIOR = enum.auto()
-    ROBBER = enum.auto()
+    KNIGHT = enum.auto()
+    THIEF = enum.auto()
     WIZARD = enum.auto()
 
     def __str__(self) -> str:
@@ -58,10 +58,11 @@ def get_fight_result(attack: FightChoice, defence: FightChoice) -> FightResult:
 
     # perform type validation
     if not isinstance(attack, FightChoice) or \
-       not isinstance(defence, FightChoice):
+        not isinstance(defence, FightChoice):
+        attack_cls = attack.__class__.__name__
+        defence_cls = defence.__class__.__name__
         raise TypeError(
-            f"unsupported argument type(s): "
-            f"'{attack.__class__.__name__}' and '{defence.__class__.__name__}'"
+            f"unsupported argument type(s): '{attack_cls}' and '{defence_cls}'"
         )
 
     # calculate result
@@ -69,9 +70,9 @@ def get_fight_result(attack: FightChoice, defence: FightChoice) -> FightResult:
         return FightResult.DRAW
 
     successful_attacks = (
-        (FightChoice.WARRIOR, FightChoice.ROBBER),
-        (FightChoice.ROBBER, FightChoice.WIZARD),
-        (FightChoice.WIZARD, FightChoice.WARRIOR),
+        (FightChoice.KNIGHT, FightChoice.THIEF),
+        (FightChoice.THIEF, FightChoice.WIZARD),
+        (FightChoice.WIZARD, FightChoice.KNIGHT),
     )
     if (attack, defence) in successful_attacks:
         return FightResult.SUCCESS

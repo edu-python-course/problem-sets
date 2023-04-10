@@ -15,11 +15,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     def test_decrease_health(self, *mocks):
         self.enemy.decrease_health = mock.Mock()
@@ -29,11 +29,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     def test_score_assignment(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -43,11 +43,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     def test_score_assignment_enemy_down(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -58,11 +58,11 @@ class TestSuccessAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     def test_messages(self, *mocks):
         message = f"INFO:PlayerModel:{settings.MSG_SUCCESS_ATTACK}"
@@ -79,7 +79,7 @@ class TestFailureAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
@@ -93,7 +93,7 @@ class TestFailureAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
@@ -107,7 +107,7 @@ class TestFailureAttack(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
@@ -128,11 +128,11 @@ class TestSuccessDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_decrease_health(self, *mocks):
         self.player.decrease_health = mock.MagicMock()
@@ -142,11 +142,11 @@ class TestSuccessDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_score_assignment(self, *mocks):
         self.player.add_score_points = mock.Mock()
@@ -156,11 +156,11 @@ class TestSuccessDefence(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.ROBBER
+        return_value=enums.FightChoice.THIEF
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_messages(self, mock_print, *mocks):
         message = f"INFO:PlayerModel:{settings.MSG_SUCCESS_DEFENCE}"
@@ -181,7 +181,7 @@ class TestFailureDefence(unittest.TestCase):
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_decrease_health(self, *mocks):
         self.player.decrease_health = mock.MagicMock()
@@ -195,7 +195,7 @@ class TestFailureDefence(unittest.TestCase):
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_messages(self, *mocks):
         message = f"INFO:PlayerModel:{settings.MSG_FAILURE_DEFENCE}"
@@ -212,11 +212,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_player_decrease_health(self, *mocks):
         self.player.decrease_health = mock.Mock()
@@ -226,11 +226,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_enemy_decrease_health(self, *mocks):
         self.enemy.decrease_health = mock.Mock()
@@ -240,11 +240,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_score_assignment_attack(self, *mocks):
         self.player.attack(self.enemy)
@@ -253,11 +253,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_score_assignment_defence(self, *mocks):
         self.player.defence(self.enemy)
@@ -266,11 +266,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_attack_message(self, *mocks):
         message = f"INFO:PlayerModel:{settings.MSG_DRAW}"
@@ -281,11 +281,11 @@ class TestDrawFight(unittest.TestCase):
     # noinspection PyUnusedLocal
     @mock.patch(
         "wtk.models.Player.select_defence",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     @mock.patch(
         "wtk.models.Enemy.select_attack",
-        return_value=enums.FightChoice.WARRIOR
+        return_value=enums.FightChoice.KNIGHT
     )
     def test_defence_message(self, *mocks):
         message = f"INFO:PlayerModel:{settings.MSG_DRAW}"
