@@ -1,21 +1,5 @@
 """
-***********
 Game models
-***********
-
-Enemy
-=====
-
-.. autoclass:: Enemy
-    :members: decrease_health, select_attack, select_defence
-    :special_members: __init__
-
-Player
-======
-
-.. autoclass:: Player
-    :members: decrease_health, select_attack, select_defence, attack, defence
-    :special_members: __init__
 
 """
 

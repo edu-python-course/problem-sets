@@ -1,33 +1,5 @@
 """
-*************
 Game settings
-*************
-
-This module contains game settings and constants.
-
-.. py:data: INITIAL_PLAYER_NAME
-
-    Initial health meter value for a player instance
-
-    :type: int
-
-.. py:data: INITIAL_ENEMY_LEVEL
-
-    Indicates the level to initialize the first enemy instance.
-
-    :type: int
-
-.. py:data: SCORE_SUCCESS_ATTACK
-
-    Set the score value to assign when an attack is successful
-
-    :type: int
-
-.. py:data: SCORE_ENEMY_DOWN
-
-    Set the score value to assign when an enemy is defeated
-
-    :type: int
 
 """
 
