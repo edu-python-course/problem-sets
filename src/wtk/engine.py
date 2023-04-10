@@ -1,5 +1,13 @@
 """
+***********
 Game engine
+***********
+
+The game engine implements core functions:
+
+.. autofunction:: get_player_name
+
+.. autofunction:: play
 
 """
 
@@ -15,7 +23,15 @@ logger.addHandler(stream_handler)
 
 
 def get_player_name() -> str:
-    """Return a player's name from the user prompt"""
+    """
+    Return a player's name from the user prompt
+
+    A validation process is performed as well. The player name cannot be
+    an empty string.
+
+    :return: a player defined name
+
+    """
 
     player_name: str = ""
 
@@ -26,7 +42,14 @@ def get_player_name() -> str:
 
 
 def play() -> None:
-    """Play the game"""
+    """
+    Run the game
+
+    The function initializes player and enemy instances.
+    After that it runs the game process in an endless loop.
+    Once the player is defeated - it stops the execution.
+
+    """
 
     player_name = get_player_name()
     player = Player(player_name)
@@ -40,9 +63,8 @@ def play() -> None:
             logger.info(exc)
             enemy = Enemy(enemy.level + 1)
         except GameOver as exc:
-            msg_score_points = f"SCORE POINTS: {player.score}"
             logger.info(exc)
-            logger.info(msg_score_points)
+            logger.info("SCORE POINTS: %s", player.score)
             break
 
 
