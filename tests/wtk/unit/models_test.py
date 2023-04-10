@@ -76,12 +76,12 @@ class TestPlayerModel(unittest.TestCase):
         self.assertEqual(mock_input.call_count, 4)
 
     def test_warrior_selection(self):
-        choice = enums.FightChoice.WARRIOR
+        choice = enums.FightChoice.KNIGHT
         with mock.patch("builtins.input", return_value=str(choice.value)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
     def test_robber_selection(self):
-        choice = enums.FightChoice.ROBBER
+        choice = enums.FightChoice.THIEF
         with mock.patch("builtins.input", return_value=str(choice.value)):
             self.assertEqual(models.Player._select_fight_choice(), choice)
 
@@ -92,44 +92,44 @@ class TestPlayerModel(unittest.TestCase):
 
     def test_success_fights(self):
         result = models.Player.fight(
-            enums.FightChoice.WARRIOR, enums.FightChoice.ROBBER
+            enums.FightChoice.KNIGHT, enums.FightChoice.THIEF
         )
         self.assertEqual(result, enums.FightResult.SUCCESS)
 
         result = models.Player.fight(
-            enums.FightChoice.ROBBER, enums.FightChoice.WIZARD
+            enums.FightChoice.THIEF, enums.FightChoice.WIZARD
         )
         self.assertEqual(result, enums.FightResult.SUCCESS)
 
         result = models.Player.fight(
-            enums.FightChoice.WIZARD, enums.FightChoice.WARRIOR
+            enums.FightChoice.WIZARD, enums.FightChoice.KNIGHT
         )
         self.assertEqual(result, enums.FightResult.SUCCESS)
 
     def test_failure_fights(self):
         result = models.Player.fight(
-            enums.FightChoice.WARRIOR, enums.FightChoice.WIZARD
+            enums.FightChoice.KNIGHT, enums.FightChoice.WIZARD
         )
         self.assertEqual(result, enums.FightResult.FAILURE)
 
         result = models.Player.fight(
-            enums.FightChoice.ROBBER, enums.FightChoice.WARRIOR
+            enums.FightChoice.THIEF, enums.FightChoice.KNIGHT
         )
         self.assertEqual(result, enums.FightResult.FAILURE)
 
         result = models.Player.fight(
-            enums.FightChoice.WIZARD, enums.FightChoice.ROBBER
+            enums.FightChoice.WIZARD, enums.FightChoice.THIEF
         )
         self.assertEqual(result, enums.FightResult.FAILURE)
 
     def test_draw_fights(self):
         result = models.Player.fight(
-            enums.FightChoice.WARRIOR, enums.FightChoice.WARRIOR
+            enums.FightChoice.KNIGHT, enums.FightChoice.KNIGHT
         )
         self.assertEqual(result, enums.FightResult.DRAW)
 
         result = models.Player.fight(
-            enums.FightChoice.ROBBER, enums.FightChoice.ROBBER
+            enums.FightChoice.THIEF, enums.FightChoice.THIEF
         )
         self.assertEqual(result, enums.FightResult.DRAW)
 
