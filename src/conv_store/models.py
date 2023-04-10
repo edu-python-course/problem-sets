@@ -233,10 +233,11 @@ class ShoppingCart:
         return self.add_product(product, quantity)
 
     def get_total(self) -> int:
-        """Return the total price for all the product in the cart
+        """
+        Return the total price for all the product in the cart
 
         :return: total cart price
-        :rtype: float
+        :rtype: int
 
         """
 
