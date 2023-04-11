@@ -7,7 +7,8 @@ from typing import Iterator, List, Optional, Tuple, Union
 
 
 class Product:
-    """Product model implementation
+    """
+    Product model implementation
 
     Instances of this class represent a product available for purchase.
 
@@ -25,7 +26,8 @@ class Product:
                  price: int,
                  unit: Union[int, float]
                  ) -> None:
-        """Initialize instance
+        """
+        Initialize instance
 
         :param name: product name
         :type name: str
@@ -216,7 +218,8 @@ class ShoppingCart:
                     product: Product,
                     quantity: Union[int, float]
                     ) -> None:
-        """Subtract product from the shopping cart
+        """
+        Subtract product from the shopping cart
 
         If quantity value is less or equal to 0 the product is to be
         removed from the shopping cart

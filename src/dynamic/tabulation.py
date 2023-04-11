@@ -23,7 +23,7 @@ def get_fibonacci_sequence(size: int, /) -> List[int]:
     :return: the Fibonacci sequence
     :rtype: list
 
-    Usage examples:
+    Usage:
 
     >>> assert get_fibonacci_sequence(0) == []
     >>> assert get_fibonacci_sequence(1) == [0]
@@ -65,6 +65,8 @@ def get_grid_travels(height: int, width: int, /) -> int:
     :return: the number of available routes
     :rtype: int
 
+    # TODO: add usage
+
     """
 
     if height <= 0 or width <= 0:
@@ -99,6 +101,8 @@ def can_get_target(target: int, numbers: List[int]) -> bool:
 
     :return: the check result
     :rtype: bool
+
+    TODO: add usage
 
     """
 
@@ -149,6 +153,8 @@ def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
 
     :return: None if impossible, otherwise list of numbers
     :rtype: list, optional
+
+    # TODO: add usage
 
     """
 

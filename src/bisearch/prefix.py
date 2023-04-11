@@ -17,7 +17,12 @@ class NotFound(Exception):
 
 
 def bisect_right(origin: List[str], search: str = "") -> int:
-    """Return the most right one index matching the search value
+    """
+    Return the most right one index matching the search value
+
+    Current function implements common ``bisect_right`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     :param origin: a list of strings
     :type origin: list
@@ -28,10 +33,6 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     :rtype: int
 
     :raise: NotFound
-
-    Current function implements common ``bisect_right`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
 
     """
 
@@ -55,7 +56,12 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
 
 def bisect_left(origin: List[str], search: str = "") -> int:
-    """Return the most left one index matching the search value
+    """
+    Return the most left one index matching the search value
+
+    Current function implements common ``bisect_left`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     :param origin: a list of strings
     :type origin: list
@@ -66,10 +72,6 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     :rtype: int
 
     :raise: NotFound
-
-    Current function implements common ``bisect_left`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
 
     """
 
@@ -93,7 +95,8 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
 
 def find_all(origin: List[str], search: str = "") -> List[str]:
-    """Return strings starting with prefix
+    """
+    Return strings starting with prefix
 
     :param origin: the list of strings
     :type origin: list
