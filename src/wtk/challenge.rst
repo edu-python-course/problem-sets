@@ -1,8 +1,8 @@
 ###############################################################################
-                          Wizards, Thiefs and Knights
+                         Wizards, Thieves and Knights
 ###############################################################################
 
-"Wizards, Thiefs and Knights" (WTK) game is a "Paper, Rock and Scissors" clone,
+"Wizards, Thieves and Knights" (WTK) game is a "Paper, Rock and Scissors" clone
 but in a fantasy setting. It comes with a simple command line interface where
 the use must type in his or her choice. The enemy is controlled by the script.
 The player's goal is to gain as many score points, as it possible.
@@ -33,14 +33,14 @@ Fight rules
 
 It's simple...
 
-- **Knight** beats **Thief**
-- **Thief** beats **Wizard**
 - **Wizard** beats **Knight**
+- **Thief** beats **Wizard**
+- **Knight** beats **Thief**
 
 Attack stage
 ============
 
-Player selects the choice to attack from **knight**, **thief** or **wizard**,
+Player selects the choice to attack from **wizard**, **thief** or **knight**,
 enemy selects the choice for defence from the same options by random. If the
 attack is successful:
 
@@ -56,7 +56,7 @@ In case enemy is defeated:
 Defence stage
 =============
 
-Player selects the choice to defend from **knight**, **thief** or **wizard**,
+Player selects the choice to defend from **wizard**, **thief** or **knight**,
 enemy selects the choice to attack from the same options by random. If the
 attack is successful:
 
