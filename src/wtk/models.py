@@ -203,9 +203,9 @@ class Player(_AbstractModel):
 
         The method calculates the fight result based on the game rules:
 
-        - **knight** beats **thief**
-        - **thief** beats **wizard**
         - **wizard** beats **knight**
+        - **thief** beats **wizard**
+        - **knight** beats **thief**
 
         """
 
