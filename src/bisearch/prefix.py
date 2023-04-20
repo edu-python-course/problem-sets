@@ -32,7 +32,9 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     :return: the index after the last string starting with search prefix
     :rtype: int
 
-    :raise: NotFound
+    :raise NotFound: if the searched value isn't in the list
+
+    # TODO: usage
 
     """
 
@@ -71,7 +73,9 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     :return: the index of the first string starting with search prefix
     :rtype: int
 
-    :raise: NotFound
+    :raise NotFound: if the searched value isn't in the list
+
+    # TODO: usage
 
     """
 
@@ -105,6 +109,8 @@ def find_all(origin: List[str], search: str = "") -> List[str]:
 
     :return: the list of strings starting with the search prefix
     :rtype: list
+
+    # TODO: usage
 
     """
 

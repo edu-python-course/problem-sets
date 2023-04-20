@@ -78,6 +78,14 @@ def get_fibonacci_number_nr(idx: int, /) -> int:
     :return: a sequence's member
     :rtype: int
 
+    Usage:
+
+    >>> assert get_fibonacci_number(0) == 0
+    >>> assert get_fibonacci_number(1) == 1
+    >>> assert get_fibonacci_number(2) == 1
+    >>> assert get_fibonacci_number(3) == 2
+    >>> assert get_fibonacci_number(4) == 3
+
     """
 
     if idx <= 0:

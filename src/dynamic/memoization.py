@@ -68,7 +68,7 @@ def get_grid_travels(height: int, width: int, /) -> int:
     :return: the number of available routes
     :rtype: int
 
-    # TODO: add usage
+    # TODO: usage
 
     """
 
@@ -99,7 +99,7 @@ def can_get_target(target: int, numbers: List[int],
     :return: the check result
     :rtype: bool
 
-    # TODO: add usage
+    # TODO: usage
 
     """
 

@@ -169,7 +169,7 @@ class ShoppingCart:
         :return: a shopping cart product/quantity entry
         :rtype: tuple
 
-        :raise: ValueError
+        :raise ValueError: if the project isn't present in the shopping cart
 
         """
 

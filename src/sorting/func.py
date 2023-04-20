@@ -20,10 +20,10 @@ def bubble_sort(origin: List[int]) -> List[int]:
     .. seealso:: https://www.programiz.com/dsa/bubble-sort
 
     :param origin: an original list to sort
-    :type origin: list[int]
+    :type origin: list
 
     :return: a sorted list
-    :rtype: list[int]
+    :rtype: list
 
     Usage:
 
@@ -54,10 +54,10 @@ def selection_sort(origin: List[int]) -> List[int]:
     .. seealso:: https://www.programiz.com/dsa/selection-sort
 
     :param origin: an original list to sort
-    :type origin: list[int]
+    :type origin: list
 
     :return: a sorted list
-    :rtype: list[int]
+    :rtype: list
 
     Usage:
 
@@ -99,10 +99,10 @@ def insertion_sort(origin: List[int]) -> List[int]:
     .. seealso:: https://www.programiz.com/dsa/insertion-sort
 
     :param origin: an original list to sort
-    :type origin: list[int]
+    :type origin: list
 
     :return: a sorted list
-    :rtype: list[int]
+    :rtype: list
 
     Usage:
 
@@ -184,15 +184,15 @@ def merge_sort(origin: List[int]) -> List[int]:
     .. seealso:: https://www.programiz.com/dsa/merge-sort
 
     :param origin: an original list to sort
-    :type origin: list[int]
+    :type origin: list
 
     :return: a sorted list
-    :rtype: list[int]
+    :rtype: list
 
     Usage:
 
-    >>> merge_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-    >>> merge_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
+    >>> assert merge_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+    >>> assert merge_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
 
     """
 
@@ -235,8 +235,8 @@ def quick_sort(origin: List[int]) -> List[int]:
 
     Usage:
 
-    >>> quick_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-    >>> quick_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
+    >>> assert quick_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+    >>> assert quick_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
 
     """
 
@@ -271,8 +271,8 @@ def counting_sort(origin: List[int]) -> List[int]:
 
     Usage:
 
-    >>> counting_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-    >>> counting_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
+    >>> assert counting_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+    >>> assert counting_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
 
     """
 
@@ -290,42 +290,6 @@ def counting_sort(origin: List[int]) -> List[int]:
     idx = size - 1
     while idx >= 0:
         count_idx = origin[idx]
-        result_idx = count[count_idx] - 1
-        result[result_idx] = origin[idx]
-        count[count_idx] -= 1
-        idx -= 1
-
-    return result
-
-
-def radix_counting(origin: List[int], places: int) -> List[int]:
-    """
-    Return a list sorted by significant place digit
-
-    :param origin: an original unsorted list
-    :type origin: list
-    :param places: a significant digits places
-    :type places: int
-
-    :return: a sorted list, by digits at the significant place
-    :rtype: list
-
-    """
-
-    size: int = len(origin)
-    count: List[int] = [0] * 10
-    result: List[int] = [0] * size
-
-    for value in origin:
-        idx = value // places
-        count[idx % 10] += 1
-
-    for idx in range(1, 10):
-        count[idx] += count[idx - 1]
-
-    idx = size - 1
-    while idx >= 0:
-        count_idx = (origin[idx] // places) % 10
         result_idx = count[count_idx] - 1
         result[result_idx] = origin[idx]
         count[count_idx] -= 1
@@ -358,6 +322,41 @@ def radix_sort(origin: List[int]) -> List[int]:
     >>> assert radix_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
 
     """
+
+    def radix_counting(_origin: List[int], _places: int) -> List[int]:
+        """
+        Return a list sorted by significant place digit
+
+        :param _origin: an original unsorted list
+        :type _origin: list
+        :param _places: a significant digits places
+        :type _places: int
+
+        :return: a sorted list, by digits at the significant place
+        :rtype: list
+
+        """
+
+        size: int = len(_origin)
+        count: List[int] = [0] * 10
+        _radix_counting_result: List[int] = [0] * size
+
+        for value in _origin:
+            idx = value // _places
+            count[idx % 10] += 1
+
+        for idx in range(1, 10):
+            count[idx] += count[idx - 1]
+
+        idx = size - 1
+        while idx >= 0:
+            count_idx = (_origin[idx] // _places) % 10
+            result_idx = count[count_idx] - 1
+            _radix_counting_result[result_idx] = _origin[idx]
+            count[count_idx] -= 1
+            idx -= 1
+
+        return _radix_counting_result
 
     max_value: int = max(origin)
     result: List[int] = origin.copy()
@@ -440,8 +439,8 @@ def heap_sort(origin: List[int]) -> List[int]:
 
     Usage:
 
-    >>> heap_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-    >>> heap_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
+    >>> assert heap_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+    >>> assert heap_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
 
     """
 
