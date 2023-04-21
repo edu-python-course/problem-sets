@@ -2,10 +2,11 @@
                          Wizards, Thieves and Knights
 ###############################################################################
 
-"Wizards, Thieves and Knights" (WTK) game is a "Paper, Rock and Scissors" clone
-but in a fantasy setting. It comes with a simple command line interface where
-the use must type in his or her choice. The enemy is controlled by the script.
-The player's goal is to gain as many score points, as it possible.
+"Wizards, Thieves and Knights" (:abbr:`WTK (Wizards, Thieves and Knights)`)
+game is a "Paper, Rock and Scissors" clone but in a fantasy setting. It comes
+with a simple command line interface where the use must type in his or her
+choice. The enemy is controlled by the script. The player's goal is to gain
+as many score points, as it possible.
 
 *****************
 Code organization
@@ -118,29 +119,22 @@ Settings module contains constants values for the game.
 
 For example,
 
-.. py:data:: INITIAL_PLAYER_NAME
+.. autodata:: wtk.settings.INITIAL_PLAYER_HEALTH
+    :no-value:
+.. autodata:: wtk.settings.INITIAL_ENEMY_LEVEL
+    :no-value:
+.. autodata:: wtk.settings.SCORE_SUCCESS_ATTACK
+    :no-value:
+.. autodata:: wtk.settings.SCORE_ENEMY_DOWN
+    :no-value:
 
-    Initial health meter value for a player instance
+You may also define messages with this module, for example:
 
-    :type: int
-
-.. py:data:: INITIAL_ENEMY_LEVEL
-
-    Indicates the level to initialize the first enemy instance.
-
-    :type: int
-
-.. py:data:: SCORE_SUCCESS_ATTACK
-
-    Set the score value to assign when an attack is successful
-
-    :type: int
-
-.. py:data:: SCORE_ENEMY_DOWN
-
-    Set the score value to assign when an enemy is defeated
-
-    :type: int
+.. autodata:: wtk.settings.MSG_SUCCESS_ATTACK
+.. autodata:: wtk.settings.MSG_SUCCESS_DEFENCE
+.. autodata:: wtk.settings.MSG_FAILURE_ATTACK
+.. autodata:: wtk.settings.MSG_FAILURE_DEFENCE
+.. autodata:: wtk.settings.MSG_DRAW
 
 ******
 Engine
