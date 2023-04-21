@@ -299,3 +299,34 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
         filtered_dataset.append(entry)
 
     return filtered_dataset
+
+
+NestedIntList = Union[int, List["NestedIntList"]]
+
+
+def flatten(origin: List[NestedIntList]) -> List[int]:
+    """
+    Flattens a list of integers and nested lists of integers
+
+    :param origin: an original list
+
+    :return: a single-level list of integers
+
+    Usage:
+
+    >>> assert flatten([1, 2, 3]) == [1, 2, 3]
+    >>> assert flatten(([[1], [2], [3]])) == [1, 2, 3]
+    >>> assert flatten([1, [2, 3]]) == [1, 2, 3]
+    >>> assert flatten([1, [[2], [3]]]) == [1, 2, 3]
+
+    """
+
+    result: List[int] = []
+
+    for item in origin:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+
+    return result
