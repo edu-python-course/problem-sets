@@ -124,6 +124,28 @@ def get_low_student(students_data: StudentsList) -> StudentData:
 
 def get_both_top_low_students(students_data: StudentsList
                               ) -> Tuple[StudentData, StudentData]:
+    """
+    Return both top and low students data
+
+    Given a list of student data, returns a tuple of the student with
+    the highest average score and the student with the lowest average score.
+    The student data is represented as a list of dictionaries, where each
+    dictionary contains the keys 'name' and 'scores', where 'name' is
+    a string and 'scores' is a list of floats representing the student's
+    scores on various exams.
+
+    :param students_data: A list of dictionaries containing the student data.
+    :type students_data: list
+
+    :return: A tuple of two dictionaries representing the student with
+        the highest average score and the student with the lowest average
+        score. Each dictionary contains the keys 'name' and 'scores',
+        where 'name' is a string and 'scores' is a list of floats
+        representing the student's scores on various exams.
+    :rtype: tuple
+
+    """
+
     min_score_threshold, max_score_threshold = float("+inf"), float("-inf")
     top_student = {"name": "", "scores": []}
     low_student = {"name": "", "scores": []}
