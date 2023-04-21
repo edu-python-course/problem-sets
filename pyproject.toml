@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2023.04.1"
+version = "2023.04.2"
 description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
@@ -53,9 +53,9 @@ python = "^3.9"
 
 [tool.poetry.dev-dependencies]
 pytest-cov = "^4.0.0"
-mypy = "^0.991"
-pylint = "^2.15.5"
-tox = "^4.0"
+mypy = "^1.2.0"
+pylint = "^2.17.2"
+tox = "^4.4.12"
 
 [tool.poetry.scripts]
 wtk = "wtk.__main__:run"

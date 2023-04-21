@@ -1,4 +1,31 @@
 #################
+Release 2023.04.2
+#################
+
+*********
+Fixed #45
+*********
+
+Added docstrings to "settings" module. Updated `Enemy.__init__` documentation
+to avoid misunderstanding of health attribute. Applied minor changes to game
+overview section in "challenge" document.
+
+**************************
+Updated datasets functions
+**************************
+
+Included "swap keys-values" function. Added dict filtering functions for
+the "students scores" challenge. Changed existing functions signatures.
+Added more explanations for the "filter_by_values" function.
+Added "flatten" list function.
+
+*********************
+Updated documentation
+*********************
+
+Fixed #24 with PR #44.
+
+#################
 Release 2023.04.1
 #################
 
