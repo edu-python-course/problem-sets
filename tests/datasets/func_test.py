@@ -63,3 +63,10 @@ def test_dataset_filter_no_keys(dataset):
         {"x": 1, "y": 1}, {"x": 1, "y": 2}, {"x": 2, "y": 1}, {"x": 2, "y": 2},
     ]
     assert datasets.filter_by_values(dataset) == test_dataset
+
+
+def test_flatten_list():
+    assert datasets.flatten([1, 2, 3]) == [1, 2, 3]
+    assert datasets.flatten(([[1], [2], [3]])) == [1, 2, 3]
+    assert datasets.flatten([1, [2, 3]]) == [1, 2, 3]
+    assert datasets.flatten([1, [[2], [3]]]) == [1, 2, 3]
