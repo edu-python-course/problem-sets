@@ -158,8 +158,8 @@ class ShoppingCart:
     def remove_product(self,
                        product: Product
                        ) -> Tuple[Product, Union[int, float]]:
-        """Remove product from a cart instance
-
+        """
+        Remove product from a cart instance
 
         :param product: a product instance to add to cart
         :type product: :class: `Product`
@@ -221,11 +221,10 @@ class ShoppingCart:
         If quantity value is less or equal to 0 the product is to be
         removed from the shopping cart
 
-
         :param product: a product instance to add to cart
         :type product: :class: `Product`
         :param quantity: a quantity of a product to add
-        :type quantity: int or float
+        :type quantity: int | float
 
         """
 

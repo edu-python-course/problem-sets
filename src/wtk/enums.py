@@ -33,7 +33,8 @@ class FightChoice(enum.Enum):
 
 
 def get_fight_result(attack: FightChoice, defence: FightChoice) -> FightResult:
-    """Return a fight result based on attack and defence choices
+    """
+    Return a fight result based on attack and defence choices
 
     This function performs argument types validation first and raises
     TypeError in case of failure. After that the attack choice is compared

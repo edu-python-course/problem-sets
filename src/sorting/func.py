@@ -7,13 +7,8 @@ from typing import List
 
 
 def bubble_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the bubble sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the bubble sort algorithm
 
     Bubble sort is a sorting algorithm that compares two adjacent
     elements and swaps them until they are not in the intended order.
@@ -24,7 +19,13 @@ def bubble_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/bubble-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list[int]
+
+    :return: a sorted list
+    :rtype: list[int]
+
+    Usage:
 
     >>> assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert bubble_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -43,14 +44,8 @@ def bubble_sort(origin: List[int]) -> List[int]:
 
 
 def selection_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the selection sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
-
+    """
+    Return a sorted collection using the selection sort algorithm
 
     Selection sort is a sorting algorithm that selects the smallest
     element from an unsorted list in each iteration and places that
@@ -58,7 +53,13 @@ def selection_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/selection-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list[int]
+
+    :return: a sorted list
+    :rtype: list[int]
+
+    Usage:
 
     >>> assert selection_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert selection_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -81,13 +82,8 @@ def selection_sort(origin: List[int]) -> List[int]:
 
 
 def insertion_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the insertion sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the insertion sort algorithm
 
     Insertion sort is a sorting algorithm that places an unsorted
     element at its suitable place in each iteration.
@@ -102,7 +98,13 @@ def insertion_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/insertion-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list[int]
+
+    :return: a sorted list
+    :rtype: list[int]
+
+    Usage:
 
     >>> assert insertion_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert insertion_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -126,19 +128,20 @@ def insertion_sort(origin: List[int]) -> List[int]:
 
 
 def merge_lists(list_a: List[int], list_b: List[int]) -> List[int]:
-    """Return a joined sorted list from two ordered lists
-
-    :param list_a: first sorted list
-    :type list_a: list[int]
-    :param list_b: second sorted list
-    :type list_b: list[int]
-
-    :return: merged sorted list
-    :rtype: list[int]
+    """
+    Return a joined sorted list from two ordered lists
 
     Merge two lists that are already sorted into a new sorted list.
 
-    Usage examples:
+    :param list_a: first sorted list
+    :type list_a: list
+    :param list_b: second sorted list
+    :type list_b: list
+
+    :return: merged sorted list
+    :rtype: list
+
+    Usage:
 
     >>> assert merge_lists([1, 3, 5], [2, 4]) == [1, 2, 3, 4, 5]
 
@@ -168,14 +171,8 @@ def merge_lists(list_a: List[int], list_b: List[int]) -> List[int]:
 
 
 def merge_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the merge sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
-
+    """
+    Return a sorted collection using the merge sort algorithm
 
     Merge sort is one of the most popular sorting algorithms that is
     based on the principle of "Divide and Conquer Algorithm".
@@ -186,7 +183,13 @@ def merge_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/merge-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list[int]
+
+    :return: a sorted list
+    :rtype: list[int]
+
+    Usage:
 
     >>> merge_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> merge_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -205,13 +208,8 @@ def merge_sort(origin: List[int]) -> List[int]:
 
 
 def quick_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the quick sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the quick sort algorithm
 
     Quicksort is a sorting algorithm based on the **divide and conquer
     approach** where:
@@ -229,7 +227,13 @@ def quick_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/quick-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> quick_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> quick_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -249,13 +253,8 @@ def quick_sort(origin: List[int]) -> List[int]:
 
 
 def counting_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the counting sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the counting sort algorithm
 
     Counting sort is a sorting algorithm that sorts the elements of
     a list by counting the number of occurrences of each unique element
@@ -264,7 +263,13 @@ def counting_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/counting-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> counting_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> counting_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -294,15 +299,16 @@ def counting_sort(origin: List[int]) -> List[int]:
 
 
 def radix_counting(origin: List[int], places: int) -> List[int]:
-    """Return a list sorted by significant place digit
+    """
+    Return a list sorted by significant place digit
 
     :param origin: an original unsorted list
-    :type origin: list[int]
+    :type origin: list
     :param places: a significant digits places
     :type places: int
 
     :return: a sorted list, by digits at the significant place
-    :rtype: list[int]
+    :rtype: list
 
     """
 
@@ -329,13 +335,8 @@ def radix_counting(origin: List[int], places: int) -> List[int]:
 
 
 def radix_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the radix sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the radix sort algorithm
 
     Radix sort is a sorting algorithm that sorts the elements by first
     grouping the individual digits of the same **place value**. Then,
@@ -345,7 +346,13 @@ def radix_sort(origin: List[int]) -> List[int]:
     Then, we will sort elements based on the value of the tenth place.
     This process goes on until the last significant place.
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> assert radix_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert radix_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -364,13 +371,8 @@ def radix_sort(origin: List[int]) -> List[int]:
 
 
 def bucket_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the bucket sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the bucket sort algorithm
 
     Bucket sort is a sorting algorithm that divides the unsorted list
     elements into several groups called buckets. Each bucket is then
@@ -382,7 +384,13 @@ def bucket_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/bucket-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> assert bucket_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert bubble_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -412,13 +420,8 @@ def bucket_sort(origin: List[int]) -> List[int]:
 
 
 def heap_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the heap sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the heap sort algorithm
 
     Heap sort is a popular and efficient sorting algorithm in computer
     programming. Learning how to write the heap sort algorithm requires
@@ -429,7 +432,13 @@ def heap_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/heap-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> heap_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> heap_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]
@@ -468,13 +477,8 @@ def heap_sort(origin: List[int]) -> List[int]:
 
 
 def shell_sort(origin: List[int]) -> List[int]:
-    """Return a sorted collection using the shell sort algorithm
-
-    :param origin: an original list to sort
-    :type origin: list[int]
-
-    :return: a sorted list
-    :rtype: list[int]
+    """
+    Return a sorted collection using the shell sort algorithm
 
     Shell sort is a generalized version of the insertion sort algorithm.
     It first sorts elements that are far apart from each other and
@@ -482,7 +486,13 @@ def shell_sort(origin: List[int]) -> List[int]:
 
     .. seealso:: https://www.programiz.com/dsa/shell-sort
 
-    Usage examples:
+    :param origin: an original list to sort
+    :type origin: list
+
+    :return: a sorted list
+    :rtype: list
+
+    Usage:
 
     >>> assert shell_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
     >>> assert shell_sort([1, 5, 2, 4, 3]) == [1, 2, 3, 4, 5]

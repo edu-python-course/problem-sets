@@ -28,9 +28,9 @@ class Piece:
         """Initialize instance
 
         :param is_white: indicating if a piece is white. Defaults to True.
-        :type is_white: bool
+        :type is_white: bool, optional
         :param position: initial piece position. Defaults to (0, 0).
-        :type position: tuple
+        :type position: tuple, optional
 
         """
 

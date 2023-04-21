@@ -20,7 +20,7 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     """Return the most right one index matching the search value
 
     :param origin: a list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: a prefix to search
     :type search: str
 
@@ -58,7 +58,7 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     """Return the most left one index matching the search value
 
     :param origin: a list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: a prefix to search
     :type search: str
 
@@ -96,12 +96,12 @@ def find_all(origin: List[str], search: str = "") -> List[str]:
     """Return strings starting with prefix
 
     :param origin: the list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: the prefix to search, defaults to empty string
     :type search: str
 
     :return: the list of strings starting with the search prefix
-    :rtype: list[str]
+    :rtype: list
 
     """
 
