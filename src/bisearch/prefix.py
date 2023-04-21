@@ -34,7 +34,12 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
     :raise NotFound: if the searched value isn't in the list
 
-    # TODO: usage
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert bisect_right(data, "a") == 2
+    >>> assert bisect_right(data, "b") == 4
+    >>> assert bisect_right(data, "c") == 5
 
     """
 
@@ -75,7 +80,12 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
     :raise NotFound: if the searched value isn't in the list
 
-    # TODO: usage
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert bisect_left(data, "a") == 0
+    >>> assert bisect_left(data, "b") == 2
+    >>> assert bisect_left(data, "c") == 4
 
     """
 
@@ -110,7 +120,12 @@ def find_all(origin: List[str], search: str = "") -> List[str]:
     :return: the list of strings starting with the search prefix
     :rtype: list
 
-    # TODO: usage
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert find_all(data, "a") == ["apple", "apple"]
+    >>> assert find_all(data, "b") == ["banana", "banana"]
+    >>> assert find_all(data, "c") == ["cherry"]
 
     """
 
