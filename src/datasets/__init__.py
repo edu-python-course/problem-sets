@@ -21,6 +21,7 @@ __all__ = [
     "get_least_bricks_position",
     "get_least_bricks_count",
     "filter_by_values",
+    "flatten",
 ]
 
 from datasets.func import *

@@ -6,9 +6,6 @@ Datasets functions implementation
 from typing import Any, Dict, Hashable, List, Optional, Set, Tuple, Union
 
 
-# BASIC OPERATIONS
-# ================
-
 def swap_dict_loop(origin: Dict[Hashable, Hashable]
                    ) -> Dict[Hashable, Hashable]:
     """
@@ -143,9 +140,6 @@ def get_both_top_low_students(students_data: StudentsList
     return top_student, low_student  # type: ignore
 
 
-# BRICK WALL CHALLENGE
-# ====================
-
 def get_bricks_count(structure: List[List[int]]) -> int:
     """Return number of bricks in the wall structure
 
@@ -247,9 +241,6 @@ def get_least_bricks_count(structure: List[List[int]]) -> int:
     return len(structure) - max_value
 
 
-# FILTER DATASET CHALLENGE
-# ========================
-
 def filter_by_values(origin: List[Dict[str, Hashable]],
                      keys: Optional[List[str]] = None
                      ) -> List[Dict[str, Any]]:
@@ -314,3 +305,34 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
         filtered_dataset.append(entry)
 
     return filtered_dataset
+
+
+NestedIntList = Union[int, List["NestedIntList"]]
+
+
+def flatten(origin: List[NestedIntList]) -> List[int]:
+    """
+    Flattens a list of integers and nested lists of integers
+
+    :param origin: an original list
+
+    :return: a single-level list of integers
+
+    Usage:
+
+    >>> assert flatten([1, 2, 3]) == [1, 2, 3]
+    >>> assert flatten(([[1], [2], [3]])) == [1, 2, 3]
+    >>> assert flatten([1, [2, 3]]) == [1, 2, 3]
+    >>> assert flatten([1, [[2], [3]]]) == [1, 2, 3]
+
+    """
+
+    result: List[int] = []
+
+    for item in origin:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+
+    return result
