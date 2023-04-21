@@ -65,7 +65,12 @@ def get_grid_travels(height: int, width: int, /) -> int:
     :return: the number of available routes
     :rtype: int
 
-    # TODO: add usage
+    Usage:
+
+    >>> assert get_grid_travels(1, 0) == 0
+    >>> assert get_grid_travels(1, 1) == 1
+    >>> assert get_grid_travels(2, 3) == 3
+    >>> assert get_grid_travels(3, 2) == 3
 
     """
 
@@ -102,7 +107,12 @@ def can_get_target(target: int, numbers: List[int]) -> bool:
     :return: the check result
     :rtype: bool
 
-    TODO: add usage
+    Usage:
+
+    >>> assert can_get_target(0, []) is True
+    >>> assert can_get_target(0, [1, 1, 1]) is True
+    >>> assert can_get_target(7, [2, 3]) is True
+    >>> assert can_get_target(7, [2, 4, 6]) is False
 
     """
 
@@ -154,7 +164,12 @@ def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
     :return: None if impossible, otherwise list of numbers
     :rtype: list, optional
 
-    # TODO: add usage
+    Usage:
+
+    >>> assert get_target_numbers(0, []) == []
+    >>> assert get_target_numbers(0, [1, 1, 1]) == []
+    >>> assert get_target_numbers(7, [1]) == [1, 1, 1, 1, 1, 1, 1]
+    >>> assert get_target_numbers(7, [1, 2, 3]) == [1, 3, 3]
 
     """
 

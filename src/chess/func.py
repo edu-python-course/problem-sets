@@ -21,7 +21,14 @@ def within_board(position: Tuple[int, int]) -> bool:
     :return: True if position is within a chess board, otherwise False
     :rtype: bool
 
-    # TODO: usage
+    Usage:
+
+    >>> assert within_board((2, 2)) is True
+    >>> assert within_board((3, 3)) is True
+    >>> assert within_board((4, 4)) is True
+    >>> assert within_board((5, -5)) is False
+    >>> assert within_board((-5, 5)) is False
+    >>> assert within_board((5, 50)) is False
 
     """
 
@@ -42,8 +49,6 @@ def filter_can_move(pieces: List[Piece],
 
     :return: a list of pieces that can move to specified position
     :rtype: list
-
-    # TODO: usage
 
     """
 
