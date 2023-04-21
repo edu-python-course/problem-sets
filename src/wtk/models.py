@@ -49,6 +49,8 @@ class Enemy(_AbstractModel):
         """
         Initialize instance
 
+        Health value is equal to the level value.
+
         :param level: an enemy's level indicator
         :type level: int
 
