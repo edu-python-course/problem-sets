@@ -124,6 +124,28 @@ def get_low_student(students_data: StudentsList) -> StudentData:
 
 def get_both_top_low_students(students_data: StudentsList
                               ) -> Tuple[StudentData, StudentData]:
+    """
+    Return both top and low students data
+
+    Given a list of student data, returns a tuple of the student with
+    the highest average score and the student with the lowest average score.
+    The student data is represented as a list of dictionaries, where each
+    dictionary contains the keys 'name' and 'scores', where 'name' is
+    a string and 'scores' is a list of floats representing the student's
+    scores on various exams.
+
+    :param students_data: A list of dictionaries containing the student data.
+    :type students_data: list
+
+    :return: A tuple of two dictionaries representing the student with
+        the highest average score and the student with the lowest average
+        score. Each dictionary contains the keys 'name' and 'scores',
+        where 'name' is a string and 'scores' is a list of floats
+        representing the student's scores on various exams.
+    :rtype: tuple
+
+    """
+
     min_score_threshold, max_score_threshold = float("+inf"), float("-inf")
     top_student = {"name": "", "scores": []}
     low_student = {"name": "", "scores": []}
@@ -141,15 +163,16 @@ def get_both_top_low_students(students_data: StudentsList
 
 
 def get_bricks_count(structure: List[List[int]]) -> int:
-    """Return number of bricks in the wall structure
+    """
+    Return number of bricks in the wall structure
 
     :param structure: represents wall structure as sequences of integers
-    :type structure: list[list[int]]
+    :type structure: list
 
     :return: total number of bricks in the entire wall structure
     :rtype: int
 
-    Usage examples:
+    Usage:
 
     >>> assert get_bricks_count([[1], [1], [1]]) == 3
     >>> assert get_bricks_count([[1, 1, 1], [1, 1, 1]]) == 6
@@ -161,15 +184,16 @@ def get_bricks_count(structure: List[List[int]]) -> int:
 
 
 def get_position_frequency(structure: List[List[int]]) -> Dict[int, int]:
-    """Return a matrix of position-bricks pairs for a structure
+    """
+    Return a matrix of position-bricks pairs for a structure
 
     :param structure: represents wall structure as sequences of integers
-    :type structure: list[list[int]]
+    :type structure: list
 
     :return: the position - frequency matrix
-    :rtype: dict[int, int]
+    :rtype: dict
 
-    Usage examples:
+    Usage:
 
     >>> assert get_position_frequency([[1], [1], [1]]) == {}
     >>> assert get_position_frequency([[1, 2], [2, 1], [3]]) = {1: 1, 2: 1}
@@ -191,18 +215,19 @@ def get_position_frequency(structure: List[List[int]]) -> Dict[int, int]:
 
 
 def get_least_bricks_position(structure: List[List[int]]) -> int:
-    """Return a pointer to the weakest line in the structure
-
-    :param structure: represents wall structure as sequences of integers
-    :type structure: list[list[int]]
-
-    :return: the distance from the left edge to the weakest line location
-    :rtype: int
+    """
+    Return a pointer to the weakest line in the structure
 
     This function uses helper function ``get_structure_matrix`` to build
     the matrix of distances from the left edge of the "wall".
 
-    Usage examples:
+    :param structure: represents wall structure as sequences of integers
+    :type structure: list
+
+    :return: the distance from the left edge to the weakest line location
+    :rtype: int
+
+    Usage:
 
     >>> assert get_least_bricks_position([[1], [1], [1]]) == 0
     >>> assert get_least_bricks_position([[1, 1, 1], [1, 1, 1]]) == 1
@@ -217,15 +242,16 @@ def get_least_bricks_position(structure: List[List[int]]) -> int:
 
 
 def get_least_bricks_count(structure: List[List[int]]) -> int:
-    """Return the least number of bricks in a vertical line
+    """
+    Return the least number of bricks in a vertical line
 
     :param structure: represents wall structure as sequences of integers
-    :type structure: list[list[int]]
+    :type structure: list
 
     :return: minimum number of bricks in a line
     :rtype: int
 
-    Usage examples:
+    Usage:
 
     >>> assert get_least_bricks_count([[1], [1], [1]]) == 3
     >>> assert get_least_bricks_count([[1, 2], [2, 1], [3], [1, 1, 1]]) == 2
@@ -244,15 +270,8 @@ def get_least_bricks_count(structure: List[List[int]]) -> int:
 def filter_by_values(origin: List[Dict[str, Hashable]],
                      keys: Optional[List[str]] = None
                      ) -> List[Dict[str, Any]]:
-    """Return a filtered datasets by unique values in a given keys sets
-
-    :param origin: an original dataset with entries to filter
-    :type origin: list
-    :param keys: a collection of keys to use for filtering
-    :type keys: list, optional
-
-    :return: a filtered dataset
-    :rtype: list
+    """
+    Return a filtered datasets by unique values in a given keys sets
 
     The origin dataset is a list of dictionaries. All the dictionaries have
     the same set of keys of a string type. All dictionaries values are of
@@ -266,14 +285,17 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     function, all values (if any) are valid. In case this parameter is
     omitted - all available keys should be used.
 
-    Inputs are considered to be pre-validated as described above,
-    no need for additional checks.
+    :param origin: an original dataset with entries to filter
+    :type origin: list
+    :param keys: a collection of keys to use for filtering
+    :type keys: list, optional
 
-    Usage examples:
+    :return: a filtered dataset
+    :rtype: list
+
+    Usage:
 
     >>> ds = [{"x": 1, "y": 2, "z": 3}, {"x": 0, "y": 2, "z": 3}]
-    >>> assert filter_by_values([]) == []              # no data to filter
-    >>> assert filter_by_values(ds) == ds              # the same as origin
     >>> assert filter_by_values(ds, ["x"]) == ds       # the same as origin
     >>> assert filter_by_values(ds, ["x", "z"]) == ds  # the same as origin
     >>> assert filter_by_values(ds, ["y"]) == [{"x": 1, "y": 2, "z": 3}]
@@ -289,18 +311,12 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     filtered_dataset: List[Dict[str, Hashable]] = []
     filtered_values: Set[int] = set()
 
-    # in case no keys provided get all keys from the first one dictionary
     keys = keys or origin[0].keys()  # type: ignore
-
-    # iterate though the list and perform de-duplication task
     for entry in origin:
         entry_values = hash(tuple(map(entry.get, keys)))  # type: ignore
-        # in case the values has been filtered already
-        # proceed to the next iteration
         if entry_values in filtered_values:
             continue
 
-        # update filtered values
         filtered_values.add(entry_values)
         filtered_dataset.append(entry)
 

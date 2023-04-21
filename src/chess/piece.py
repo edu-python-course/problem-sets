@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 class Piece:
-    """Chess piece model
+    """
+    Chess piece model
 
     :ivar position: the position on a chess board
     :type position: tuple
@@ -25,12 +26,13 @@ class Piece:
     def __init__(self,
                  is_white: bool = True,
                  position: Tuple[int, int] = (0, 0)) -> None:
-        """Initialize instance
+        """
+        Initialize instance
 
         :param is_white: indicating if a piece is white. Defaults to True.
-        :type is_white: bool
+        :type is_white: bool, optional
         :param position: initial piece position. Defaults to (0, 0).
-        :type position: tuple
+        :type position: tuple, optional
 
         """
 
@@ -48,7 +50,8 @@ class Piece:
         self.is_white = not self.is_white
 
     def set_position(self, position: Tuple[int, int]) -> None:
-        """Change piece position to a specified one
+        """
+        Change piece position to a specified one
 
         :param position: new position for a piece
         :type position: tuple
@@ -62,7 +65,8 @@ class Piece:
         logger.warning("Position %s is outside the board", position)
 
     def can_move(self, position: Tuple[int, int]) -> bool:
-        """Check if a move to a specified position is valid
+        """
+        Check if a move to a specified position is valid
 
         :param position: a position to check
         :type position: tuple
@@ -75,7 +79,8 @@ class Piece:
         raise NotImplementedError
 
     def get_delta(self, position: Tuple[int, int]) -> Tuple[int, int]:
-        """Return the deltas between current position and the specified one
+        """
+        Return the deltas between current position and the specified one
 
         :param position: a position to calculate delta with
         :type position: tuple

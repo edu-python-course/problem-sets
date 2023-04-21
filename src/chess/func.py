@@ -12,13 +12,23 @@ if TYPE_CHECKING:
 
 
 def within_board(position: Tuple[int, int]) -> bool:
-    """Check if position is within a chess board
+    """
+    Check if position is within a chess board
 
     :param position: a position to check
     :type position: tuple
 
     :return: True if position is within a chess board, otherwise False
     :rtype: bool
+
+    Usage:
+
+    >>> assert within_board((2, 2)) is True
+    >>> assert within_board((3, 3)) is True
+    >>> assert within_board((4, 4)) is True
+    >>> assert within_board((5, -5)) is False
+    >>> assert within_board((-5, 5)) is False
+    >>> assert within_board((5, 50)) is False
 
     """
 
@@ -29,7 +39,8 @@ def within_board(position: Tuple[int, int]) -> bool:
 
 def filter_can_move(pieces: List[Piece],
                     position: Tuple[int, int]) -> List[Piece]:
-    """Filter the list of chess piece
+    """
+    Filter the list of chess piece
 
     :param pieces: a list of chess pieces
     :type pieces: list

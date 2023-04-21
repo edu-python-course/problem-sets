@@ -1,5 +1,6 @@
 """
 Chess pieces unicode symbols
+
 """
 
 WHITE_KING = chr(0x2654)

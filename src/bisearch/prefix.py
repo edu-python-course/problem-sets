@@ -17,21 +17,29 @@ class NotFound(Exception):
 
 
 def bisect_right(origin: List[str], search: str = "") -> int:
-    """Return the most right one index matching the search value
+    """
+    Return the most right one index matching the search value
+
+    Current function implements common ``bisect_right`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     :param origin: a list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: a prefix to search
     :type search: str
 
     :return: the index after the last string starting with search prefix
     :rtype: int
 
-    :raise: NotFound
+    :raise NotFound: if the searched value isn't in the list
 
-    Current function implements common ``bisect_right`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert bisect_right(data, "a") == 2
+    >>> assert bisect_right(data, "b") == 4
+    >>> assert bisect_right(data, "c") == 5
 
     """
 
@@ -55,21 +63,29 @@ def bisect_right(origin: List[str], search: str = "") -> int:
 
 
 def bisect_left(origin: List[str], search: str = "") -> int:
-    """Return the most left one index matching the search value
+    """
+    Return the most left one index matching the search value
+
+    Current function implements common ``bisect_left`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     :param origin: a list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: a prefix to search
     :type search: str
 
     :return: the index of the first string starting with search prefix
     :rtype: int
 
-    :raise: NotFound
+    :raise NotFound: if the searched value isn't in the list
 
-    Current function implements common ``bisect_left`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert bisect_left(data, "a") == 0
+    >>> assert bisect_left(data, "b") == 2
+    >>> assert bisect_left(data, "c") == 4
 
     """
 
@@ -93,15 +109,23 @@ def bisect_left(origin: List[str], search: str = "") -> int:
 
 
 def find_all(origin: List[str], search: str = "") -> List[str]:
-    """Return strings starting with prefix
+    """
+    Return strings starting with prefix
 
     :param origin: the list of strings
-    :type origin: list[str]
+    :type origin: list
     :param search: the prefix to search, defaults to empty string
     :type search: str
 
     :return: the list of strings starting with the search prefix
-    :rtype: list[str]
+    :rtype: list
+
+    Usage:
+
+    >>> data = ["apple", "apple", "banana", "banana", "cherry"]
+    >>> assert find_all(data, "a") == ["apple", "apple"]
+    >>> assert find_all(data, "b") == ["banana", "banana"]
+    >>> assert find_all(data, "c") == ["cherry"]
 
     """
 

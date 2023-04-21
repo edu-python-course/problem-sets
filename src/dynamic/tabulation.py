@@ -10,19 +10,20 @@ from calc.func import get_fibonacci_number as fib_classic
 
 
 def get_fibonacci_sequence(size: int, /) -> List[int]:
-    """Return the Fibonacci numbers sequences of a given size
-
-    :param size: the size of the requested sequence
-    :type size: int
-
-    :return: the Fibonacci sequence
-    :rtype: list[int]
+    """
+    Return the Fibonacci numbers sequences of a given size
 
     The Fibonacci numbers (aka the Fibonacci sequence) is a sequence in
     which each number is the sum of the two preceding onces. The sequence
     commonly starts with 0 and 1.
 
-    Usage examples:
+    :param size: the size of the requested sequence
+    :type size: int
+
+    :return: the Fibonacci sequence
+    :rtype: list
+
+    Usage:
 
     >>> assert get_fibonacci_sequence(0) == []
     >>> assert get_fibonacci_sequence(1) == [0]
@@ -47,19 +48,29 @@ def get_fibonacci_number(idx):  # pylint:disable=C0116
 
 
 def get_grid_travels(height: int, width: int, /) -> int:
-    """Calculate the number of available route for a specified grid size
-
-    :param height: grid height
-    :param width: grid width
-
-    :return: the number of available routes
-    :rtype: int
+    """
+    Calculate the number of available route for a specified grid size
 
     The traveler starts the journey in the top-left corner of the grid
     The only moves available are **move right** and **move down**.
     and trying to reach the opposite grid corner (bottom-right).
     The task is to calculate the number of all available routes to do
     this.
+
+    :param height: grid height
+    :type height: int
+    :param width: grid width
+    :type width: int
+
+    :return: the number of available routes
+    :rtype: int
+
+    Usage:
+
+    >>> assert get_grid_travels(1, 0) == 0
+    >>> assert get_grid_travels(1, 1) == 1
+    >>> assert get_grid_travels(2, 3) == 3
+    >>> assert get_grid_travels(3, 2) == 3
 
     """
 
@@ -83,17 +94,25 @@ def get_grid_travels(height: int, width: int, /) -> int:
 
 
 def can_get_target(target: int, numbers: List[int]) -> bool:
-    """Check if the target value can be generated using given numbers
+    """
+    Check if the target value can be generated using given numbers
+
+    Numbers from the list can be used as many times as needed.
 
     :param target: the desired number
     :type target: int
     :param numbers: the sequence of numbers available for usage
-    :type numbers: list[int]
+    :type numbers: list
 
     :return: the check result
     :rtype: bool
 
-    Numbers from the list can be used as many times as needed.
+    Usage:
+
+    >>> assert can_get_target(0, []) is True
+    >>> assert can_get_target(0, [1, 1, 1]) is True
+    >>> assert can_get_target(7, [2, 3]) is True
+    >>> assert can_get_target(7, [2, 4, 6]) is False
 
     """
 
@@ -127,15 +146,8 @@ def can_get_target(target: int, numbers: List[int]) -> bool:
 
 
 def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
-    """Return a collection of numbers to get the target one if possible
-
-    :param target: the desired number
-    :type target: int
-    :param numbers: the sequence of numbers available for usage
-    :type numbers: list[int]
-
-    :return: None if impossible, otherwise list of numbers
-    :rtype: list[int] | None
+    """
+    Return a collection of numbers to get the target one if possible
 
     This function returns the best collection of numbers to generate the
     target one. If it's impossible to generate None will be returned.
@@ -143,6 +155,21 @@ def get_target_numbers(target: int, numbers: List[int]) -> Optional[List[int]]:
     The shortest one available sequence is considered the best one.
 
     Numbers can be used as many times as it needed.
+
+    :param target: the desired number
+    :type target: int
+    :param numbers: the sequence of numbers available for usage
+    :type numbers: list
+
+    :return: None if impossible, otherwise list of numbers
+    :rtype: list, optional
+
+    Usage:
+
+    >>> assert get_target_numbers(0, []) == []
+    >>> assert get_target_numbers(0, [1, 1, 1]) == []
+    >>> assert get_target_numbers(7, [1]) == [1, 1, 1, 1, 1, 1, 1]
+    >>> assert get_target_numbers(7, [1, 2, 3]) == [1, 3, 3]
 
     """
 
