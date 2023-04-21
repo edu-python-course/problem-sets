@@ -7,7 +7,8 @@ from typing import Iterator, List, Optional, Tuple, Union
 
 
 class Product:
-    """Product model implementation
+    """
+    Product model implementation
 
     Instances of this class represent a product available for purchase.
 
@@ -25,7 +26,8 @@ class Product:
                  price: int,
                  unit: Union[int, float]
                  ) -> None:
-        """Initialize instance
+        """
+        Initialize instance
 
         :param name: product name
         :type name: str
@@ -158,8 +160,8 @@ class ShoppingCart:
     def remove_product(self,
                        product: Product
                        ) -> Tuple[Product, Union[int, float]]:
-        """Remove product from a cart instance
-
+        """
+        Remove product from a cart instance
 
         :param product: a product instance to add to cart
         :type product: :class: `Product`
@@ -167,7 +169,7 @@ class ShoppingCart:
         :return: a shopping cart product/quantity entry
         :rtype: tuple
 
-        :raise: ValueError
+        :raise ValueError: if the project isn't present in the shopping cart
 
         """
 
@@ -216,16 +218,16 @@ class ShoppingCart:
                     product: Product,
                     quantity: Union[int, float]
                     ) -> None:
-        """Subtract product from the shopping cart
+        """
+        Subtract product from the shopping cart
 
         If quantity value is less or equal to 0 the product is to be
         removed from the shopping cart
 
-
         :param product: a product instance to add to cart
         :type product: :class: `Product`
         :param quantity: a quantity of a product to add
-        :type quantity: int or float
+        :type quantity: int | float
 
         """
 

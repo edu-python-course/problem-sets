@@ -7,13 +7,8 @@ import string
 
 
 def is_palindrome(origin: str) -> bool:
-    """Return a palindrome check result
-
-    :param origin: a string to test
-    :type origin: str
-
-    :return: return a palindrome check result
-    :rtype: bool
+    """
+    Return a palindrome check result
 
     This function implements two pointers method. The left pointer is
     initialized at the beginning of an origin string, and the right one -
@@ -23,7 +18,13 @@ def is_palindrome(origin: str) -> bool:
     returns True. Punctuation, word boundaries and capitalization are
     ignored.
 
-    Usage examples:
+    :param origin: a string to test
+    :type origin: str
+
+    :return: return a palindrome check result
+    :rtype: bool
+
+    Usage:
 
     >>> assert is_palindrome("aba") is True
     >>> assert is_palindrome("abc") is False
@@ -54,7 +55,8 @@ def is_palindrome(origin: str) -> bool:
 
 
 def get_longest_palindrome(origin: str) -> str:
-    """Return the longest palindrome substring from the given input
+    """
+    Return the longest palindrome substring from the given input
 
     :param origin:
     :type origin: str
@@ -62,7 +64,7 @@ def get_longest_palindrome(origin: str) -> str:
     :return: the longest palindrome
     :rtype: str
 
-    Usage examples:
+    Usage:
 
     >>> assert get_longest_palindrome("0123219") == "12321"
     >>> assert get_longest_palindrome("1012210") == "012210"
@@ -93,7 +95,14 @@ def get_longest_palindrome(origin: str) -> str:
 
 
 def are_parentheses_balanced(origin: str) -> bool:
-    """Return a validation result for a given parentheses sequence
+    """
+    Return a validation result for a given parentheses sequence
+
+    Validation rules:
+
+    - each opening parentheses must be closed by the same type parentheses
+    - open parentheses must be closed in the correct order
+    - any non-parentheses characters are to be ignored
 
     :param origin: a parentheses sequence to validate
     :type origin: str
@@ -101,13 +110,7 @@ def are_parentheses_balanced(origin: str) -> bool:
     :return: a validation result
     :rtype: bool
 
-    Validation rules:
-
-    * each opening parentheses must be closed by the same type parentheses
-    * open parentheses must be closed in the correct order
-    * any non-parentheses characters are to be ignored
-
-    Usage examples:
+    Usage:
 
     >>> assert are_parentheses_balanced("({[]})") is True
     >>> assert are_parentheses_balanced(")]}{[(") is False
@@ -135,7 +138,8 @@ def are_parentheses_balanced(origin: str) -> bool:
 
 
 def get_longest_uniq_length(origin: str) -> int:
-    """Return the length of the longest on sequence of unique characters
+    """
+    Return the length of the longest on sequence of unique characters
 
     :param origin: original sequences
     :type origin: str
@@ -143,7 +147,7 @@ def get_longest_uniq_length(origin: str) -> int:
     :return: the length of the longest unique characters sequence
     :rtype: int
 
-    Usage examples:
+    Usage:
 
     >>> assert get_longest_uniq_length("abcdefg") == 7
     >>> assert get_longest_uniq_length("racecar") == 4

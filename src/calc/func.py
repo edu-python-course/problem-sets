@@ -5,7 +5,13 @@ Calculation functions implementations
 
 
 def get_factorial(number: int, /) -> int:
-    """Return the factorial value for a given number
+    """
+    Return the factorial value for a given number
+
+    In mathematics the factorial is the product of all positive integers
+    less than or equal to given number.
+    E.g. 5! = 5 * 4! = 5 * 4 * 3 * 2 * 1 = 120.
+    The value of 0! = 1 according to the convention of an empty product.
 
     :param number:
     :type number: int
@@ -13,12 +19,7 @@ def get_factorial(number: int, /) -> int:
     :return: the factorial value
     :rtype: int
 
-    In mathematics the factorial is the product of all positive integers
-    less than or equal to given number.
-    E.g. 5! = 5 * 4! = 5 * 4 * 3 * 2 * 1 = 120.
-    The value of 0! = 1 according to the convention of an empty product.
-
-    Usage examples:
+    Usage:
 
     >>> assert get_factorial(0) == 1
     >>> assert get_factorial(5) == 120
@@ -32,7 +33,12 @@ def get_factorial(number: int, /) -> int:
 
 
 def get_fibonacci_number(idx: int, /) -> int:
-    """Return a Fibonacci's sequence number at a specified index
+    """
+    Return a Fibonacci's sequence number at a specified index
+
+    The Fibonacci number is a number from the Fibonacci sequence, in which
+    each number is the sum of the two preceding ones. This sequence commonly
+    starts from 0 and 1: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
 
     :param idx: a Fibonacci sequence index starting from 0
     :type idx: int
@@ -40,11 +46,7 @@ def get_fibonacci_number(idx: int, /) -> int:
     :return: a sequence's member
     :rtype: int
 
-    The Fibonacci number is a number from the Fibonacci sequence, in which
-    each number is the sum of the two preceding ones. This sequence commonly
-    starts from 0 and 1: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
-
-    Usage examples:
+    Usage:
 
     >>> assert get_fibonacci_number(0) == 0
     >>> assert get_fibonacci_number(1) == 1
@@ -64,7 +66,11 @@ def get_fibonacci_number(idx: int, /) -> int:
 
 
 def get_fibonacci_number_nr(idx: int, /) -> int:
-    """Return a Fibonacci's sequence number at a specified index
+    """
+    Return a Fibonacci's sequence number at a specified index
+
+    This function implements the non-recursive algorithm, which is more
+    efficient, since it does not have multiple recursive calls.
 
     :param idx: a Fibonacci sequence index starting from 0
     :type idx: int
@@ -72,8 +78,13 @@ def get_fibonacci_number_nr(idx: int, /) -> int:
     :return: a sequence's member
     :rtype: int
 
-    This function implements the non-recursive algorithm, which is more
-    efficient, since it does not have multiple recursive calls.
+    Usage:
+
+    >>> assert get_fibonacci_number(0) == 0
+    >>> assert get_fibonacci_number(1) == 1
+    >>> assert get_fibonacci_number(2) == 1
+    >>> assert get_fibonacci_number(3) == 2
+    >>> assert get_fibonacci_number(4) == 3
 
     """
 
@@ -91,7 +102,11 @@ def get_fibonacci_number_nr(idx: int, /) -> int:
 
 
 def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
-    """Return the sum of two numbers of string type as string
+    """
+    Return the sum of two numbers of string type as string
+
+    Valid input is a string of any length containing numeric characters from
+    0 to 9. Empty strings are allowed as well and should be considered as 0.
 
     :param number_1: first number
     :type number_1: str
@@ -101,10 +116,7 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
     :return: the sum of two numbers
     :rtype: str
 
-    Valid input is a string of any length containing numeric characters from
-    0 to 9. Empty strings are allowed as well and should be considered as 0.
-
-    Usage examples:
+    Usage:
 
     >>> assert get_sum_of_strings("123", "456") == "579"
     >>> assert get_sum_of_strings("099", "001") == "100"

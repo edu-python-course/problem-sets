@@ -8,7 +8,11 @@ from typing import List
 
 
 def is_prime(number: int) -> bool:
-    """Return prime check result for a specified number
+    """
+    Return prime check result for a specified number
+
+    The result of this function is True if a number is prime, otherwise
+    False.
 
     :param number: number to check
     :type number: int
@@ -16,10 +20,7 @@ def is_prime(number: int) -> bool:
     :return: prime check result
     :rtype: bool
 
-    The result of this function is True if a number is prime, otherwise
-    False.
-
-    Usage examples:
+    Usage:
 
     >>> assert not is_prime(0)
     >>> assert not is_prime(1)
@@ -41,15 +42,16 @@ def is_prime(number: int) -> bool:
 
 
 def get_primes(limit: int) -> List[int]:
-    """Return a list of prime numbers within specified range
+    """
+    Return a list of prime numbers within specified range
 
     :param limit: a range limit to look for prime numbers
     :type limit: int
 
     :return: the list of prime numbers within a specified range
-    :rtype: list[int]
+    :rtype: list
 
-    Usage examples:
+    Usage:
 
     >>> assert get_primes(10) == [2, 3, 5, 7]
     >>> assert get_primes(20) == [2, 3, 5, 7, 11, 13, 17, 19]
@@ -60,13 +62,8 @@ def get_primes(limit: int) -> List[int]:
 
 
 def eratosthenes_sieve(limit: int) -> List[int]:
-    """Return a list of prime numbers till specified limit
-
-    :param limit: a range limit to look for prime numbers
-    :type limit: int
-
-    :return: the list of prime numbers within a specified range
-    :rtype: list[int]
+    """
+    Return a list of prime numbers till specified limit
 
     In mathematics, the sieve of Eratosthenes is an ancient algorithm
     for finding all prime numbers up to any given limit.
@@ -86,7 +83,13 @@ def eratosthenes_sieve(limit: int) -> List[int]:
 
     .. seealso:: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-    Usage examples:
+    :param limit: a range limit to look for prime numbers
+    :type limit: int
+
+    :return: the list of prime numbers within a specified range
+    :rtype: list
+
+    Usage:
 
     >>> assert eratosthenes_sieve(10) == [2, 3, 5, 7]
     >>> assert eratosthenes_sieve(20) == [2, 3, 5, 7, 11, 13, 17, 19]
