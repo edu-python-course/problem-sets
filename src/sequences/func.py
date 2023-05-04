@@ -4,9 +4,10 @@ Sequence functions implementations
 """
 
 import string
+from typing import Union
 
 
-def is_palindrome(origin: str) -> bool:
+def is_palindrome(origin: Union[str, int], /) -> bool:
     """
     Return a palindrome check result
 
@@ -18,8 +19,8 @@ def is_palindrome(origin: str) -> bool:
     returns True. Punctuation, word boundaries and capitalization are
     ignored.
 
-    :param origin: a string to test
-    :type origin: str
+    :param origin: value to test
+    :type origin: str | int
 
     :return: return a palindrome check result
     :rtype: bool
@@ -28,10 +29,12 @@ def is_palindrome(origin: str) -> bool:
 
     >>> assert is_palindrome("aba") is True
     >>> assert is_palindrome("abc") is False
+    >>> assert is_palindrome(12345) is False
+    >>> assert is_palindrome(12321) is True
 
     """
 
-    origin = origin.lower()
+    origin = str(origin).lower()
     skip_chars: str = string.punctuation + string.whitespace
     left: int = 0
     right: int = len(origin) - 1
@@ -54,7 +57,7 @@ def is_palindrome(origin: str) -> bool:
     return True
 
 
-def get_longest_palindrome(origin: str) -> str:
+def get_longest_palindrome(origin: str, /) -> str:
     """
     Return the longest palindrome substring from the given input
 
@@ -94,7 +97,7 @@ def get_longest_palindrome(origin: str) -> str:
     return origin[start:end + 1]
 
 
-def are_parentheses_balanced(origin: str) -> bool:
+def are_parentheses_balanced(origin: str, /) -> bool:
     """
     Return a validation result for a given parentheses sequence
 
@@ -137,7 +140,7 @@ def are_parentheses_balanced(origin: str) -> bool:
     return not parentheses_stack
 
 
-def get_longest_uniq_length(origin: str) -> int:
+def get_longest_uniq_length(origin: str, /) -> int:
     """
     Return the length of the longest on sequence of unique characters
 
