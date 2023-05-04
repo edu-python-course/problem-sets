@@ -9,6 +9,7 @@ __all__ = [
     "get_fibonacci_number",
     "get_fibonacci_number_nr",
     "get_sum_of_strings",
+    "get_squares",
 ]
 
 from calc.func import *
