@@ -4,7 +4,7 @@ Sequence functions implementations
 """
 
 import string
-from typing import Union
+from typing import List, Union
 
 
 def is_palindrome(origin: Union[str, int], /) -> bool:
@@ -95,6 +95,40 @@ def get_longest_palindrome(origin: str, /) -> str:
             end = idx + max_length // 2
 
     return origin[start:end + 1]
+
+
+def get_palindrome_primes(limit: int, /) -> List[int]:
+    """
+    Return a list of palindromic prime numbers within the specified range
+
+    Range begins with 0.
+
+    :param limit: range limit to search for primes within
+    :type limit: int
+
+    :return: a list of palindrome prime numbers
+    :rtype: list
+
+    """
+
+    # TODO: add implementation
+
+
+def get_palindrome_squares(limit: int, /) -> List[int]:
+    """
+    Return a list of palindrome squares within the specified range
+
+    Range begins with 0.
+
+    :param limit:
+    :type limit: int
+
+    :return:
+    :rtype: list
+
+    """
+
+    # TODO: add implementation
 
 
 def are_parentheses_balanced(origin: str, /) -> bool:
