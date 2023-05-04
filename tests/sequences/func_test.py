@@ -13,8 +13,8 @@ def test_palindrome_names():
 
 
 def test_palindrome_numbers():
-    assert sequences.is_palindrome("12345") is False
-    assert sequences.is_palindrome("12321") is True
+    assert sequences.is_palindrome(12345) is False
+    assert sequences.is_palindrome(12321) is True
 
 
 def test_palindrome_dates():
