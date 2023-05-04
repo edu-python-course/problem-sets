@@ -86,26 +86,7 @@ def withdraw_rev(target: int,
 
     """
 
-    if target < 1:
-        return []
-
-    if denominations is None:
-        denominations = DENOMINATIONS
-    denominations = sorted(denominations)
-
-    size: int = len(denominations)
-    multipliers = [0] * size
-
-    # TODO: adjust multipliers (e.g. withdraw_rev(17) -> [(10, 1), (3, 2)]
-    #       instead of [(9, 1), (4, 2)]
-    for idx in range(size):
-        multipliers[idx] = min(limit, target // denominations[idx])
-        target -= multipliers[idx] * denominations[idx]
-
-    # filter zero multipliers
-    filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
-
-    return sorted(filtered, key=lambda pair: pair[1])
+    raise NotImplementedError
 
 
 def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
