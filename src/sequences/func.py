@@ -6,6 +6,9 @@ Sequence functions implementations
 import string
 from typing import List, Union
 
+from calc import get_squares
+from primes import eratosthenes_sieve
+
 
 def is_palindrome(origin: Union[str, int], /) -> bool:
     """
@@ -111,7 +114,7 @@ def get_palindrome_primes(limit: int, /) -> List[int]:
 
     """
 
-    # TODO: add implementation
+    return list(filter(is_palindrome, eratosthenes_sieve(limit)))
 
 
 def get_palindrome_squares(limit: int, /) -> List[int]:
@@ -128,7 +131,7 @@ def get_palindrome_squares(limit: int, /) -> List[int]:
 
     """
 
-    # TODO: add implementation
+    return list(filter(is_palindrome, get_squares(limit)))
 
 
 def are_parentheses_balanced(origin: str, /) -> bool:

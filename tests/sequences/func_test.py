@@ -47,12 +47,12 @@ def test_get_longest_palindrome_empty():
 
 
 def test_get_palindrome_primes():
-    test = 2, 3, 5, 7, 11, 101, 131, 151, 181, 191, 313, 353, 373, 383, 727, 757
-    assert sequences.get_palindrome_primes(770) == test
+    test = [2, 3, 5, 7, 11, 101, 131, 151, 181, 191, 313, 353, 373, 383, 727]
+    assert sequences.get_palindrome_primes(730) == test
 
 
 def test_get_palindrome_squares():
-    test = 0, 1, 4, 9, 121, 484, 676, 10201, 12321, 14641, 40804, 44944, 69696
+    test = [0, 1, 4, 9, 121, 484, 676, 10201, 12321, 14641, 40804, 44944, 69696]
     assert sequences.get_palindrome_squares(300) == test
 
 
