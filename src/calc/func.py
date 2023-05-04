@@ -3,6 +3,23 @@ Calculation functions implementations
 
 """
 
+from typing import List
+
+
+def get_squares(limit: int, /) -> List[int]:
+    """
+    Return a list of squares within a specified limit
+
+    :param limit: range limit
+    :type limit: int
+
+    :return: list of squares
+    :rtype: list
+
+    """
+
+    return [number ** 2 for number in range(limit)]
+
 
 def get_factorial(number: int, /) -> int:
     """

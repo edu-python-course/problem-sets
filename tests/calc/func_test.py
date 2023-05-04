@@ -1,6 +1,13 @@
 import calc
 
 
+def test_get_squares():
+    test = [
+        0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256
+    ]
+    assert calc.get_squares(17) == test
+
+
 def test_get_factorial():
     assert calc.get_factorial(0) == 1
     assert calc.get_factorial(5) == 120
