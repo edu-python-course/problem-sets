@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2023.04.2"
+version = "2023.05.1"
 description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
@@ -96,7 +96,7 @@ max-nested-blocks = 3
 legacy_tox_ini = """
 [tox]
 minversion = 4.0
-envlist = py39, py310, mypy, pylint
+envlist = py39, py310, py311, mypy, pylint
 isolated_build = true
 skip_missing_interpreters = true
 
@@ -104,6 +104,7 @@ skip_missing_interpreters = true
 python =
     3.9: py39
     3.10: py310, mypy, pylint
+    3.11: py311
 
 [testenv]
 deps =
