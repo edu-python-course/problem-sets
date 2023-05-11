@@ -1,4 +1,12 @@
 #################
+Release 2023.05.1
+#################
+
+- Add contributing guide
+- Apply minor changes to ``is_palindrome`` function
+- Update project dependencies
+
+#################
 Release 2023.04.2
 #################
 
