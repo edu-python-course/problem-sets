@@ -54,9 +54,9 @@ def withdraw(target: int,
         target -= multipliers[idx] * denominations[idx]
 
     # filter zero multipliers
-    filtered = filter(lambda pair: pair[0] > 0, zip(multipliers, denominations))
+    filtered = filter(lambda val: val[0] > 0, zip(multipliers, denominations))
 
-    return sorted(filtered, key=lambda pair: pair[1])
+    return sorted(filtered, key=lambda val: val[1])
 
 
 def withdraw_rev(target: int,
@@ -89,11 +89,11 @@ def withdraw_rev(target: int,
     raise NotImplementedError
 
 
-def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
+def get_total(values: Iterable[Tuple[int, int]]) -> int:
     """Calculate the total sum
 
-    :param pairs: pairs of denominations and their multipliers
-    :type pairs: list
+    :param values: pairs of denominations and their multipliers
+    :type values: list
 
     :return: the total sum
     :rtype: int
@@ -109,4 +109,4 @@ def get_total(pairs: Iterable[Tuple[int, int]]) -> int:
 
     """
 
-    return sum(map(lambda pair: pair[0] * pair[1], pairs))
+    return sum(map(lambda val: val[0] * val[1], values))
