@@ -95,7 +95,7 @@ class Enemy(_AbstractModel):
 
         """
 
-        return random.choice(tuple(FightChoice))
+        return random.choice(list(FightChoice))
 
     @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_attack(self) -> FightChoice:  # pragma: no cover
