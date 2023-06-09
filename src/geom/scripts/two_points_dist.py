@@ -1,5 +1,6 @@
 # Distance between two points #91
 # https://github.com/edu-python-course/problem-sets/issues/91
+# pylint: disable=C0114
 
 import math
 
