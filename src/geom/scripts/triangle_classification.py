@@ -1,5 +1,6 @@
 # Triangle classification #81
 # https://github.com/edu-python-course/problem-sets/issues/81
+# pylint: disable=C0114
 
 if __name__ == "__main__":
     a = input("Enter a side length: ")

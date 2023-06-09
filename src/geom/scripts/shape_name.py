@@ -1,5 +1,6 @@
 # Shape name  # 94
 # https://github.com/edu-python-course/problem-sets/issues/94
+# pylint: disable=C0114
 
 if __name__ == "__main__":
     sides = int(input("Enter the number of sides: "))
