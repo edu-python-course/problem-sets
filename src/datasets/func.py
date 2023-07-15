@@ -23,7 +23,7 @@ def swap_dict_loop(origin: Dict[Hashable, Hashable]
 
     This is the most descriptive algorithm to solve the swap task.
 
-    Example usage:
+    Usage:
 
     >>> swap_dict_loop({1: "one", 2: "two", 3: "three"})
     {"one": 1, "two": 2, "three": 3}
@@ -51,7 +51,7 @@ def swap_dict(origin: Dict[Hashable, Hashable]) -> Dict[Hashable, Hashable]:
     Works similar to ``swap_dict_loop`` function, but uses dictionary
     comprehension instead of the ``for`` loop.
 
-    Example usage:
+    Usage:
 
     >>> swap_dict({1: "one", 2: "two", 3: "three"})
     {"one": 1, "two": 2, "three": 3}
@@ -61,9 +61,9 @@ def swap_dict(origin: Dict[Hashable, Hashable]) -> Dict[Hashable, Hashable]:
     return {value: key for key, value in origin.items()}
 
 
-# define typing hints aliases
+# user defined types
 StudentData = Dict[str, Union[str, List[int]]]  # student data type alias
-StudentsList = List[StudentData]  # students data type alias
+StudentsList = List[StudentData]  # students list type alias
 
 
 def get_avg_score(student_data: StudentData) -> float:
@@ -81,7 +81,7 @@ def get_top_student(students_data: StudentsList) -> StudentData:
     :param students_data: a list of students data (names and scores)
     :type students_data: list
 
-    :return: student data entity
+    :return: student data
     :rtype: dict
 
     """
@@ -323,6 +323,7 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     return filtered_dataset
 
 
+# user defined type
 NestedIntList = Union[int, List["NestedIntList"]]
 
 
