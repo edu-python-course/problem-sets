@@ -205,3 +205,31 @@ def get_longest_uniq_length(origin: str, /) -> int:
         length = max(length, right_idx - left_idx + 1)
 
     return length
+
+
+def add_spaces(origin: str) -> str:
+    """
+    Return modified string with whitespaces before capital letters
+
+    An origin string may contain letters in upper case. The function removes
+    any white spaces present in the initial data, and transform the string
+    in a way to add spaces only before letters in upper case.
+
+    :param origin: an original string
+    :rtype: str
+
+    :return: string with white spaces before capital letters
+    :rtype: str
+
+    Usage:
+
+    >>> assert add_spaces("camelCase") == "camel Case"
+    >>> assert add_spaces(" John Doe ") == "John Doe"
+    >>> assert add_spaces("racecar") == "racecar"
+
+    """
+
+    # remove white spaces, if any
+    origin = origin.replace(" ", "")
+
+    return "".join(f" {c}" if c.isupper() else c for c in origin).lstrip()
