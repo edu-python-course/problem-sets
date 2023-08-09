@@ -44,9 +44,9 @@ packages = [
     { include = "datasets", from = "src" },
     { include = "dynamic", from = "src" },
     { include = "geom", from = "src" },
+    { include = "primes", from = "src" },
     { include = "sequences", from = "src" },
     { include = "sorting", from = "src" },
-    { include = "primes", from = "src" },
     { include = "wtk", from = "src" },
 ]
 
