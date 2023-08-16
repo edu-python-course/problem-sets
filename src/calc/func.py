@@ -86,14 +86,14 @@ def get_fibonacci_number_nr(idx: int, /) -> int:
     """
     Return a Fibonacci's sequence number at a specified index
 
-    This function implements the non-recursive algorithm, which is more
-    efficient, since it does not have multiple recursive calls.
-
     :param idx: a Fibonacci sequence index starting from 0
     :type idx: int
 
     :return: a sequence's member
     :rtype: int
+
+    This function implements the non-recursive algorithm, which is more
+    efficient, since it does not have multiple recursive calls.
 
     Usage:
 
@@ -122,9 +122,6 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
     """
     Return the sum of two numbers of string type as string
 
-    Valid input is a string of any length containing numeric characters from
-    0 to 9. Empty strings are allowed as well and should be considered as 0.
-
     :param number_1: first number
     :type number_1: str
     :param number_2: second number
@@ -132,6 +129,9 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
 
     :return: the sum of two numbers
     :rtype: str
+
+    Valid input is a string of any length containing numeric characters from
+    0 to 9. Empty strings are allowed as well and should be considered as 0.
 
     Usage:
 

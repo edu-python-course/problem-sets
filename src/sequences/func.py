@@ -14,6 +14,12 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     """
     Return a palindrome check result
 
+    :param origin: value to test
+    :type origin: str | int
+
+    :return: return a palindrome check result
+    :rtype: bool
+
     This function implements two pointers method. The left pointer is
     initialized at the beginning of an origin string, and the right one -
     at the end. The check cycle compares characters at left and right
@@ -21,12 +27,6 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     Once left pointer is greater or equal to the right one the function
     returns True. Punctuation, word boundaries and capitalization are
     ignored.
-
-    :param origin: value to test
-    :type origin: str | int
-
-    :return: return a palindrome check result
-    :rtype: bool
 
     Usage:
 
@@ -138,17 +138,17 @@ def are_parentheses_balanced(origin: str, /) -> bool:
     """
     Return a validation result for a given parentheses sequence
 
-    Validation rules:
-
-    - each opening parentheses must be closed by the same type parentheses
-    - open parentheses must be closed in the correct order
-    - any non-parentheses characters are to be ignored
-
     :param origin: a parentheses sequence to validate
     :type origin: str
 
     :return: a validation result
     :rtype: bool
+
+    Validation rules:
+
+    - each opening parentheses must be closed by the same type parentheses
+    - open parentheses must be closed in the correct order
+    - any non-parentheses characters are to be ignored
 
     Usage:
 

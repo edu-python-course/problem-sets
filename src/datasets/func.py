@@ -127,13 +127,6 @@ def get_both_top_low_students(students_data: StudentsList
     """
     Return both top and low students data
 
-    Given a list of student data, returns a tuple of the student with
-    the highest average score and the student with the lowest average score.
-    The student data is represented as a list of dictionaries, where each
-    dictionary contains the keys 'name' and 'scores', where 'name' is
-    a string and 'scores' is a list of floats representing the student's
-    scores on various exams.
-
     :param students_data: A list of dictionaries containing the student data.
     :type students_data: list
 
@@ -143,6 +136,13 @@ def get_both_top_low_students(students_data: StudentsList
         where 'name' is a string and 'scores' is a list of floats
         representing the student's scores on various exams.
     :rtype: tuple
+
+    Given a list of student data, returns a tuple of the student with
+    the highest average score and the student with the lowest average score.
+    The student data is represented as a list of dictionaries, where each
+    dictionary contains the keys 'name' and 'scores', where 'name' is
+    a string and 'scores' is a list of floats representing the student's
+    scores on various exams.
 
     """
 
@@ -218,14 +218,14 @@ def get_least_bricks_position(structure: List[List[int]]) -> int:
     """
     Return a pointer to the weakest line in the structure
 
-    This function uses helper function ``get_structure_matrix`` to build
-    the matrix of distances from the left edge of the "wall".
-
     :param structure: represents wall structure as sequences of integers
     :type structure: list
 
     :return: the distance from the left edge to the weakest line location
     :rtype: int
+
+    This function uses helper function ``get_structure_matrix`` to build
+    the matrix of distances from the left edge of the "wall".
 
     Usage:
 
@@ -273,6 +273,14 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     """
     Return a filtered datasets by unique values in a given keys sets
 
+    :param origin: an original dataset with entries to filter
+    :type origin: list
+    :param keys: a collection of keys to use for filtering
+    :type keys: list, optional
+
+    :return: a filtered dataset
+    :rtype: list
+
     The origin dataset is a list of dictionaries. All the dictionaries have
     the same set of keys of a string type. All dictionaries values are of
     a hashable type.
@@ -284,14 +292,6 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     values. Keys list is considered to be validated before passing to this
     function, all values (if any) are valid. In case this parameter is
     omitted - all available keys should be used.
-
-    :param origin: an original dataset with entries to filter
-    :type origin: list
-    :param keys: a collection of keys to use for filtering
-    :type keys: list, optional
-
-    :return: a filtered dataset
-    :rtype: list
 
     Usage:
 
