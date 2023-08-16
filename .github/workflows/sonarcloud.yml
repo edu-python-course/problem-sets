@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -35,3 +37,13 @@ jobs:
         with:
           name: coverage
           path: ./coverage.xml
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args:
+            -Dsonar.projectKey=edu-python-course_problem-sets
+            -Dsonar.organization=edu-python-course
+            -Dsonar.python.coverage.reportPaths=coverage.xml -X
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
