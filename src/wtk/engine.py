@@ -18,10 +18,10 @@ def get_player_name() -> str:
     """
     Return a player's name from the user prompt
 
+    :return: a player defined name
+
     A validation process is performed as well. The player name cannot be
     an empty string.
-
-    :return: a player defined name
 
     """
 

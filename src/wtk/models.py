@@ -36,12 +36,12 @@ class Enemy(_AbstractModel):
     """
     Enemy model
 
-    Represents the playing enemy-bot.
-
     :ivar level: enemy's level value
     :type level: int
     :ivar health: enemy's instance health points
     :type health: int
+
+    Represents the playing enemy-bot.
 
     """
 
@@ -49,10 +49,10 @@ class Enemy(_AbstractModel):
         """
         Initialize instance
 
-        Health value is equal to the level value.
-
         :param level: an enemy's level indicator
         :type level: int
+
+        Health value is equal to the level value.
 
         """
 
@@ -73,10 +73,10 @@ class Enemy(_AbstractModel):
         """
         Decrease health points
 
+        :raise: EnemyDown
+
         This method decreases the health meter value. When it comes to be
         less than 1 (one) an ``EnemyDown`` exception is raised.
-
-        :raise: EnemyDown
 
         """
 
@@ -89,13 +89,13 @@ class Enemy(_AbstractModel):
         """
         Return a random fight choice
 
-        Choices made by an enemy are random.
-
         :return: a fight choice
+
+        Choices made by an enemy are random.
 
         """
 
-        return random.choice(tuple(FightChoice))
+        return random.choice(list(FightChoice))
 
     @wraps(_select_fight_choice, ("__annotations__", "__doc__"))
     def select_attack(self) -> FightChoice:  # pragma: no cover
@@ -110,14 +110,14 @@ class Player(_AbstractModel):
     """
     Player model
 
-    This model is controlled by the player.
-
     :ivar name: player's name
     :type name: str
     :ivar health: player's instance health points
     :type health: int
     :ivar score: player's instance gained score points
     :type score: int
+
+    This model is controlled by the player.
 
     """
 
@@ -129,11 +129,11 @@ class Player(_AbstractModel):
         """
         Initialize instance
 
-        This method performs player instance initialization. It set instance
-        name, initial score points value and health.
-
         :param name: a player's name
         :type name: str
+
+        This method performs player instance initialization. It set instance
+        name, initial score points value and health.
 
         """
 
@@ -155,10 +155,10 @@ class Player(_AbstractModel):
         """
         Decrease health points
 
+        :raise: GameOver
+
         This method decreases the health meter value. When it comes to be
         less than 1 (one) an ``GameOver`` exception is raised.
-
-        :raise: GameOver
 
         """
 
@@ -171,11 +171,11 @@ class Player(_AbstractModel):
         """
         Return fight choice from the user's prompt
 
+        :return: a fight choice
+
         The player is asked to make their decision for the upcoming fight.
         The chosen value is validated and if it is invalid the question is
         repeated.
-
-        :return: a fight choice
 
         """
 

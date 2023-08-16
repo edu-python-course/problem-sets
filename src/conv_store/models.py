@@ -10,14 +10,14 @@ class Product:
     """
     Product model implementation
 
-    Instances of this class represent a product available for purchase.
-
     :ivar name: the name of a product
     :type name: str
     :ivar price: the price for a single product unit
     :type price: int
     :ivar unit: the size of a single product unit
     :type unit: int | float
+
+    Instances of this class represent a product available for purchase.
 
     """
 
@@ -78,14 +78,14 @@ class Product:
         """
         Return the total price for a specified amount of a product
 
-        If the quantity argument is omitted, unit attribute value should be
-        used instead.
-
         :param quantity: a quantity to purchase, defaults to None
         :type quantity: int | float, optional
 
         :return: total price for a specified amount of a product
         :rtype: int
+
+        If the quantity argument is omitted, unit attribute value should be
+        used instead.
 
         """
 
@@ -103,14 +103,14 @@ class Product:
 class ShoppingCart:
     """Shopping cart model implementation
 
-    In general shopping cart is a container for products. Instances of this
-    class handle product and corresponding quantity for each item inside
-    a shopping cart instance.
-
     :ivar products: product appended to the shopping cart instance
     :type products: list
     :ivar quantities: corresponding quantities for each product in cart
     :type quantities: list
+
+    In general shopping cart is a container for products. Instances of this
+    class handle product and corresponding quantity for each item inside
+    a shopping cart instance.
 
     """
 
@@ -188,14 +188,14 @@ class ShoppingCart:
         """
         Add product to the shopping cart
 
-        This method adds a product instance and corresponding quantity value
-        to the cart.
-
         :param product: a product instance to add to cart
         :type product: :class: `Product`
         :param quantity: a quantity of a product to add. Defaults to the
             product unit value.
         :type quantity: int | float, optional
+
+        This method adds a product instance and corresponding quantity value
+        to the cart.
 
         """
 
@@ -221,13 +221,13 @@ class ShoppingCart:
         """
         Subtract product from the shopping cart
 
-        If quantity value is less or equal to 0 the product is to be
-        removed from the shopping cart
-
         :param product: a product instance to add to cart
         :type product: :class: `Product`
         :param quantity: a quantity of a product to add
         :type quantity: int | float
+
+        If quantity value is less or equal to 0 the product is to be
+        removed from the shopping cart
 
         """
 

@@ -20,10 +20,6 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     """
     Return the most right one index matching the search value
 
-    Current function implements common ``bisect_right`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
-
     :param origin: a list of strings
     :type origin: list
     :param search: a prefix to search
@@ -33,6 +29,10 @@ def bisect_right(origin: List[str], search: str = "") -> int:
     :rtype: int
 
     :raise NotFound: if the searched value isn't in the list
+
+    Current function implements common ``bisect_right`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     Usage:
 
@@ -66,10 +66,6 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     """
     Return the most left one index matching the search value
 
-    Current function implements common ``bisect_left`` algorithms.
-    The search value represents prefix the string should starts with,
-    that's why current string is trimmed before comparison operation.
-
     :param origin: a list of strings
     :type origin: list
     :param search: a prefix to search
@@ -79,6 +75,10 @@ def bisect_left(origin: List[str], search: str = "") -> int:
     :rtype: int
 
     :raise NotFound: if the searched value isn't in the list
+
+    Current function implements common ``bisect_left`` algorithms.
+    The search value represents prefix the string should starts with,
+    that's why current string is trimmed before comparison operation.
 
     Usage:
 
@@ -112,13 +112,19 @@ def find_all(origin: List[str], search: str = "") -> List[str]:
     """
     Return strings starting with prefix
 
-    :param origin: the list of strings
+    :param origin: the sorted list of strings
     :type origin: list
     :param search: the prefix to search, defaults to empty string
     :type search: str
 
     :return: the list of strings starting with the search prefix
     :rtype: list
+
+    The task is to find **all** values starting with a specified preffix
+    in a **sorted** list of strings. The straightforward (brute force)
+    solution to iterate over the entire list is not effective. Instead,
+    there is a better solution to use "binary search" algorithm, to find
+    the first one and the last one values, that suite the condition.
 
     Usage:
 

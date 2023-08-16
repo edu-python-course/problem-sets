@@ -13,16 +13,16 @@ def memoize(func: Callable) -> Callable:
     """
     Memoization decorator
 
+    :param func: a function to decorate with memoization technique
+
+    :return: the decorated function
+
     The memoization technique helps to reduce the number of recursive
     calls by caching the results already calculated for some inputs.
 
     Current implementation caches the inputs as tuples containing args,
     so it has limitations for "un-hashable" inputs, that can not be
     stored in a cache dictionary.
-
-    :param func: a function to decorate with memoization technique
-
-    :return: the decorated function
 
     """
 
@@ -54,12 +54,6 @@ def get_grid_travels(height: int, width: int, /) -> int:
     """
     Calculate the number of available route for a specified grid size
 
-    The traveler starts the journey in the top-left corner of the grid
-    and trying to reach the opposite grid corner (bottom-right).
-    The only moves available are **move right** and **move down**.
-    The task is to calculate the number of all available routes to do
-    this.
-
     :param height: grid height
     :type height: int
     :param width: grid width
@@ -67,6 +61,12 @@ def get_grid_travels(height: int, width: int, /) -> int:
 
     :return: the number of available routes
     :rtype: int
+
+    The traveler starts the journey in the top-left corner of the grid
+    and trying to reach the opposite grid corner (bottom-right).
+    The only moves available are **move right** and **move down**.
+    The task is to calculate the number of all available routes to do
+    this.
 
     Usage:
 
@@ -92,8 +92,6 @@ def can_get_target(target: int, numbers: List[int],
     """
     Check if the target value can be generated using given numbers
 
-    Numbers from the list can be used as many times as needed.
-
     :param target: the desired number
     :type target: int
     :param numbers: the sequence of numbers available for usage
@@ -103,6 +101,8 @@ def can_get_target(target: int, numbers: List[int],
 
     :return: the check result
     :rtype: bool
+
+    Numbers from the list can be used as many times as needed.
 
     Usage:
 

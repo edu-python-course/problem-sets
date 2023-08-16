@@ -11,14 +11,14 @@ def is_prime(number: int) -> bool:
     """
     Return prime check result for a specified number
 
-    The result of this function is True if a number is prime, otherwise
-    False.
-
     :param number: number to check
     :type number: int
 
     :return: prime check result
     :rtype: bool
+
+    The result of this function is True if a number is prime, otherwise
+    False.
 
     Usage:
 
@@ -65,6 +65,12 @@ def eratosthenes_sieve(limit: int) -> List[int]:
     """
     Return a list of prime numbers till specified limit
 
+    :param limit: a range limit to look for prime numbers
+    :type limit: int
+
+    :return: the list of prime numbers within a specified range
+    :rtype: list
+
     In mathematics, the sieve of Eratosthenes is an ancient algorithm
     for finding all prime numbers up to any given limit.
 
@@ -82,12 +88,6 @@ def eratosthenes_sieve(limit: int) -> List[int]:
     primes within a range.
 
     .. seealso:: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-
-    :param limit: a range limit to look for prime numbers
-    :type limit: int
-
-    :return: the list of prime numbers within a specified range
-    :rtype: list
 
     Usage:
 

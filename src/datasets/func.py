@@ -23,7 +23,7 @@ def swap_dict_loop(origin: Dict[Hashable, Hashable]
 
     This is the most descriptive algorithm to solve the swap task.
 
-    Example usage:
+    Usage:
 
     >>> swap_dict_loop({1: "one", 2: "two", 3: "three"})
     {"one": 1, "two": 2, "three": 3}
@@ -51,7 +51,7 @@ def swap_dict(origin: Dict[Hashable, Hashable]) -> Dict[Hashable, Hashable]:
     Works similar to ``swap_dict_loop`` function, but uses dictionary
     comprehension instead of the ``for`` loop.
 
-    Example usage:
+    Usage:
 
     >>> swap_dict({1: "one", 2: "two", 3: "three"})
     {"one": 1, "two": 2, "three": 3}
@@ -61,9 +61,9 @@ def swap_dict(origin: Dict[Hashable, Hashable]) -> Dict[Hashable, Hashable]:
     return {value: key for key, value in origin.items()}
 
 
-# define typing hints aliases
+# user defined types
 StudentData = Dict[str, Union[str, List[int]]]  # student data type alias
-StudentsList = List[StudentData]  # students data type alias
+StudentsList = List[StudentData]  # students list type alias
 
 
 def get_avg_score(student_data: StudentData) -> float:
@@ -81,7 +81,7 @@ def get_top_student(students_data: StudentsList) -> StudentData:
     :param students_data: a list of students data (names and scores)
     :type students_data: list
 
-    :return: student data entity
+    :return: student data
     :rtype: dict
 
     """
@@ -127,13 +127,6 @@ def get_both_top_low_students(students_data: StudentsList
     """
     Return both top and low students data
 
-    Given a list of student data, returns a tuple of the student with
-    the highest average score and the student with the lowest average score.
-    The student data is represented as a list of dictionaries, where each
-    dictionary contains the keys 'name' and 'scores', where 'name' is
-    a string and 'scores' is a list of floats representing the student's
-    scores on various exams.
-
     :param students_data: A list of dictionaries containing the student data.
     :type students_data: list
 
@@ -143,6 +136,13 @@ def get_both_top_low_students(students_data: StudentsList
         where 'name' is a string and 'scores' is a list of floats
         representing the student's scores on various exams.
     :rtype: tuple
+
+    Given a list of student data, returns a tuple of the student with
+    the highest average score and the student with the lowest average score.
+    The student data is represented as a list of dictionaries, where each
+    dictionary contains the keys 'name' and 'scores', where 'name' is
+    a string and 'scores' is a list of floats representing the student's
+    scores on various exams.
 
     """
 
@@ -218,14 +218,14 @@ def get_least_bricks_position(structure: List[List[int]]) -> int:
     """
     Return a pointer to the weakest line in the structure
 
-    This function uses helper function ``get_structure_matrix`` to build
-    the matrix of distances from the left edge of the "wall".
-
     :param structure: represents wall structure as sequences of integers
     :type structure: list
 
     :return: the distance from the left edge to the weakest line location
     :rtype: int
+
+    This function uses helper function ``get_structure_matrix`` to build
+    the matrix of distances from the left edge of the "wall".
 
     Usage:
 
@@ -273,6 +273,14 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     """
     Return a filtered datasets by unique values in a given keys sets
 
+    :param origin: an original dataset with entries to filter
+    :type origin: list
+    :param keys: a collection of keys to use for filtering
+    :type keys: list, optional
+
+    :return: a filtered dataset
+    :rtype: list
+
     The origin dataset is a list of dictionaries. All the dictionaries have
     the same set of keys of a string type. All dictionaries values are of
     a hashable type.
@@ -284,14 +292,6 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     values. Keys list is considered to be validated before passing to this
     function, all values (if any) are valid. In case this parameter is
     omitted - all available keys should be used.
-
-    :param origin: an original dataset with entries to filter
-    :type origin: list
-    :param keys: a collection of keys to use for filtering
-    :type keys: list, optional
-
-    :return: a filtered dataset
-    :rtype: list
 
     Usage:
 
@@ -323,6 +323,7 @@ def filter_by_values(origin: List[Dict[str, Hashable]],
     return filtered_dataset
 
 
+# user defined type
 NestedIntList = Union[int, List["NestedIntList"]]
 
 
