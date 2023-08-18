@@ -14,12 +14,6 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     """
     Return a palindrome check result
 
-    :param origin: value to test
-    :type origin: str | int
-
-    :return: return a palindrome check result
-    :rtype: bool
-
     This function implements two pointers method. The left pointer is
     initialized at the beginning of an origin string, and the right one -
     at the end. The check cycle compares characters at left and right
@@ -27,6 +21,12 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     Once left pointer is greater or equal to the right one the function
     returns True. Punctuation, word boundaries and capitalization are
     ignored.
+
+    :param origin: value to test
+    :type origin: str | int
+
+    :return: return a palindrome check result
+    :rtype: bool
 
     Usage:
 
@@ -64,7 +64,7 @@ def get_longest_palindrome(origin: str, /) -> str:
     """
     Return the longest palindrome substring from the given input
 
-    :param origin:
+    :param origin: an origin string to find palindromes in
     :type origin: str
 
     :return: the longest palindrome
@@ -79,8 +79,21 @@ def get_longest_palindrome(origin: str, /) -> str:
 
     size: int = len(origin)
 
-    # noinspection PyMissingOrEmptyDocstring
     def expand(left: int, right: int) -> int:
+        """
+
+        This inner function uses closure to "size" and "origin" objects
+        from outer score, and tries to expand to left and right from
+        the specified index of the origin string, until palindrome and
+        expansion checks are pass.
+
+        :param left: left starting expansion index
+        :type left: int
+        :param right: right starting expansion index
+        :type right: int
+
+        """
+
         while left >= 0 and right < size and origin[left] == origin[right]:
             left -= 1
             right += 1
@@ -124,10 +137,10 @@ def get_palindrome_squares(limit: int, /) -> List[int]:
 
     Range begins with 0.
 
-    :param limit:
+    :param limit: the range limitation value
     :type limit: int
 
-    :return:
+    :return: a list of palindrome squares within a range
     :rtype: list
 
     """
@@ -139,17 +152,17 @@ def are_parentheses_balanced(origin: str, /) -> bool:
     """
     Return a validation result for a given parentheses sequence
 
-    :param origin: a parentheses sequence to validate
-    :type origin: str
-
-    :return: a validation result
-    :rtype: bool
-
     Validation rules:
 
     - each opening parentheses must be closed by the same type parentheses
     - open parentheses must be closed in the correct order
     - any non-parentheses characters are to be ignored
+
+    :param origin: a parentheses sequence to validate
+    :type origin: str
+
+    :return: a validation result
+    :rtype: bool
 
     Usage:
 
@@ -240,6 +253,9 @@ def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
     """
     Return possible slices of string as a collection of lists of digits
 
+    Given a string of digits and an integer `n`, this function returns all
+    consecutive slices of length `n` from the string.
+
     :param origin: the input string of digits
     :type origin: str
     :param n: the length of slices to be extracted
@@ -249,9 +265,6 @@ def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
     :rtype: list
 
     :raise: ValueError
-
-    Given a string of digits and an integer `n`, this function returns all
-    consecutive slices of length `n` from the string.
 
     Usage:
 
