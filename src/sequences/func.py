@@ -79,6 +79,7 @@ def get_longest_palindrome(origin: str, /) -> str:
 
     size: int = len(origin)
 
+    # noinspection PyMissingOrEmptyDocstring
     def expand(left: int, right: int) -> int:
         while left >= 0 and right < size and origin[left] == origin[right]:
             left -= 1
@@ -233,3 +234,43 @@ def add_spaces(origin: str) -> str:
     origin = origin.replace(" ", "")
 
     return "".join(f" {c}" if c.isupper() else c for c in origin).lstrip()
+
+
+def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
+    """
+    Return possible slices of string as a collection of lists of digits
+
+    :param origin: the input string of digits
+    :type origin: str
+    :param n: the length of slices to be extracted
+    :type n: int
+
+    :return: a list containing sublists of consecutive slices of length "n"
+    :rtype: list
+
+    :raise: ValueError
+
+    Given a string of digits and an integer `n`, this function returns all
+    consecutive slices of length `n` from the string.
+
+    Usage:
+
+    >>> assert get_consecutive_slices("0123", 1) == [[0], [1], [2], [3]]
+    >>> assert get_consecutive_slices("0123", 2) == [[0, 1], [1, 2], [2, 3]]
+    >>> assert get_consecutive_slices("0123", 3) == [[0, 1, 2], [1, 2, 3]]
+
+    """
+
+    size: int = len(origin)
+    if size < n:
+        raise ValueError("slice size is bigger than origin length")
+
+    origin = list(map(int, origin))
+    result = []
+    idx = 0
+
+    while idx <= size - n:
+        result.append(origin[idx:idx + n])
+        idx += 1
+
+    return result
