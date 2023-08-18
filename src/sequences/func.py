@@ -269,7 +269,7 @@ def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
     result = []
     idx = 0
 
-    while idx < size - n + 1:
+    while idx <= size - n:
         result.append(origin[idx:idx + n])
         idx += 1
 
