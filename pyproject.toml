@@ -70,7 +70,8 @@ testpaths = ["tests"]
 source = ["src"]
 omit = [
     "*__init__*",
-    "*__main__*"
+    "*__main__*",
+    "**/scripts/**",
 ]
 
 [tool.coverage.report]
