@@ -82,10 +82,11 @@ exclude_lines = [
 
 [tool.mypy]
 files = "src,tests"
+exclude = "scripts"
 
 [tool.pylint."MASTER"]
 fail-under = 8
-ignore = ["tests"]
+ignore = ["tests", "scripts"]
 persistent = true
 
 [tool.pylint."MESSAGES CONTROL"]
