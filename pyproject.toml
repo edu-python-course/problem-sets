@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2023.08.1"
+version = "2023.09.1"
 description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
