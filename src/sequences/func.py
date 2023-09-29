@@ -3,7 +3,6 @@ Sequence functions implementations
 
 """
 
-import string
 from typing import List, Union
 
 from calc import get_squares
@@ -38,16 +37,15 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     """
 
     origin = str(origin).lower()
-    skip_chars: str = string.punctuation + string.whitespace
     left: int = 0
     right: int = len(origin) - 1
 
     while left < right:
-        if origin[left] in skip_chars:
+        if not origin[left].isalnum():
             left += 1
             continue
 
-        if origin[right] in skip_chars:
+        if not origin[right].isalnum():
             right -= 1
             continue
 
