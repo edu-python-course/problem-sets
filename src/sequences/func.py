@@ -247,9 +247,9 @@ def add_spaces(origin: str) -> str:
     return "".join(f" {c}" if c.isupper() else c for c in origin).lstrip()
 
 
-def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
+def get_consecutive_slices(origin: str, n: int) -> List[str]:
     """
-    Return possible slices of string as a collection of lists of digits
+    Return possible slices of string as a collection consecutive lists
 
     Given a string of digits and an integer `n`, this function returns all
     consecutive slices of length `n` from the string.
@@ -259,7 +259,7 @@ def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
     :param n: the length of slices to be extracted
     :type n: int
 
-    :return: a list containing sublists of consecutive slices of length "n"
+    :return: a list containing consecutive slices of length "n"
     :rtype: list
 
     :raise: ValueError
@@ -276,7 +276,6 @@ def get_consecutive_slices(origin: str, n: int) -> List[List[int]]:
     if size < n:
         raise ValueError("slice size is bigger than origin length")
 
-    origin = list(map(int, origin))
     result = []
     idx = 0
 

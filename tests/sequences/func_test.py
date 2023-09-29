@@ -82,16 +82,14 @@ def test_add_space():
 
 
 def test_get_consecutive_slices():
-    assert sequences.get_consecutive_slices("0123", 1) == [[0], [1], [2], [3]]
+    assert sequences.get_consecutive_slices("0123", 1) == ["0", "1", "2", "3"]
     assert (
-        sequences.get_consecutive_slices("0123", 2) == [[0, 1], [1, 2], [2, 3]]
+        sequences.get_consecutive_slices("0123", 2) == ["01", "12", "23"]
     )
     assert (
-        sequences.get_consecutive_slices("0123", 3) == [[0, 1, 2], [1, 2, 3]]
+        sequences.get_consecutive_slices("0123", 3) == ["012", "123"]
     )
 
     with pytest.raises(ValueError,
                        match="slice size is bigger than origin length"):
         sequences.get_consecutive_slices("0123", 5)
-    with pytest.raises(ValueError):
-        sequences.get_consecutive_slices("abcdefg", 1)
