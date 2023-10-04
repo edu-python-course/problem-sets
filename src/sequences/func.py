@@ -3,7 +3,6 @@ Sequence functions implementations
 
 """
 
-import string
 from typing import List, Union
 
 from calc import get_squares
@@ -38,16 +37,15 @@ def is_palindrome(origin: Union[str, int], /) -> bool:
     """
 
     origin = str(origin).lower()
-    skip_chars: str = string.punctuation + string.whitespace
     left: int = 0
     right: int = len(origin) - 1
 
     while left < right:
-        if origin[left] in skip_chars:
+        if not origin[left].isalnum():
             left += 1
             continue
 
-        if origin[right] in skip_chars:
+        if not origin[right].isalnum():
             right -= 1
             continue
 
@@ -64,7 +62,7 @@ def get_longest_palindrome(origin: str, /) -> str:
     """
     Return the longest palindrome substring from the given input
 
-    :param origin:
+    :param origin: an origin string to find palindromes in
     :type origin: str
 
     :return: the longest palindrome
@@ -80,6 +78,20 @@ def get_longest_palindrome(origin: str, /) -> str:
     size: int = len(origin)
 
     def expand(left: int, right: int) -> int:
+        """
+
+        This inner function uses closure to "size" and "origin" objects
+        from outer score, and tries to expand to left and right from
+        the specified index of the origin string, until palindrome and
+        expansion checks are pass.
+
+        :param left: left starting expansion index
+        :type left: int
+        :param right: right starting expansion index
+        :type right: int
+
+        """
+
         while left >= 0 and right < size and origin[left] == origin[right]:
             left -= 1
             right += 1
@@ -123,10 +135,10 @@ def get_palindrome_squares(limit: int, /) -> List[int]:
 
     Range begins with 0.
 
-    :param limit:
+    :param limit: the range limitation value
     :type limit: int
 
-    :return:
+    :return: a list of palindrome squares within a range
     :rtype: list
 
     """
@@ -205,3 +217,70 @@ def get_longest_uniq_length(origin: str, /) -> int:
         length = max(length, right_idx - left_idx + 1)
 
     return length
+
+
+def add_spaces(origin: str) -> str:
+    """
+    Return modified string with whitespaces before capital letters
+
+    An origin string may contain letters in upper case. The function removes
+    any white spaces present in the initial data, and transform the string
+    in a way to add spaces only before letters in upper case.
+
+    :param origin: an original string
+    :rtype: str
+
+    :return: string with white spaces before capital letters
+    :rtype: str
+
+    Usage:
+
+    >>> assert add_spaces("camelCase") == "camel Case"
+    >>> assert add_spaces(" John Doe ") == "John Doe"
+    >>> assert add_spaces("racecar") == "racecar"
+
+    """
+
+    # remove white spaces, if any
+    origin = origin.replace(" ", "")
+
+    return "".join(f" {c}" if c.isupper() else c for c in origin).lstrip()
+
+
+def get_consecutive_slices(origin: str, n: int) -> List[str]:
+    """
+    Return possible slices of string as a collection consecutive lists
+
+    Given a string of digits and an integer `n`, this function returns all
+    consecutive slices of length `n` from the string.
+
+    :param origin: the input string of digits
+    :type origin: str
+    :param n: the length of slices to be extracted
+    :type n: int
+
+    :return: a list containing consecutive slices of length "n"
+    :rtype: list
+
+    :raise: ValueError
+
+    Usage:
+
+    >>> assert get_consecutive_slices("0123", 1) == [[0], [1], [2], [3]]
+    >>> assert get_consecutive_slices("0123", 2) == [[0, 1], [1, 2], [2, 3]]
+    >>> assert get_consecutive_slices("0123", 3) == [[0, 1, 2], [1, 2, 3]]
+
+    """
+
+    size: int = len(origin)
+    if size < n:
+        raise ValueError("slice size is bigger than origin length")
+
+    result = []
+    idx = 0
+
+    while idx <= size - n:
+        result.append(origin[idx:idx + n])
+        idx += 1
+
+    return result

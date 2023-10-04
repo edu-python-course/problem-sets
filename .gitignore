@@ -24,6 +24,7 @@ __pycache__
 # coverage reports
 *.coverage.db
 *.coverage
+coverage.*
 
 # local databases
 pgdata/

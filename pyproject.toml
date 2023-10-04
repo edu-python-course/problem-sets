@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2023.08.1"
+version = "2023.09.1"
 description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
@@ -67,10 +67,14 @@ addopts = "--cov=src --verbose"
 testpaths = ["tests"]
 
 [tool.coverage.run]
+relative_files = true
+branch = true
 source = ["src"]
 omit = [
-    "*__init__*",
-    "*__main__*"
+    "**/__init__",
+    "**/__main__",
+    "**/scripts/**",
+    "**/tests/**",
 ]
 
 [tool.coverage.report]
@@ -81,10 +85,11 @@ exclude_lines = [
 
 [tool.mypy]
 files = "src,tests"
+exclude = "scripts"
 
 [tool.pylint."MASTER"]
 fail-under = 8
-ignore = ["tests"]
+ignore = ["tests", "scripts"]
 persistent = true
 
 [tool.pylint."MESSAGES CONTROL"]

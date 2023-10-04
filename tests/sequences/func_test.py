@@ -1,3 +1,5 @@
+import pytest
+
 import sequences
 
 
@@ -70,3 +72,24 @@ def test_get_longest_uniq_sequence_length():
     assert sequences.get_longest_uniq_length("abcdefg") == 7
     assert sequences.get_longest_uniq_length("abcacba") == 3
     assert sequences.get_longest_uniq_length("hwccjayhiszbmomlqkem") == 11
+
+
+def test_add_space():
+    assert sequences.add_spaces("") == ""
+    assert sequences.add_spaces("test_test") == "test_test"
+    assert sequences.add_spaces("JohnDoe") == "John Doe"
+    assert sequences.add_spaces("John Doe") == "John Doe"
+
+
+def test_get_consecutive_slices():
+    assert sequences.get_consecutive_slices("0123", 1) == ["0", "1", "2", "3"]
+    assert (
+        sequences.get_consecutive_slices("0123", 2) == ["01", "12", "23"]
+    )
+    assert (
+        sequences.get_consecutive_slices("0123", 3) == ["012", "123"]
+    )
+
+    with pytest.raises(ValueError,
+                       match="slice size is bigger than origin length"):
+        sequences.get_consecutive_slices("0123", 5)

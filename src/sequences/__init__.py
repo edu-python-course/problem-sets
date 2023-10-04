@@ -25,7 +25,7 @@ longest palindromic substring inside another string.
 Balanced Parentheses
 --------------------
 
-A parentheses is said to be balanced if each left parenthesis has its
+A parentheses are said to be balanced if each left parenthesis has its
 respective right parenthesis to match its pair in a well-nested format.
 
 .. autofunction:: are_parentheses_balanced
@@ -39,4 +39,4 @@ __all__ = [
     "get_longest_uniq_length",
 ]
 
-from .func import *
+from sequences.func import *
