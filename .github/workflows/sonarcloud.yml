@@ -34,8 +34,7 @@ jobs:
           pip install -e .
       - name: Collect coverage
         run: |
-          pytest --cov=src --quiet
-          coverage xml
+	    pytest --cov=src --cov-report=xml --cov-config=pyroject.toml --cov-branch
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
         with:
