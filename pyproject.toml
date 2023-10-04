@@ -71,9 +71,10 @@ relative_files = true
 branch = true
 source = ["src"]
 omit = [
-    "*__init__*",
-    "*__main__*",
+    "**/__init__",
+    "**/__main__",
     "**/scripts/**",
+    "**/tests/**",
 ]
 
 [tool.coverage.report]
