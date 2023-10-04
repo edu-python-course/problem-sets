@@ -67,6 +67,8 @@ addopts = "--cov=src --verbose"
 testpaths = ["tests"]
 
 [tool.coverage.run]
+relative_files = true
+branch = true
 source = ["src"]
 omit = [
     "*__init__*",
