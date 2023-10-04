@@ -47,6 +47,7 @@ jobs:
             -Dsonar.projectKey=edu-python-course_problem-sets
             -Dsonar.organization=edu-python-course
             -Dsonar.python.coverage.reportPaths=coverage.xml -X
+            -Dsonar.coverage.exclusions=**/scripts/**,*__init__*,*__main__* -X
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
