@@ -14,6 +14,7 @@ A single question is a dictionary of a strict structure:
 
 from __future__ import annotations
 
+import csv
 from typing import List, TYPE_CHECKING, TypedDict, Union
 
 if TYPE_CHECKING:
@@ -26,7 +27,10 @@ Question = TypedDict("Question", {
 })
 Questions = List[Question]
 
+HEADERS = ["question", "options", "answer"]
 
+
+# noinspection PyTypeChecker
 def load_questions_from_file(source: Union[str, pathlib.Path]) -> Questions:
     """
     Load quiz data from the given source file
@@ -38,6 +42,18 @@ def load_questions_from_file(source: Union[str, pathlib.Path]) -> Questions:
     :rtype: list
 
     """
+
+    questions = []
+    with open(source) as io_buff:
+        reader = csv.DictReader(io_buff, fieldnames=HEADERS)
+        for question in reader:
+            questions.append({
+                HEADERS[0]: question[HEADERS[0]],
+                HEADERS[1]: [option.strip() for option in
+                             question[HEADERS[1]].split(",")],
+                HEADERS[2]: question[HEADERS[2]],
+            })
+    return questions
 
 
 def display_question(question: Question) -> None:
