@@ -101,6 +101,8 @@ def is_correct(question: Question, option: int) -> bool:
 
     """
 
+    return question["answer"] == question["options"][option - 1]
+
 
 def perform_quiz(questions: Questions) -> int:
     """
