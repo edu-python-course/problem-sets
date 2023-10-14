@@ -15,6 +15,7 @@ A single question is a dictionary of a strict structure:
 from __future__ import annotations
 
 import csv
+import logging
 from typing import List, TYPE_CHECKING, TypedDict, Union
 
 if TYPE_CHECKING:
@@ -26,6 +27,9 @@ Question = TypedDict("Question", {
     "answer": str,
 })
 Questions = List[Question]
+
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger("quiz")
 
 
 # noinspection PyTypeChecker
@@ -63,6 +67,10 @@ def display_question(question: Question) -> None:
     :type question: dict
 
     """
+
+    logger.info("%s\n" % question["question"])
+    for opt_idx, option in enumerate(question["options"], 1):
+        logger.info("%d: %s" % (opt_idx, option))
 
 
 def gather_answer(question: Question) -> int:
