@@ -78,6 +78,14 @@ def gather_answer(question: Question) -> int:
 
     """
 
+    # this assignment does not assume input type validation
+    choice = -1
+    choice_limit = len(question["options"])
+    while not 0 <= choice - 1 < choice_limit:
+        choice = int(input("Option no. to submit: "))
+
+    return choice - 1
+
 
 def is_correct(question: Question, option: int) -> bool:
     """
