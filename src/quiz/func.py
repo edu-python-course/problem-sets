@@ -27,8 +27,6 @@ Question = TypedDict("Question", {
 })
 Questions = List[Question]
 
-HEADERS = ["question", "options", "answer"]
-
 
 # noinspection PyTypeChecker
 def load_questions_from_file(source: Union[str, pathlib.Path]) -> Questions:
@@ -43,17 +41,18 @@ def load_questions_from_file(source: Union[str, pathlib.Path]) -> Questions:
 
     """
 
+    fieldnames = ["question", "options", "answer"]
     questions = []
     with open(source) as io_buff:
-        reader = csv.DictReader(io_buff, fieldnames=HEADERS)
+        reader = csv.DictReader(io_buff, fieldnames=fieldnames)
         for question in reader:
             questions.append({
-                HEADERS[0]: question[HEADERS[0]],
-                HEADERS[1]: [option.strip() for option in
-                             question[HEADERS[1]].split(",")],
-                HEADERS[2]: question[HEADERS[2]],
+                fieldnames[0]: question[fieldnames[0]],
+                fieldnames[1]: [option.strip() for option in
+                                question[fieldnames[1]].split(",")],
+                fieldnames[2]: question[fieldnames[2]],
             })
-    return questions
+    return questions  # type: ignore
 
 
 def display_question(question: Question) -> None:
@@ -115,3 +114,5 @@ def perform_quiz(questions: Questions) -> int:
     :rtype: int
 
     """
+
+    raise NotImplementedError
