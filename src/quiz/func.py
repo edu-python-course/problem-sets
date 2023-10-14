@@ -123,4 +123,11 @@ def perform_quiz(questions: Questions) -> int:
 
     """
 
-    raise NotImplementedError
+    score: int = 0
+
+    for question in questions:
+        display_question(question)
+        option_idx = gather_answer(question)
+        score += is_correct(question, option_idx)
+
+    return score
