@@ -43,7 +43,6 @@ packages = [
     { include = "conv_store", from = "src" },
     { include = "datasets", from = "src" },
     { include = "dynamic", from = "src" },
-    { include = "geom", from = "src" },
     { include = "primes", from = "src" },
     { include = "quiz", from = "src" },
     { include = "sequences", from = "src" },
@@ -72,9 +71,8 @@ relative_files = true
 branch = true
 source = ["src"]
 omit = [
-    "**/__init__",
-    "**/__main__",
-    "**/scripts/**",
+    "**/__init__.py",
+    "**/__main__.py",
     "**/tests/**",
 ]
 
@@ -86,11 +84,10 @@ exclude_lines = [
 
 [tool.mypy]
 files = "src,tests"
-exclude = "scripts"
 
 [tool.pylint."MASTER"]
 fail-under = 8
-ignore = ["tests", "scripts"]
+ignore = ["tests"]
 persistent = true
 
 [tool.pylint."MESSAGES CONTROL"]
