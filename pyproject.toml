@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "problem-sets"
-version = "2023.09.1"
+version = "2023.10.1"
 description = "Challenges and solutions for the Python training course"
 license = "MIT"
 authors = [
@@ -45,6 +45,7 @@ packages = [
     { include = "dynamic", from = "src" },
     { include = "geom", from = "src" },
     { include = "primes", from = "src" },
+    { include = "quiz", from = "src" },
     { include = "sequences", from = "src" },
     { include = "sorting", from = "src" },
     { include = "wtk", from = "src" },
