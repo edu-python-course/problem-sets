@@ -91,7 +91,7 @@ def gather_answer(question: Question) -> int:
     while not 0 <= choice - 1 < choice_limit:
         choice = int(input("Option no. to submit: "))
 
-    return choice - 1
+    return choice
 
 
 def is_correct(question: Question, option: int) -> bool:
