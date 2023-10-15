@@ -39,3 +39,13 @@ def questions():
             "answer": "opt 3",
         },
     ]
+
+
+@pytest.fixture
+def correct_answers():
+    return "1", "2", "4", "3", "3"
+
+
+@pytest.fixture
+def incorrect_answers():
+    return "2", "1", "2", "1", "2"

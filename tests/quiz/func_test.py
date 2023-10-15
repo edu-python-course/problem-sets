@@ -9,8 +9,12 @@ def test_load_questions_from_file(questions):
     assert quiz.load_questions_from_file(fixture) == questions
 
 
-def test_perform_quiz(questions):
-    ...  # TODO
+def test_perform_quiz(questions, correct_answers, incorrect_answers):
+    with patch("builtins.input", side_effect=correct_answers):
+        assert quiz.perform_quiz(questions) == len(questions)
+
+    with patch("builtins.input", side_effect=incorrect_answers):
+        assert quiz.perform_quiz(questions) == 0
 
 
 def test_display_question(question):
@@ -18,9 +22,11 @@ def test_display_question(question):
 
 
 def test_gather_answer(question):
-    with patch("builtins.input", return_value="1"):
-        answer = quiz.gather_answer(question)
-    assert answer == 0
+    with patch("builtins.input", side_effect=["1", "3", "4", "2"]):
+        assert quiz.gather_answer(question) == 1
+        assert quiz.gather_answer(question) == 3
+        assert quiz.gather_answer(question) == 4
+        assert quiz.gather_answer(question) == 2
 
 
 def test_gather_answer_repeat():
