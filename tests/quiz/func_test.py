@@ -1,5 +1,5 @@
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 import quiz
 
@@ -18,7 +18,17 @@ def test_perform_quiz(questions, correct_answers, incorrect_answers):
 
 
 def test_display_question(question):
-    ...  # TODO:
+    with patch("builtins.print") as mocked_prints:
+        quiz.display_question(question)
+
+        print_calls = [
+            call(question["question"] + "\n"),
+            call("1: option 1"),
+            call("2: option 2"),
+            call("3: option 3"),
+            call("4: option 4"),
+        ]
+        mocked_prints.assert_has_calls(print_calls, any_order=False)
 
 
 def test_gather_answer(question):
