@@ -2,7 +2,10 @@
                      PYTHON TRAINING COURSE: PROBLEM SETS
 ###############################################################################
 
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/tests.yml/badge.svg
+.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/pytest.yml/badge.svg
+.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/linter.yml/badge.svg
+.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/type_check.yml/badge.svg
+.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/sonarcloud.yml/badge.svg
 
 This repository contains various problem sets (aka tasks or challenges) for
 the `Python training course`_. These challenges will help you to improve your
