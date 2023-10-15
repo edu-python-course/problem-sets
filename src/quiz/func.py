@@ -17,8 +17,8 @@ from __future__ import annotations
 import csv
 from typing import List, TYPE_CHECKING, TypedDict, Union
 
-if TYPE_CHECKING:
-    import pathlib
+if TYPE_CHECKING:  # pragma: no cover
+    import pathlib  # pragma: no cover
 
 Question = TypedDict("Question", {
     "question": str,
