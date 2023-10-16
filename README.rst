@@ -108,3 +108,8 @@ There are two major directories: **src** and **tests**. Any useful code should
 be included to the source (src). Test cases for functions, classes etc. should
 lie inside of tests directory. It's ok to created nested packages within these
 directories if needed.
+
+Contributing
+============
+
+For more details refer to `contributing guide <./.github/CONTRIBUTING.md>`_.
