@@ -1,4 +1,4 @@
-name: Collect coverage report for SonarCloud
+name: SonarCloud check
 
 on:
   push:
