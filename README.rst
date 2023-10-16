@@ -1,11 +1,13 @@
+.. |pytest| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/pytest.yml/badge.svg
+.. |pylint| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/linter.yml/badge.svg
+.. |mypy| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/type_check.yml/badge.svg
+.. |sonarcloud| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/sonarcloud.yml/badge.svg
+
 ###############################################################################
                      PYTHON TRAINING COURSE: PROBLEM SETS
 ###############################################################################
 
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/pytest.yml/badge.svg
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/linter.yml/badge.svg
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/type_check.yml/badge.svg
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/sonarcloud.yml/badge.svg
+|pytest| |sonarcloud|
 
 This repository contains various problem sets (aka tasks or challenges) for
 the `Python training course`_. These challenges will help you to improve your
