@@ -1,8 +1,13 @@
+.. |pytest| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/pytest.yml/badge.svg
+.. |pylint| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/linter.yml/badge.svg
+.. |mypy| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/type_check.yml/badge.svg
+.. |sonarcloud| image:: https://github.com/edu-python-course/problem-sets/actions/workflows/sonarcloud.yml/badge.svg
+
 ###############################################################################
                      PYTHON TRAINING COURSE: PROBLEM SETS
 ###############################################################################
 
-.. image:: https://github.com/edu-python-course/problem-sets/actions/workflows/tests.yml/badge.svg
+|pytest| |sonarcloud|
 
 This repository contains various problem sets (aka tasks or challenges) for
 the `Python training course`_. These challenges will help you to improve your
@@ -103,3 +108,8 @@ There are two major directories: **src** and **tests**. Any useful code should
 be included to the source (src). Test cases for functions, classes etc. should
 lie inside of tests directory. It's ok to created nested packages within these
 directories if needed.
+
+Contributing
+============
+
+For more details refer to `contributing guide <./.github/CONTRIBUTING.md>`_.

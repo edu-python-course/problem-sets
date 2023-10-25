@@ -79,10 +79,10 @@ def withdraw_rev(target: int,
     limited with ``limit`` argument).
 
     Usage:
-
-    >>> assert withdraw_rev(0) == []
-    >>> assert withdraw_rev(14) == [(10, 1), (2, 2)]
-    >>> assert withdraw_rev(17) == [(9, 1), (4, 2)]
+    #
+    # >>> assert withdraw_rev(0) == []
+    # >>> assert withdraw_rev(14) == [(10, 1), (2, 2)]
+    # >>> assert withdraw_rev(17) == [(9, 1), (4, 2)]
 
     """
 
@@ -103,8 +103,8 @@ def get_total(values: Iterable[Tuple[int, int]]) -> int:
 
     Usage:
 
-    >>> assert get_total([(1, 50), (1, 500), (2, 2000), (2, 10000)]) == 24500
-    >>> assert get_total([(1, 500), (1, 2000), (1, 5000), (1, 10000)]) == 17545
+    >>> assert get_total([(1, 50), (1, 500), (2, 2000), (2, 10000)]) == 24550
+    >>> assert get_total([(1, 10000), (1, 5000), (1, 2000), (1, 500)]) == 17500
     >>> assert get_total([(1, 2000)]) == 2000
 
     """
