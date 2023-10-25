@@ -82,3 +82,62 @@ def filter_4():
 def filter_5():
     filename = FIXTURES_PATH.joinpath("filter_5.csv")
     return read_fixture(filename), "last_name", "city"
+
+
+# noinspection SpellCheckingInspection
+@pytest.fixture
+def students_list():
+    return [
+        {
+            "name": "Arty Juliff",
+            "groups": ["A", "B", "C"],
+            "scores": [7, 5, 7, 10, 10],
+        },
+        {
+            "name": "Ange Besemer",
+            "groups": ["A", "C"],
+            "scores": [1, 1, 1, 4, 10],
+        },
+        {
+            "name": "Franky Chastenet",
+            "groups": ["B"],
+            "scores": [8, 4, 2, 4, 2],
+        },
+        {
+            "name": "Haily Bottle",
+            "groups": ["A"],
+            "scores": [6, 4, 9, 5, 9],
+        },
+        {
+            "name": "Mischa Ost",
+            "groups": ["B", "C"],
+            "scores": [9, 9, 4, 5, 4],
+        },
+    ]
+
+
+@pytest.fixture
+def student_data():
+    return {
+        "name": "Mischa Ost",
+        "groups": ["B", "C"],
+        "scores": [9, 9, 4, 5, 4],
+    }
+
+
+@pytest.fixture
+def top_student_data():
+    return {
+        "name": "Arty Juliff",
+        "groups": ["A", "B", "C"],
+        "scores": [7, 5, 7, 10, 10],
+    }
+
+
+@pytest.fixture
+def low_student_data():
+    return {
+        "name": "Ange Besemer",
+        "groups": ["A", "C"],
+        "scores": [1, 1, 1, 4, 10],
+    }
