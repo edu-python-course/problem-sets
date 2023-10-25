@@ -2,7 +2,7 @@ from datasets import students
 
 
 def test_average_score(student_data):
-    assert students.get_avg_score(student_data) == 8.0
+    assert students.get_avg_score(student_data) == 6.2
 
 
 def test_get_top_student(students_list, top_student_data):

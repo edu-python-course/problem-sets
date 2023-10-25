@@ -18,7 +18,7 @@ def get_avg_score(student_data: StudentData) -> float:
 
     scores: List[int] = student_data["scores"]
 
-    return round(sum(scores) / len(scores))
+    return round(sum(scores) / len(scores), 2)
 
 
 def get_top_student(students_data: StudentsList) -> StudentData:
