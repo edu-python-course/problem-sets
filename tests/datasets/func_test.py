@@ -66,7 +66,7 @@ def test_dataset_filter_no_keys(dataset):
 
 
 def test_flatten_list():
-    assert datasets.flatten([1, 2, 3]) == [1, 2, 3]
-    assert datasets.flatten(([[1], [2], [3]])) == [1, 2, 3]
-    assert datasets.flatten([1, [2, 3]]) == [1, 2, 3]
-    assert datasets.flatten([1, [[2], [3]]]) == [1, 2, 3]
+    assert datasets.flatten_list([1, 2, 3]) == [1, 2, 3]
+    assert datasets.flatten_list(([[1], [2], [3]])) == [1, 2, 3]
+    assert datasets.flatten_list([1, [2, 3]]) == [1, 2, 3]
+    assert datasets.flatten_list([1, [[2], [3]]]) == [1, 2, 3]
