@@ -6,12 +6,12 @@ def test_brick_counter(bricks_wall, bricks_count):
 
 
 def test_matrix_builder(bricks_wall, position):
+    assert bricks.get_least_bricks_position([[1]]) == 0
+    assert bricks.get_least_bricks_position([[1], [1]]) == 0
     assert bricks.get_least_bricks_position(bricks_wall) == position
 
 
 def test_least_bricks(bricks_wall, small_bricks_wall):
-    assert bricks.get_least_bricks_count([[1]]) == 0
-    assert bricks.get_least_bricks_count([[1], [1]]) == 0
     assert bricks.get_least_bricks_count(bricks_wall) == 1
     assert bricks.get_least_bricks_count(small_bricks_wall) == 3
 
