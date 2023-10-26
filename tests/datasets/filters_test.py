@@ -40,6 +40,7 @@ def test_dataset_filter_no_keys(dataset):
         {"x": 1, "y": 1}, {"x": 1, "y": 2}, {"x": 2, "y": 1}, {"x": 2, "y": 2},
     ]
     assert filters.filter_by_values(dataset) == test_dataset
+    assert filters.filter_by_values(dataset, []) == test_dataset
 
 
 def test_empty_dataset():
