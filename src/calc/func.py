@@ -143,14 +143,8 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
     """
 
     # remove leading zeros
-    for digit in number_1:
-        if digit != "0":
-            break
-        number_1 = number_1[1::]
-    for digit in number_2:
-        if digit != "0":
-            break
-        number_2 = number_2[1::]
+    number_1 = number_1.lstrip("0")
+    number_2 = number_2.lstrip("0")
 
     if not number_1 or not number_2:
         return number_1 or number_2 or "0"
@@ -162,10 +156,8 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
     number_1, number_2 = number_1[::-1], number_2[::-1]
 
     # make strings of the same lengths
-    while len(number_1) < size:
-        number_1 += "0"
-    while len(number_2) < size:
-        number_2 += "0"
+    number_1 += "0" * (size - len(number_1))
+    number_2 += "0" * (size - len(number_2))
 
     carry: int = 0
     for digit_1, digit_2 in zip(number_1, number_2):
