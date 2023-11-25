@@ -1,7 +1,23 @@
 def calculate_square(number):
+    """
+    Calculate the square value of a given number.
+
+    Parameters:
+    - number (float): The input number for which the square value is calculated.
+
+    Returns:
+    - float: The square value of the input number.
+    """
     return number ** 2
 
 def main():
+    """
+    The main function of the program. It takes user input, calculates the square value,
+    and prints the result.
+
+    Usage:
+    - Run this script to input a number and get its square value.
+    """
     # Ask the user for a number
     user_input = input("Enter a number: ")
 
