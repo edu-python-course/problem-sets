@@ -1,6 +1,5 @@
-from square import calculate_square
+from FileSquare/square import calculate_square
 def test_square_calculation():
-    from square import calculate_square
 
     # Test with a positive number
     assert calculate_square(4) == 16
