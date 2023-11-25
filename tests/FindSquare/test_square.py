@@ -1,4 +1,4 @@
-from FileSquare/square import calculate_square
+from FindSquare/square import calculate_square
 def test_square_calculation():
 
     # Test with a positive number
