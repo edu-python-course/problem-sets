@@ -284,3 +284,20 @@ def get_consecutive_slices(origin: str, n: int) -> List[str]:
         idx += 1
 
     return result
+
+
+def is_vowel(char: str) -> bool:
+    """
+    Check if a given character is a vowel
+
+    :param char: the character to be checked.
+    :type char: str
+
+    :return: True if the character is a vowel, otherwise False
+    :rtype: bool
+
+    """
+
+    vowels = "aeiouAEIOU"
+
+    return char in vowels
