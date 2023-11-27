@@ -1,6 +1,11 @@
 import calc
 
 
+def test_get_square():
+    assert calc.get_square(4) == 16
+    assert calc.get_square(-3) == 9
+
+
 def test_get_squares():
     test = [
         0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256
