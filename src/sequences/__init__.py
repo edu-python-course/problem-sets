@@ -40,4 +40,9 @@ __all__ = [
     "get_longest_uniq_length",
 ]
 
-from sequences.func import *
+from sequences.func import (
+    are_parentheses_balanced,
+    get_longest_palindrome,
+    get_longest_uniq_length,
+    is_palindrome, is_vowel
+)
