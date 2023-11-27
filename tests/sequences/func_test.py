@@ -1,7 +1,6 @@
 import pytest
 
 import sequences
-from sequences import is_vowel
 
 
 def test_palindrome_simple():
@@ -97,8 +96,8 @@ def test_get_consecutive_slices():
 
 
 def test_is_vowel():
-    assert is_vowel('a') is True
-    assert is_vowel('b') is False
-    assert is_vowel('A') is True
-    assert is_vowel('1') is False
-    assert is_vowel('@') is False
+    assert sequences.is_vowel('a') is True
+    assert sequences.is_vowel('b') is False
+    assert sequences.is_vowel('A') is True
+    assert sequences.is_vowel('1') is False
+    assert sequences.is_vowel('@') is False
