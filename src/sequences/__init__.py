@@ -34,6 +34,7 @@ respective right parenthesis to match its pair in a well-nested format.
 
 __all__ = [
     "is_palindrome",
+    "is_vowel",
     "get_longest_palindrome",
     "are_parentheses_balanced",
     "get_longest_uniq_length",
