@@ -25,9 +25,9 @@ The more efficient algorithm to get primes within a range.
 """
 
 __all__ = [
-    "is_prime",
-    "get_primes",
     "eratosthenes_sieve",
+    "get_primes",
+    "is_prime",
 ]
 
-from primes.func import *
+from primes.func import eratosthenes_sieve, get_primes, is_prime

@@ -13,4 +13,6 @@ __all__ = [
     "get_squares",
 ]
 
-from calc.func import *
+from calc.func import (get_factorial, get_fibonacci_number,
+                       get_fibonacci_number_nr, get_square, get_squares,
+                       get_sum_of_strings)
