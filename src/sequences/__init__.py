@@ -33,6 +33,10 @@ respective right parenthesis to match its pair in a well-nested format.
 """
 
 __all__ = [
+    "add_spaces",
+    "get_consecutive_slices",
+    "get_palindrome_squares",
+    "get_palindrome_primes",
     "is_palindrome",
     "is_vowel",
     "get_longest_palindrome",
@@ -41,8 +45,12 @@ __all__ = [
 ]
 
 from sequences.func import (
+    add_spaces,
     are_parentheses_balanced,
+    get_consecutive_slices,
     get_longest_palindrome,
     get_longest_uniq_length,
+    get_palindrome_primes,
+    get_palindrome_squares,
     is_palindrome, is_vowel
 )
