@@ -9,6 +9,7 @@ __all__ = [
     "get_fibonacci_number",
     "get_fibonacci_number_nr",
     "get_sum_of_strings",
+    "get_square",
     "get_squares",
 ]
 
