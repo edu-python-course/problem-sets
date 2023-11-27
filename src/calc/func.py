@@ -3,7 +3,22 @@ Calculation functions implementations
 
 """
 
-from typing import List
+from typing import List, Union
+
+
+def get_square(number: Union[int, float]) -> Union[int, float]:
+    """
+    Calculate the square value of a given number
+
+    :param number: The input number for which the square value is calculated.
+    :type number: int | float
+
+    :return: the square value of the input number
+    :rtype: int | float
+
+    """
+
+    return number ** 2
 
 
 def get_square(number: int) -> int:
