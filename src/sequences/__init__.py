@@ -52,5 +52,6 @@ from sequences.func import (
     get_longest_uniq_length,
     get_palindrome_primes,
     get_palindrome_squares,
-    is_palindrome, is_vowel
+    is_palindrome,
+    is_vowel,
 )
