@@ -301,3 +301,25 @@ def is_vowel(char: str) -> bool:
     vowels = "aeiouAEIOU"
 
     return char in vowels
+def remove_duplicate_lists(input_list):
+    """
+    Remove duplicate lists from a list of lists.
+
+    :param input_list: List of lists
+    :type input_list: list[list]
+
+    :return: List with duplicate lists removed
+    :rtype: list[list]
+    """
+    seen = set()
+    result = []
+
+    for sublist in input_list:
+        # Convert each sublist to a tuple to make it hashable
+        sublist_tuple = tuple(sublist)
+
+        if sublist_tuple not in seen:
+            seen.add(sublist_tuple)
+            result.append(sublist)
+
+    return result

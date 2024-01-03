@@ -1,5 +1,5 @@
-import pytest
-
+import pytest 
+from sequences.func import remove_duplicate_lists
 import sequences
 
 
@@ -101,3 +101,35 @@ def test_is_vowel():
     assert sequences.is_vowel('A') is True
     assert sequences.is_vowel('1') is False
     assert sequences.is_vowel('@') is False
+
+
+def test_remove_duplicate_lists():
+    # Test cases with duplicate lists
+    input_list1 = [[1, 2, 3], [4, 5], [1, 2, 3], [6, 7]]
+    expected_output1 = [[1, 2, 3], [4, 5], [6, 7]]
+    
+    input_list2 = [['a', 'b'], [1, 2], ['a', 'b'], ['c', 'd']]
+    expected_output2 = [['a', 'b'], [1, 2], ['c', 'd']]
+    
+    # Test cases without duplicate lists
+    input_list3 = [[1, 2], [3, 4], [5, 6]]
+    expected_output3 = [[1, 2], [3, 4], [5, 6]]
+    
+    input_list4 = [['x', 'y'], ['z'], ['p', 'q'], ['r', 's']]
+    expected_output4 = [['x', 'y'], ['z'], ['p', 'q'], ['r', 's']]
+    
+    # Test the function with the test cases
+    assert remove_duplicate_lists(input_list1) == expected_output1
+    assert remove_duplicate_lists(input_list2) == expected_output2
+    assert remove_duplicate_lists(input_list3) == expected_output3
+    assert remove_duplicate_lists(input_list4) == expected_output4
+    
+    # Test with an empty list
+    assert remove_duplicate_lists([]) == []
+    
+    # Test with a list containing a single empty sublist
+    input_list5 = [[]]
+    expected_output5 = [[]]
+    assert remove_duplicate_lists(input_list5) == expected_output5
+
+# You can add more test cases as needed
