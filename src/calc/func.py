@@ -184,3 +184,18 @@ def get_sum_of_strings(number_1: str, number_2: str, /) -> str:
         result += str(carry)
 
     return result[::-1]
+
+
+def get_digits_multiplies(origin: int) -> List[int]:
+    """
+    Return the digits multiplies for a given number
+
+    :param origin: a number to find multiplies
+    :type origin: int
+
+    :return: a list of digits multiplies starting from position 10 ** 1
+    :rtype: list
+
+    """
+
+    return [int(digit) for digit in str(origin)[::-1]]
