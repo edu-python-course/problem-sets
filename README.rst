@@ -54,6 +54,9 @@ To do this use commands:
     pip install -r requirements.txt
     pip install -e .
 
+Sometimes, you may get an error while installing the source code. Upgrading
+``pip`` to the latest version helps for the most of the times.
+
 .. _pip: https://pip.pypa.io/
 
 Code health check
