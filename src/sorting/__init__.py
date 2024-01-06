@@ -67,4 +67,15 @@ __all__ = [
     "shell_sort"
 ]
 
-from sorting.func import *
+from sorting.func import (
+    bubble_sort,
+    bucket_sort,
+    counting_sort,
+    heap_sort,
+    insertion_sort,
+    merge_sort,
+    quick_sort,
+    radix_sort,
+    selection_sort,
+    shell_sort,
+)

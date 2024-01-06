@@ -86,7 +86,7 @@ def withdraw_rev(target: int,
 
     """
 
-    raise NotImplementedError  # TODO:
+    raise NotImplementedError
 
 
 def get_total(values: Iterable[Tuple[int, int]]) -> int:
