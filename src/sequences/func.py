@@ -247,6 +247,7 @@ def add_spaces(origin: str) -> str:
     return "".join(f" {c}" if c.isupper() else c for c in origin).lstrip()
 
 
+# pylint: disable=C0103
 def get_consecutive_slices(origin: str, n: int) -> List[str]:
     """
     Return possible slices of string as a collection consecutive lists
@@ -301,3 +302,29 @@ def is_vowel(char: str) -> bool:
     vowels = "aeiouAEIOU"
 
     return char in vowels
+
+
+def remove_duplicate_lists(input_list):
+    """
+    Remove duplicate lists from a list of lists.
+
+    :param input_list: collection of nested lists
+    :type input_list: list
+
+    :return: List with duplicate lists removed
+    :rtype: list
+
+    """
+
+    seen = set()
+    result = []
+
+    for sublist in input_list:
+        # Convert each sublist to a tuple to make it hashable
+        sublist_tuple = tuple(sublist)
+
+        if sublist_tuple not in seen:
+            seen.add(sublist_tuple)
+            result.append(sublist)
+
+    return result

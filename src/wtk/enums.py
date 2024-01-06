@@ -59,7 +59,7 @@ def get_fight_result(attack: FightChoice, defence: FightChoice) -> FightResult:
 
     # perform type validation
     if not isinstance(attack, FightChoice) or \
-        not isinstance(defence, FightChoice):
+       not isinstance(defence, FightChoice):
         attack_cls = attack.__class__.__name__
         defence_cls = defence.__class__.__name__
         raise TypeError(

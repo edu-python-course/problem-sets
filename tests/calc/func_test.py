@@ -66,3 +66,10 @@ def test_sum_of_strings_empty():
     assert calc.get_sum_of_strings("123", "") == "123"
     assert calc.get_sum_of_strings("", "456") == "456"
     assert calc.get_sum_of_strings("", "") == "0"
+
+
+def test_find_digits_multiplies():
+    assert calc.get_digits_multiplies(123) == [3, 2, 1]
+    assert calc.get_digits_multiplies(456) == [6, 5, 4]
+    assert calc.get_digits_multiplies(0) == [0]
+    assert calc.get_digits_multiplies(2048) == [8, 4, 0, 2]

@@ -43,7 +43,7 @@ def load_questions_from_file(source: Union[str, pathlib.Path]) -> Questions:
 
     fieldnames = ["question", "options", "answer"]
     questions = []
-    with open(source) as io_buff:
+    with open(source) as io_buff:  # pylint: disable=W1514
         reader = csv.DictReader(io_buff, fieldnames=fieldnames)
         for question in reader:
             questions.append({
@@ -64,9 +64,9 @@ def display_question(question: Question) -> None:
 
     """
 
-    print("%s\n" % question["question"])
+    print("%s\n" % question["question"])  # pylint: disable=C0209
     for opt_idx, option in enumerate(question["options"], 1):
-        print("%d: %s" % (opt_idx, option))
+        print("%d: %s" % (opt_idx, option))  # pylint: disable=C0209
 
 
 def gather_answer(question: Question) -> int:
