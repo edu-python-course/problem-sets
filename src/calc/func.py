@@ -36,7 +36,37 @@ def get_squares(limit: int, /) -> List[int]:
     return [get_square(number) for number in range(limit)]
 
 
-def get_factorial(number: int, /) -> int:
+def get_factorial(number: int, carrier: int = 1, /) -> int:
+    """
+    Return the factorial value for a given number
+
+    In mathematics the factorial is the product of all positive integers
+    less than or equal to given number.
+    E.g. 5! = 5 * 4! = 5 * 4 * 3 * 2 * 1 = 120.
+    The value of 0! = 1 according to the convention of an empty product.
+
+    :param number: the number to calculate the factorial value for
+    :type number: int
+    :param carrier: the calculation result carrier, defaults to 1
+    :type carrier: int, optional
+
+    :return: the factorial value
+    :rtype: int
+
+    Usage:
+
+    >>> assert get_factorial(0) == 1
+    >>> assert get_factorial(5) == 120
+
+    """
+
+    if number <= 1:
+        return carrier
+
+    return get_factorial(number - 1, carrier * number)
+
+
+def get_factorial_nr(number: int, /) -> int:
     """
     Return the factorial value for a given number
 
@@ -51,6 +81,9 @@ def get_factorial(number: int, /) -> int:
     :return: the factorial value
     :rtype: int
 
+    This function implements the non-recursive algorithm, which is more
+    efficient, since it does not have multiple recursive calls.
+
     Usage:
 
     >>> assert get_factorial(0) == 1
@@ -58,10 +91,11 @@ def get_factorial(number: int, /) -> int:
 
     """
 
-    if number <= 1:
-        return 1
+    factorial = 1
+    for iter_number in range(1, number + 1):
+        factorial *= iter_number
 
-    return number * get_factorial(number - 1)
+    return factorial
 
 
 def get_fibonacci_number(idx: int, /) -> int:

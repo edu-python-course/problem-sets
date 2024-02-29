@@ -1,6 +1,13 @@
 from dynamic import memoization
 
 
+def test_get_factorial():
+    assert memoization.get_factorial(0) == 1
+    assert memoization.get_factorial(1) == 1
+    assert memoization.get_factorial(5) == 120
+    assert memoization.get_factorial(10) == 3628800
+
+
 def test_get_fibonacci_number():
     # test base cases
     assert memoization.get_fibonacci_number(-10) == 0

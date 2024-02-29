@@ -6,6 +6,7 @@ Dynamic programming memoization functions
 import functools
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
+from calc.func import get_factorial as fac_classic
 from calc.func import get_fibonacci_number as fib_classic
 
 
@@ -26,7 +27,7 @@ def memoize(func: Callable) -> Callable:
 
     """
 
-    cache: Dict[Tuple[Any], int] = {}
+    cache: Dict[Tuple[Any, ...], int] = {}
 
     @functools.wraps(func)
     def wrapper(*args):
@@ -36,6 +37,15 @@ def memoize(func: Callable) -> Callable:
         return cache[args]
 
     return wrapper
+
+
+@memoize
+@functools.wraps(fac_classic, ("__annotations__", "__doc__"))
+def get_factorial(number, carrier=1):  # pylint: disable=C0116
+    if number <= 1:
+        return carrier
+
+    return get_factorial(number - 1, carrier * number)
 
 
 @memoize

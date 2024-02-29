@@ -15,7 +15,16 @@ def test_get_squares():
 
 def test_get_factorial():
     assert calc.get_factorial(0) == 1
+    assert calc.get_factorial(1) == 1
     assert calc.get_factorial(5) == 120
+    assert calc.get_factorial(10) == 3628800
+
+
+def test_get_factorial_nr():
+    assert calc.get_factorial_nr(0) == 1
+    assert calc.get_factorial_nr(1) == 1
+    assert calc.get_factorial_nr(5) == 120
+    assert calc.get_factorial_nr(10) == 3628800
 
 
 def test_get_fibonacci_number():
